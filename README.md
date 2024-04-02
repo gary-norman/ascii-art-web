@@ -1,28 +1,50 @@
-# Statistic
+# Objectives
 
-Go program for the maths-skills project in 01Founders that gives a statistical analysis of a list of numbers provided in
-a randomly generated file. It returns the **Average** (mean), **Median**, **Variance**, and **Standard
-Deviation**.
+Ascii-art-web consists in creating and running a server, in which it will be possible to use a web GUI (graphical user interface) version of your last project, ascii-art.
 
-## How to run
+Your webpage must allow the use of the different banners:
 
-Run the file by typing `go run . <filename>` where filename is the file containing the list of numbers.
+    shadow
+    standard
+    thinkertoy
 
-## How to test
+Implement the following HTTP endpoints:
 
-#### Download and unpack the test files
+    GET /: Sends HTML response, the main page.
+    1.1. GET Tip: go templates to receive and display data from the server.
 
-Run `wget https://assets.01-edu.org/stats-projects/stat-bin-dockerized.zip`  
-Run `tar xvf stat-bin-dockerized.zip && mv stat-bin/* ./`  
+    POST /ascii-art: that sends data to Go server (text and a banner)
+    2.1. POST Tip: use form and other types of tags to make the post request.\
 
-#### Run the test script and go file
+The way you display the result from the POST is up to you. What we recommend are one of the following :
 
-> To be able to run this script you need to have Docker installed locally 
-> Check with  
-> `docker version`  
-> Install at [`docker-engine`](https://docs.docker.com/engine/install)
+    Display the result in the route /ascii-art after the POST is completed. So going from the home page to another page.
+    Or display the result of the POST in the home page. This way appending the results in the home page.
 
-Run the script `./run.sh math-skills`. This will create a file 'data.txt' that contains a randomly generated list of
-numbers, and return the expected values of **Average**, **Median**, **Variance**, and **Standard Deviation**.
+The main page must have:
 
-Run the statistic file with `go run . data.txt` and compare the values.
+    text input
+    radio buttons, select object or anything else to switch between banners
+    button, which sends a POST request to '/ascii-art' and outputs the result on the page.
+
+HTTP status code
+
+Your endpoints must return appropriate HTTP status codes.
+
+    OK (200), if everything went without errors.
+    Not Found, if nothing is found, for example templates or banners.
+    Bad Request, for incorrect requests.
+    Internal Server Error, for unhandled errors.
+
+In the root project directory create a README.MD file with the following sections and contents:
+
+    Description
+    Authors
+    Usage: how to run
+    Implementation details: algorithm
+
+Instructions
+
+    HTTP server must be written in Go.
+    HTML templates must be in the project root directory templates.
+    The code must respect the good practices.
