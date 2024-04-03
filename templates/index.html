@@ -11,24 +11,59 @@
     <div class="wrapper">
         <section class="frontpage">
             <main>
-                <article class="about">
+                <article class="frosted">
                     <h1 >ASCII Art Generator</h1>
-                    <div class="dropdown">
                         <form action="">
-                            <label for="banner">Style:</label>
-                            <div class="select">
-                                <select name="banner" id="banner">
-                                    <option class="item" value="standard">Standard</option>
-                                    <option class="item" value="shadow">Shadow</option>
-                                    <option class="item" value="thinkertoy">Thinkertoy</option>
-                                </select>
-                                <span class="focus"></span>
+                            <div class="card">
+                                <div class="label">
+                                    <label for="function">What would you like to do?</label>
+                                </div>
+                                <div class="select">
+                                    <select name="banner" id="function">
+                                        <option class="item" value="color">Colourise the output</option>
+                                        <option class="item" value="output">Export to file</option>
+                                        <option class="item" value="align">Align the text</option>
+                                        <option class="item" value="reverse">Get text from file</option>
+                                    </select>
+                                    <span class="focus"></span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="label">
+                                    <label for="color">Choose your colour</label>
+                                </div>
+                                <div class="select">
+                                    <select name="color" id="color">
+                                        <option class="item" value="red">Red</option>
+                                        <option class="item" value="green">Green</option>
+                                        <option class="item" value="blue">Blue</option>
+                                        <option class="item" value="yellow">Yellow</option>
+                                        <option class="item" value="orange">Orange</option>
+                                    </select>
+                                    <span class="focus"></span>
+                                    <label class="" for="text_input"></label>
+                                    <input id="color-txt" name="colour-text" value="Choose specific letters to colourise (optional)">
+
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="label">
+                                    <label for="banner">Choose your style</label>
+                                </div>
+                                <div class="select">
+                                    <select name="banner" id="banner">
+                                        <option class="item" value="standard">Standard</option>
+                                        <option class="item" value="shadow">Shadow</option>
+                                        <option class="item" value="thinkertoy">Thinkertoy</option>
+                                    </select>
+                                    <span class="focus"></span>
+                                </div>
                             </div>
                         </form>
-                    </div>
                     <div class="input">
                         <form action="">
-                            <label class="label" for="text_input"></label><input id="text_input" name="ascii_input" value="Enter your text">
+                            <label class="" for="text_input"></label>
+                            <input id="text_input" name="ascii_input" value="Enter your text">
                         </form>
                     </div>
                     <div class="ascii">----------------------------------------------------
