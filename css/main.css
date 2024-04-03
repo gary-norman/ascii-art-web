@@ -25,7 +25,7 @@
     --select-border: var(--mcr-cyan);
     --select-focus: var(--select-border);
     --select-arrow: var(--select-border);
-    --select-border-rad: 1rem;
+    --select-border-rad: .4rem;
 }
 
 html {
@@ -128,8 +128,94 @@ main {
 /* ----------  form styling ----------*/
 select, label, input {
     color: dimgray;
+    border: 0;
+}
+.card {
+    margin : 1rem 0;
+}
+.label {
+    padding: .4rem 1rem;
+    border-radius: var(--select-border-rad) var(--select-border-rad) 0 0;
+    background-color: var(--bg-clr-select_header);
+    color: #fff;
+}
+label {
+    color: white;
+}
+.toggle {
+    background-color: #fff;
+}
+.radio {
+    cursor: pointer;
+    font-size: 1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: dimgray;
+}
+.radio input {
+    display: inline-flex;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    margin: 0;
+}
+.checkmark {
+    opacity: .5;
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 40%;
+    border: 1px solid var(--bg-clr-select_header) ;
+}
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+.blue {
+    background-color: blue;
+}
+.yellow {
+    background-color: yellow;
+}
+.orange {
+    background-color: orange;
+}
+.radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.radio input:checked ~ .checkmark {
+    opacity: 1;
+}
+.checkmark:after {
+    content: "";
+    position: relative;
+    display: none;
+}
+.radio input:checked ~ .checkmark:after {
+    display: block;
+}
+.radio .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 40%;
+    background: white;
+    border: 1px solid var(--bg-clr-select_header);
 }
 
+#text_input {
+    width: 100%;
+    border-radius: var(--select-border-rad);
+}
+#color-txt {
+    padding: .5rem 1rem;
+}
 /*select {*/
 /*!* A reset of styles, including removing the default dropdown arrow *!*/
 /*appearance: none;*/
@@ -218,13 +304,13 @@ select, label, input {
 /*}*/
 
 
-.ascii {
-  grid-area: d;
-  align-self: start;
-}
-.ascii p {
-  justify-self: start;
-}
+/*.ascii {*/
+/*  grid-area: d;*/
+/*  align-self: start;*/
+/*}*/
+/*.ascii p {*/
+/*  justify-self: start;*/
+/*}*/
 
 @media only screen and (max-width: 600px) {
   .wrapper {
@@ -258,6 +344,7 @@ select, label, input {
   }
   .select {
       width: 100%;
+      border: 0;
       display: flex;
       flex-direction: column;
       justify-items: center;
@@ -269,21 +356,15 @@ select, label, input {
   form {
       width: 95%;
   }
-  .card {
-      margin : 1rem 0;
-  }
-  .label {
-      width: 100%;
-      padding: .4rem 1rem;
-      border-radius: .4rem .4rem 0 0;
-      background-color: var(--bg-clr-select_header);
-      color: #fff;
-  }
-  label {
-      color: white;
-}
+
   #color-txt {
       font-size: 1.2rem;
+  }
+  .toggle {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      /*gap: 3rem;*/
   }
   /*.scroll {*/
   /*    top: 22%;*/
