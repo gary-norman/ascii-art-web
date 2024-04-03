@@ -54,9 +54,28 @@ body {
 }
 
 .frosted {
-  grid-column: 2 / 5;
-  grid-row: 2 / 4;
-  color: rgba(128, 128, 128, 0.738);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    grid-template-rows: 0.5fr .5fr 7fr;
+    gap: 2px 0;
+    grid-template-areas:
+    "a a"
+    "b c"
+    "d d";
+    background: linear-gradient(90deg,
+    rgba(255,255,255,0.2) 0%,
+    rgba(233,253,255,0.2) 22%,
+    rgba(255,255,255,0.2) 47%,
+    rgba(230,255,255,0.2) 71%,
+    rgba(255,255,255,0.2) 100%);
+    /*background: rgba(128, 128, 128, 0.438);*/
+    border: 1px inset rgba(255, 255, 255, .4);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: var(--border-rad);
+    justify-items: center;
 }
 
 a {
@@ -92,21 +111,21 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }
 
-.about {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 4fr 4fr;
-  grid-template-rows: 0.5fr .5fr 7fr;
-  gap: 2px 0;
-  grid-template-areas:
-    "a a"
-    "b c"
-    "d d";
-  background: rgb(0 0 0 / .2);
-  padding: 1rem;
-  border-radius: var(--border-rad);
-  justify-items: center;
-}
+/*.about {*/
+/*  width: 100%;*/
+/*  display: grid;*/
+/*  grid-template-columns: 4fr 4fr;*/
+/*  grid-template-rows: 0.5fr .5fr 7fr;*/
+/*  gap: 2px 0;*/
+/*  grid-template-areas:*/
+/*    "a a"*/
+/*    "b c"*/
+/*    "d d";*/
+/*  background: rgb(0 0 0 / .2);*/
+/*  padding: 1rem;*/
+/*  border-radius: var(--border-rad);*/
+/*  justify-items: center;*/
+/*}*/
 
 .about h1 {
   grid-area: a;
@@ -134,16 +153,11 @@ form {
     display: flex;
 }
 
-.box:hover::before {
-    color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
 .box select option {
     padding: 30px;
 }
 
-.select {
+.select, #text_input {
     display: grid;
     grid-template-areas: "select";
     align-items: center;
@@ -160,6 +174,9 @@ form {
     background-color: #fff;
     background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    /*padding: 0 0 0 .5rem;*/
+    color: dimgray;
+
 }
 
 select, .select:after {
@@ -192,7 +209,8 @@ select:focus + .focus {
 }
 
 #banner {
-    margin: .5rem 0;
+    /*margin: .5rem 0;*/
+    color: dimgray;
 }
 
 .input {
@@ -205,12 +223,11 @@ select:focus + .focus {
 .input .label {
 }
 
-#text_input, #banner {
-  /*height: 100%;*/
-  border-radius: var(--border-rad);
-    padding: 0 0 0 .5rem;
-  color: dimgray;
-}
+/*#text_input {*/
+/*  border-radius: var(--border-rad);*/
+/*    padding: 0 0 0 .5rem;*/
+/*  color: dimgray;*/
+/*}*/
 
 .ascii {
   grid-area: d;
