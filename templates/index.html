@@ -13,31 +13,23 @@
             <main>
                 <article class="about">
                     <h1 >ASCII Art Generator</h1>
-                    <div class="radios">
-                        <h1>ASCII style</h1>
+                    <div class="dropdown">
                         <form action="">
-                            <input type="radio" id="standard" name="ascii_style" value="standard">
-                            <label for="standard">Standard</label><br>
-                            <input type="radio" id="shadow" name="ascii_style" value="shadow">
-                            <label for="shadow">Shadow</label><br>
-                            <input type="radio" id="thinkertoy" name="ascii_style" value="thinkertoy">
-                            <label for="thinkertoy">Thinkertoy</label><br>
+                            <label for="banner">Choose a style:</label>
+                            <select name="banner" id="banner">
+                                <option value="standard">Standard</option>
+                                <option value="shadow">Shadow</option>
+                                <option value="thinkertoy">Thinkertoy</option>
+                            </select>
                         </form>
                     </div>
                     <div class="input">
                         <form action="">
-                            <label for="text_input"></label><input id="text_input" name="ascii_input" value="Enter your text">
+                            <label class="label" for="text_input"></label><input id="text_input" name="ascii_input" value="Enter your text">
                         </form>
                     </div>
                     <div class="ascii">----------------------------------------------------
-                        <p>_|_|_|_|&ensp;&ensp;&ensp;&ensp;_|&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;_|&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;_|     
-                            _|       _|_|_|   _|_|_|_|   _|_|   _|  _|_|       _|    _|   _|_|   _|    _| _|  _|_|       _|_|_|_|   _|_|   _|    _| _|_|_|_| 
-                            _|_|_|   _|    _|   _|     _|_|_|_| _|_|           _|    _| _|    _| _|    _| _|_|             _|     _|_|_|_|   _|_|     _|     
-                            _|       _|    _|   _|     _|       _|             _|    _| _|    _| _|    _| _|               _|     _|       _|    _|   _|     
-                            _|_|_|_| _|    _|     _|_|   _|_|_| _|               _|_|_|   _|_|     _|_|_| _|                 _|_|   _|_|_| _|    _|     _|_| 
-                                                                                     _|                                                                      
-                                                                                 _|_|                                                                        
-                            </p>
+                        <p></p>
                     </div>
                 </article>
             </main>

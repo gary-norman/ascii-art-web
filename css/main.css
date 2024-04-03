@@ -89,15 +89,15 @@ main {
 }
 
 .about {
-  width: 90%;
+  width: 100%;
   display: grid; 
-  grid-template-columns: 1fr 2fr 4fr 1fr; 
-  grid-template-rows: 0.5fr 1.5fr 7fr; 
+  grid-template-columns: 4fr 4fr;
+  grid-template-rows: 0.5fr .5fr 7fr;
   gap: 2px 0;
   grid-template-areas: 
-    ". a a ."
-    ". b c ."
-    ". d d .";
+    "a a"
+    "b c"
+    "d d";
   background: rgb(0 0 0 / .2);
   padding: 1rem;
   border-radius: var(--border-rad);
@@ -109,18 +109,34 @@ main {
   align-self: center;
 }
 
-.radios {
+.dropdown {
   grid-area: b;
-  align-self: center;
+  display: flex;
+  flex-direction: row;
+    align-self: center;
+    justify-self: end;
+    padding: 0 .5rem 0 0;
+}
+
+#banner {
+    margin: .5rem;
 }
 
 .input {
   grid-area: c;
   align-self: center;
+    justify-self: start;
+    padding: 0 0 0 .5rem;
 }
-#text_input {
-  height: 100%;
-  border-radius: 10px;
+
+.input .label {
+}
+
+#text_input, #banner {
+  /*height: 100%;*/
+  border-radius: var(--border-rad);
+    padding: 0 0 0 .5rem;
+  color: dimgray;
 }
 
 .ascii {
@@ -148,12 +164,11 @@ main {
       scroll-snap-align: start;
   }
   main {
-      flex-direction: column;
       height: 95%;
       width: 90%;
       position: relative;
       top: 50%;
-    transform: translateY(-50%);
+      transform: translateY(-50%);
       margin: auto;
   }
   .scroll {
