@@ -33,20 +33,24 @@
                                 </div>
                                 <div class="toggle">
                                     <label class="radio">
-                                        <input type="radio" checked="checked">
-                                        <span class="checkmark"></span>
+                                        <input type="radio" id="red" checked="checked" name="radio">
+                                        <span class="checkmark red"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio">
-                                        <span class="checkmark"></span>
+                                        <input type="radio" id="green" name="radio">
+                                        <span class="checkmark green"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio">
-                                        <span class="checkmark"></span>
+                                        <input type="radio" id="blue" name="radio">
+                                        <span class="checkmark blue"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio">
-                                        <span class="checkmark"></span>
+                                        <input type="radio" id="yellow" name="radio">
+                                        <span class="checkmark yellow"></span>
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" id="orange" name="radio">
+                                        <span class="checkmark orange"></span>
                                     </label>
                                 </div>
 <!--                                    <select name="color" id="color">-->
@@ -58,7 +62,8 @@
 <!--                                    </select>-->
                                     <div class="select">
                                     <label class="" for="color-txt"></label>
-                                    <input id="color-txt" name="colour-text" value="Choose specific letters to colourise (optional)">
+                                    <input id="color-txt" name="colour-text"
+                                           value="Enter specific letters to colourise (optional)">
 
                                 </div>
                             </div>
@@ -75,13 +80,12 @@
                                     <span class="focus"></span>
                                 </div>
                             </div>
+                            <div class="card">
+                                    <label class="" for="text_input"></label>
+                                    <input id="text_input" name="ascii_input" value="Enter your text">
+                            </div>
                         </form>
-                    <div class="input">
-                        <form action="">
-                            <label class="" for="text_input"></label>
-                            <input id="text_input" name="ascii_input" value="Enter your text">
-                        </form>
-                    </div>
+
                     <div class="ascii">----------------------------------------------------
                         <p></p>
                     </div>
