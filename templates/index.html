@@ -20,6 +20,7 @@
                                 </div>
                                 <div class="select">
                                     <select name="banner" id="function">
+                                        <option class="item" value="standard" selected>Convert text to ASCII art</option>
                                         <option class="item" value="color">Colourise the output</option>
                                         <option class="item" value="output">Export to file</option>
                                         <option class="item" value="align">Align the text</option>
@@ -77,9 +78,24 @@
                                 </div>
                             </div>
                         </form>
+                    <form action="">
+                        <div class="card">
+                            <div class="label">
+                                <label class="" for="upload">Upload your file</label>
+                            </div>
+                            <div id="drop_zone" ondrop="dropHandler(event);">
+                                <p>drag and drop your file, or <a href="">choose file</a> here</p>
+<!--                                <input type="file" id="upload" name="filename">-->
+<!--                                <input type="submit" id="submit-reverse">-->
+                            </div>
+                        </div>
+                        <div class="label">Your art says:</div>
+                        <div class="select textarea" id="reverse-output">your\ntext</div>
+                    </form>
                         <form action="">
                             <div class="card">
-                                <div class="label">Enter your text
+                                <div class="label">
+                                    <label class="" for="generate">Enter your text</label>
                                 </div>
                                 <div class="toggle">
                                     <label class="radio">
@@ -100,7 +116,6 @@
                                     </label>
                                 </div>
                                 <div class="select textarea">
-                                    <label class="" for="generate"></label>
                                     <input id="generate" name="generate"
                                            value="">
                                 </div>

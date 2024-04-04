@@ -8,7 +8,11 @@
   --bg-clr-select_header: rgb(0 0 0 / .4);
   --bg-clr-select_main: #fff;
   --border-rad: 0.4rem;
-  --box-shadow: 0 0.25 1rem rgb(0 0 0 / .5);
+    --box-shadow: 0 0.25 1rem rgb(0 0 0 / .5);
+    --main-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    --button-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    --button-hover-shadow: 4px 4px 5px -1px rgba(0,0,0,0.45);
+    --button-pressed-shadow: inset 0 0 4px 2px rgba(0,0,0,0.15);
   /* fonts */
   --font-sz-main: clamp(1.2rem, 1.4rem + 0.65vw, 2rem);
   --font-sz-cards: clamp(1rem, 0.2rem + 0.65vw, 1rem);
@@ -26,6 +30,7 @@
     --select-focus: var(--select-border);
     --select-arrow: var(--select-border);
     --button-rad: 20%;
+    --border-clr: rgba(0,0,0,.2);
 }
 
 html {
@@ -67,7 +72,7 @@ body {
     rgba(230,255,255,0.2) 71%,
     rgba(255,255,255,0.2) 100%);
     border: 1px inset rgba(255, 255, 255, .4);
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--main-shadow);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     padding: 1rem;
@@ -133,6 +138,12 @@ select, label, input {
 .card {
     margin : 1rem 0;
 }
+.textarea {
+    height: 3.5rem;
+    background-color: #fff;
+    padding: 0.5rem 2rem;
+    color: dimgray;
+}
 .label {
     padding: .4rem 1rem;
     border-radius: var(--border-rad) var(--border-rad) 0 0;
@@ -177,7 +188,7 @@ label {
     height: 3rem;
     width: 3rem;
     border-radius: var(--button-rad);
-    border: 1px solid var(--bg-clr-select_header) ;
+    /*border: 1px solid var(--bg-clr-select_header) ;*/
 }
 .red {
     background-color: red;
@@ -189,7 +200,8 @@ label {
     background-color: blue;
 }
 .yellow {
-    background-color: yellow;
+    background-color: #fbed34;
+    /*border: 1px solid #ffe022;*/
 }
 .orange {
     background-color: orange;
@@ -219,7 +231,7 @@ label {
 }
 .radio input:checked ~ .checkmark {
     opacity: 1;
-    border: 1px solid rgb(0 0 0 / .2);
+    border: 1px solid rgb(0 0 0 / .05);
 }
 .checkmark::after {
     content: "";
@@ -237,11 +249,109 @@ label {
     height: 3rem;
     border-radius: var(--button-rad);
     background: rgba(255,255,255,0);
-    -webkit-box-shadow: inset 0 0 4px 2px rgba(0,0,0,0.3);
-    -moz-box-shadow: inset 0 0 4px 2px rgba(0,0,0,0.3);
-    box-shadow: inset 0 0 4px 2px rgba(0,0,0,0.3);
+    -webkit-box-shadow: var(--button-pressed-shadow);
+    -moz-box-shadow: var(--button-pressed-shadow);
+    box-shadow: var(--button-pressed-shadow);
 }
+.upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255,255,255,1);
+}
+/* file upload button */
+input[type="file"] {
+    position: relative;
+    outline: none;
+    padding: 4px;
+    margin: 4px;
+}
+input[type="file"]::file-selector-button {
+    border-radius: 4px;
+    padding: 0 1rem;
+    margin: 1rem 2rem;
+    height: 4rem;
+    width: 13rem;
+    cursor: pointer;
+    color: transparent;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: var(--button-shadow);
+    transition: background-color 200ms;
+}
+@supports (-moz-appearance: none) {
+    input[type="file"]::file-selector-button {
+        color: dimgray;
+    }
+}
+/* Faked label styles and icon */
+input[type="file"]::before {
+    position: absolute;
+    pointer-events: none;
+    top: 2rem;
+    left: 3rem;
+    height: 2rem;
+    width: 2rem;
+    padding: 2rem;
+    content: "";
+    background-image: url("../icons/upload.svg");
+    background-repeat: no-repeat;
+}
+input[type="file"]::after {
+    position: absolute;
+    pointer-events: none;
+    top: 2rem;
+    left: 5.5rem;
+    color: dimgray;
+    content: "Upload File";
+}
+/* file upload button hover state */
+input[type="file"]::file-selector-button:hover {
+    background-color: #f3f4f6;
+    box-shadow: var(--button-hover-shadow);
+}
+input[type="file"]:focus-within::file-selector-button,
+input[type="file"]:focus::file-selector-button {
+    box-shadow: var(--button-pressed-shadow);
+}
+/* file upload button active state */
+input[type="file"]::file-selector-button:active {
+    background-color: #e5e7eb;
+}
+/* submit button */
+#submit-reverse {
+    background-color: #fff;
+    margin: 1rem;
+    border: 1px solid var(--border-clr);
+    border-radius: var(--border-rad);
+}
+#submit-reverse:hover {
+    cursor: pointer;
+    box-shadow: var(--button-hover-shadow);
 
+}
+#drop_zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 8rem;
+    background-color: #fff;
+    background-image: url("../icons/upload.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px dashed var(--bg-clr-select_header);
+}
+#drop_zone p {
+    padding: 3.5rem 0;
+    color: dimgray;
+
+}
+#drop_zone p a {
+    color: #3f495a;
+}
+#drop_zone p a:hover {
+    color: black;
+}
 #text_input {
     width: 100%;
     border-radius: var(--border-rad);
