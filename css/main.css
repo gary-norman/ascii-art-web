@@ -138,6 +138,12 @@ select, label, input {
 .card {
     margin : 1rem 0;
 }
+.textarea {
+    height: 3.5rem;
+    background-color: #fff;
+    padding: 0.5rem 2rem;
+    color: dimgray;
+}
 .label {
     padding: .4rem 1rem;
     border-radius: var(--border-rad) var(--border-rad) 0 0;
