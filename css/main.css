@@ -7,7 +7,7 @@
   --text-clr-dark: rgb(0 0 0 / 0.8);
   --bg-clr-select_header: rgb(0 0 0 / .4);
   --bg-clr-select_main: #fff;
-  --border-rad: 0.3rem;
+  --border-rad: 0.4rem;
   --box-shadow: 0 0.25 1rem rgb(0 0 0 / .5);
   /* fonts */
   --font-sz-main: clamp(1.2rem, 1.4rem + 0.65vw, 2rem);
@@ -25,7 +25,7 @@
     --select-border: var(--mcr-cyan);
     --select-focus: var(--select-border);
     --select-arrow: var(--select-border);
-    --select-border-rad: .4rem;
+    --button-rad: 20%;
 }
 
 html {
@@ -135,7 +135,7 @@ select, label, input {
 }
 .label {
     padding: .4rem 1rem;
-    border-radius: var(--select-border-rad) var(--select-border-rad) 0 0;
+    border-radius: var(--border-rad) var(--border-rad) 0 0;
     background-color: var(--bg-clr-select_header);
     color: #fff;
 }
@@ -144,10 +144,15 @@ label {
 }
 .toggle {
     background-color: #fff;
+    border: solid var(--bg-clr-select_header);
+    border-width: 0 0 1px 0;
 }
 .radio {
+    display: block;
+    position: relative;
+    padding-left: 3rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 2rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -155,19 +160,23 @@ label {
     color: dimgray;
 }
 .radio input {
-    display: inline-flex;
+    position: absolute;
+    /*display: inline-flex;*/
     opacity: 0;
     cursor: pointer;
-    height: 0;
-    width: 0;
-    margin: 0;
-}
-.checkmark {
-    opacity: .5;
-    display: inline-flex;
     height: 3rem;
     width: 3rem;
-    border-radius: 40%;
+    /*margin: 0;*/
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: .7;
+    /*display: inline-flex;*/
+    height: 3rem;
+    width: 3rem;
+    border-radius: var(--button-rad);
     border: 1px solid var(--bg-clr-select_header) ;
 }
 .red {
@@ -185,33 +194,57 @@ label {
 .orange {
     background-color: orange;
 }
-.radio:hover input ~ .checkmark {
-    background-color: #ccc;
+.left {
+    background-image: url("../icons/align-left.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.right {
+    background-image: url("../icons/align-right.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.center {
+    background-image: url("../icons/align-center.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.justify {
+    background-image: url("../icons/align-justify.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.radio input:hover ~ .checkmark {
+    opacity: 1;
 }
 .radio input:checked ~ .checkmark {
     opacity: 1;
+    border: 1px solid rgb(0 0 0 / .2);
 }
-.checkmark:after {
+.checkmark::after {
     content: "";
-    position: relative;
+    position: absolute;
     display: none;
 }
-.radio input:checked ~ .checkmark:after {
+.radio input:checked ~ .checkmark::after {
     display: block;
 }
-.radio .checkmark:after {
-    top: 9px;
-    left: 9px;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 40%;
-    background: white;
-    border: 1px solid var(--bg-clr-select_header);
+.radio .checkmark::after {
+    top: 0;
+    transform: translateX(-2%) translateY(-3%);
+    left: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--button-rad);
+    background: rgba(255,255,255,0);
+    -webkit-box-shadow: inset 0 0 4px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: inset 0 0 4px 2px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 4px 2px rgba(0,0,0,0.3);
 }
 
 #text_input {
     width: 100%;
-    border-radius: var(--select-border-rad);
+    border-radius: var(--border-rad);
 }
 #color-txt {
     padding: .5rem 1rem;
@@ -344,7 +377,6 @@ label {
   }
   .select {
       width: 100%;
-      border: 0;
       display: flex;
       flex-direction: column;
       justify-items: center;
@@ -352,6 +384,9 @@ label {
   select {
       border-radius: 0;
       padding: .6rem;
+  }
+  #generate {
+      height: 5rem;
   }
   form {
       width: 95%;
@@ -362,8 +397,11 @@ label {
   }
   .toggle {
       display: flex;
-      justify-content: space-between;
-      padding: 1rem;
+      align-content: center;
+      justify-items: center;
+      justify-content: space-evenly;
+      height: 4rem;
+      padding: .5rem;
       /*gap: 3rem;*/
   }
   /*.scroll {*/
