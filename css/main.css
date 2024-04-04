@@ -344,6 +344,7 @@ input[type="file"]::file-selector-button:active {
 #drop_zone p {
     padding: 3.5rem 0;
     color: dimgray;
+
 }
 #drop_zone p a {
     color: #3f495a;
