@@ -20,18 +20,18 @@
                                 </div>
                                 <div class="select">
                                     <select name="banner" id="function">
-                                        <option class="item" value="standard" selected>Convert text to ASCII art</option>
-                                        <option class="item" value="color">Colourise the output</option>
-                                        <option class="item" value="output">Export to file</option>
-                                        <option class="item" value="align">Align the text</option>
-                                        <option class="item" value="reverse">Get text from file</option>
+                                        <option class="item" value="standard" id="standardise" selected>Convert text to ASCII art</option>
+                                        <option class="item" value="color" id="colorize">Colourise the output</option>
+                                        <option class="item" value="output" id="output">Export to file</option>
+                                        <option class="item" value="align" id="align">Align the text</option>
+                                        <option class="item" value="reverse" id="reverse">Get text from file</option>
                                     </select>
                                     <span class="focus"></span>
                                 </div>
                             </div>
                         </form>
                         <form action="">
-                            <div class="card">
+                            <div class="card" id="color">
                                 <div class="label">Choose your colour
                                 </div>
                                 <div class="toggle">
@@ -70,18 +70,18 @@
                                 </div>
                                 <div class="select">
                                     <select name="banner" id="banner">
-                                        <option class="item" value="standard">Standard</option>
-                                        <option class="item" value="shadow">Shadow</option>
-                                        <option class="item" value="thinkertoy">Thinkertoy</option>
+                                        <option class="item" value="standard" id="standard">Standard</option>
+                                        <option class="item" value="shadow" id="shadow">Shadow</option>
+                                        <option class="item" value="thinkertoy" id="thinkertoy">Thinkertoy</option>
                                     </select>
                                     <span class="focus"></span>
                                 </div>
                             </div>
                         </form>
                     <form action="">
-                        <div class="card">
+                        <div class="card" id="upload">
                             <div class="label">
-                                <label class="" for="upload">Upload your file</label>
+                                <label class="" for="drop_zone">Upload your file</label>
                             </div>
                             <div id="drop_zone" ondrop="dropHandler(event);">
                                 <p>drag and drop your file, or <a href="">choose file</a> here</p>
