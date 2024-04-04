@@ -359,6 +359,9 @@ input[type="file"]::file-selector-button:active {
 #color-txt {
     padding: .5rem 1rem;
 }
+.artput {
+    height: 15rem;
+}
 /*select {*/
 /*!* A reset of styles, including removing the default dropdown arrow *!*/
 /*appearance: none;*/
