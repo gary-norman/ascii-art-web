@@ -83,9 +83,10 @@
                             <div class="label">
                                 <label class="" for="upload">Upload your file</label>
                             </div>
-                            <div class="upload">
-                                <input type="file" id="upload" name="filename">
-                                <input type="submit" id="submit-reverse">
+                            <div id="drop_zone" ondrop="dropHandler(event);">
+                                <p>drag and drop your file, or <a href="">choose file</a> here</p>
+<!--                                <input type="file" id="upload" name="filename">-->
+<!--                                <input type="submit" id="submit-reverse">-->
                             </div>
                         </div>
                         <div class="label">Your art says:</div>
