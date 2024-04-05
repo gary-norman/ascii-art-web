@@ -63,6 +63,7 @@
                                     </div>
                             </div>
                         </form>
+                    <div id="generator">
                         <form action="">
                             <div class="card">
                                 <div class="label">
@@ -78,26 +79,26 @@
                                 </div>
                             </div>
                         </form>
-                    <form action="">
+                    <div class="form">
                         <div class="card" id="upload">
                             <div class="label">
-                                <label class="" for="drop_zone">Upload your file</label>
+                                <label class="" for="browse">Upload your file</label>
                             </div>
-                            <div id="drop_zone" ondrop="dropHandler(event);">
-                                <p>drag and drop your file, or <a href="">choose file</a> here</p>
-<!--                                <input type="file" id="upload" name="filename">-->
-<!--                                <input type="submit" id="submit-reverse">-->
+                            <div id="drop_zone">
+                                <span class="dragText">drag and drop your file, or</span>
+                                <span class="button">browse</span>
+                                <input type="file" id="browse" hidden />
                             </div>
+                            <div class="label artsays">Your art says:</div>
+                            <div class="select textarea" id="reverse-output">your\ntext</div>
                         </div>
-                        <div class="label">Your art says:</div>
-                        <div class="select textarea" id="reverse-output">your\ntext</div>
-                    </form>
+                    </div>
                         <form action="">
                             <div class="card">
                                 <div class="label">
                                     <label class="" for="generate">Enter your text</label>
                                 </div>
-                                <div class="toggle">
+                                <div class="toggle" id="alignment">
                                     <label class="radio">
                                         <input type="radio" id="left" name="radio">
                                         <span class="checkmark left"></span>
@@ -120,14 +121,14 @@
                                            value="">
                                 </div>
                             </div>
-                            <div class="ascii">----------------------------------------------------
-                            </div>
                             <div class="label">Your art:</div>
                             <div class="select textarea artput" id="ascii-output">your\ntext</div>
                         </form>
+                    </div>
                 </article>
             </main>
         </section>
     </div>
+    <script type="text/javascript" src="../js/default.js"></script>
 </body>
 </html>

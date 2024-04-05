@@ -153,6 +153,9 @@ select, label, input {
 label {
     color: white;
 }
+.artsays {
+    border-radius: 0 !important;
+}
 .toggle {
     background-color: #fff;
     border: solid var(--bg-clr-select_header);
@@ -332,8 +335,8 @@ input[type="file"]::file-selector-button:active {
 }
 #drop_zone {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    /*align-content: end;*/
+    justify-content: center;
     height: 8rem;
     background-color: #fff;
     background-image: url("../icons/upload.svg");
@@ -341,13 +344,21 @@ input[type="file"]::file-selector-button:active {
     background-position: center;
     border: 2px dashed var(--bg-clr-select_header);
 }
-#drop_zone p {
-    padding: 3.5rem 0;
-    color: dimgray;
-
+#drop_zone.active {
+    border: 0;
+    background-color: rgba(255, 127, 127, 0.51);
 }
-#drop_zone p a {
-    color: #3f495a;
+#drop_zone.dropped {
+    background-color: #fff;
+}
+#drop_zone span {
+    padding: 5rem 0;
+    color: dimgray;
+}
+#drop_zone .button {
+    padding: 5rem 1rem;
+    color: #5074b5;
+    cursor: pointer;
 }
 #drop_zone p a:hover {
     color: black;
@@ -501,10 +512,22 @@ input[type="file"]::file-selector-button:active {
   #generate {
       height: 5rem;
   }
-  form {
+  form, .form {
       width: 95%;
   }
-
+  #color {
+      display: none;
+  }
+  #upload {
+      display: none;
+  }
+  #generator {
+      width: 95%;
+      display: none
+  }
+  #alignment {
+      display: none;
+  }
   #color-txt {
       font-size: 1.2rem;
   }
