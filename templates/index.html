@@ -11,9 +11,10 @@
     <div class="wrapper">
         <section class="frontpage">
             <main>
+                <h1 >ASCII Art Generator</h1>
                 <article class="frosted">
-                    <h1 >ASCII Art Generator</h1>
-                        <form action="">
+                    <div class="elements">
+                         <form action="">
                             <div class="card">
                                 <div class="label">
                                     <label for="function">What would you like to do?</label>
@@ -23,15 +24,15 @@
                                         <option class="item" value="standard" id="standardise" selected>Convert text to ASCII art</option>
                                         <option class="item" value="color" id="colorize">Colourise the output</option>
                                         <option class="item" value="output" id="output">Export to file</option>
-                                        <option class="item" value="align" id="align">Align the text</option>
                                         <option class="item" value="reverse" id="reverse">Get text from file</option>
                                     </select>
                                     <span class="focus"></span>
                                 </div>
                             </div>
                         </form>
-                        <form action="">
-                            <div class="card" id="color">
+                        <div class="modifiers">
+                        <form action="" id="color" class="smaller">
+                            <div class="card">
                                 <div class="label">Choose your colour
                                 </div>
                                 <div class="toggle">
@@ -63,8 +64,8 @@
                                     </div>
                             </div>
                         </form>
-                    <div class="form">
-                        <div class="card" id="upload">
+                    <div class="form" id="upload">
+                        <div class="card">
                             <div class="label">
                                 <label class="" for="browse">Upload your file</label>
                             </div>
@@ -77,30 +78,25 @@
                             <div class="select textarea" id="reverse-output">your\ntext</div>
                         </div>
                     </div>
-                    <div id="generator">
-                        <form action="">
+                    <div id="generator" class="smaller">
+                        <form action="" class="smaller">
                             <div class="card">
                                 <div class="label">
                                     <label for="banner">Choose your style</label>
                                 </div>
                                 <div class="select">
                                     <select name="banner" id="banner">
-                                        <option class="item" value="standard" id="standard">Standard</option>
+                                        <option class="item" value="standard" id="standard" selected>Standard</option>
                                         <option class="item" value="shadow" id="shadow">Shadow</option>
                                         <option class="item" value="thinkertoy" id="thinkertoy">Thinkertoy</option>
                                     </select>
-                                    <span class="focus"></span>
                                 </div>
-                            </div>
-                        </form>
-                        <form action="">
-                            <div class="card">
-                                <div class="label">
-                                    <label class="" for="generate">Enter your text</label>
-                                </div>
+<!--                                <div class="label">-->
+<!--                                    <label class="" for="generate">Enter your text</label>-->
+<!--                                </div>-->
                                 <div class="toggle" id="alignment">
                                     <label class="radio">
-                                        <input type="radio" id="left" name="radio">
+                                        <input type="radio" id="left" name="radio" checked>
                                         <span class="checkmark left"></span>
                                     </label>
                                     <label class="radio">
@@ -116,14 +112,18 @@
                                         <span class="checkmark justify"></span>
                                     </label>
                                 </div>
-                                <div class="select textarea">
+                                <div class="select ">
+                                    <label class="" for="generate"></label>
                                     <input id="generate" name="generate"
-                                           value="">
+                                           value="Enter your text">
                                 </div>
                             </div>
+                    </div>
+                    </div>
+                        <div class="card output" id="asciiout">
                             <div class="label">Your art:</div>
                             <div class="select textarea artput" id="ascii-output">your\ntext</div>
-                        </form>
+                        </div>
                     </div>
                 </article>
             </main>

@@ -19,6 +19,15 @@ const color = document.getElementById("color")
 const upload = document.getElementById("upload")
 const alignment = document.getElementById("alignment")
 const generator = document.getElementById("generator")
+const asciiout = document.getElementById("asciiout")
+
+// reset select and radios to default on page load
+window.addEventListener("load", function () {
+    operation.reset();
+    color.reset();
+    alignment.reset();
+    standardise.reset();
+})
 
 // hide/unhide UI elements
 operation.addEventListener("change", function () {
@@ -26,32 +35,30 @@ operation.addEventListener("change", function () {
     if (value === "standard") {
         color.style.display = "none"
         upload.style.display = "none"
-        alignment.style.display = "none"
-        generator.style.display = "unset"
+        alignment.style.display = "flex"
+        generator.style.display = "flex"
+        asciiout.style.display = "flex"
     }
     else if (value === "color") {
-        color.style.display = "unset"
+        color.style.display = "flex"
         upload.style.display = "none"
         alignment.style.display = "none"
-        generator.style.display = "unset"
+        generator.style.display = "flex"
+        asciiout.style.display = "flex"
     }
     else if (value === "output") {
         color.style.display = "none"
         upload.style.display = "none"
         alignment.style.display = "flex"
-        generator.style.display = "unset"
-    }
-    else if (value === "align") {
-        color.style.display = "none"
-        upload.style.display = "none"
-        alignment.style.display = "flex"
-        generator.style.display = "unset"
+        generator.style.display = "flex"
+        asciiout.style.display = "flex"
     }
     else {
         color.style.display = "none"
-        upload.style.display = "unset"
+        upload.style.display = "flex"
         alignment.style.display = "none"
         generator.style.display = "none"
+        asciiout.style.display = "none"
     }
 })
 
@@ -118,5 +125,7 @@ function displayFile() {
 } else {
     alert("This is not a Text File");
     dropArea.classList.remove("active");
+    dragText.textContent = "Drag and drop your file, or";
+    dragButton.style.display = "unset";
 }
 }
