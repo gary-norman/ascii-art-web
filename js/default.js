@@ -1,22 +1,62 @@
+// function selection and functions
 const operation = document.getElementById("function")
 const standardise = document.getElementById("standardise")
 const colorize = document.getElementById("colorize")
 const output = document.getElementById("output")
 const align = document.getElementById("align")
 const reverse = document.getElementById("reverse")
-const color = document.getElementById("color")
+// selectors
 const red = document.getElementById("red")
 const green = document.getElementById("green")
 const blue = document.getElementById("blue")
 const yellow = document.getElementById("yellow")
 const orange = document.getElementById("orange")
-const standard = document.getElementById("standard")
-const shadow = document.getElementById("shadow")
-const thinkertoy = document.getElementById("thinkertoy")
+const txt_standard = document.getElementById("standard")
+const txt_shadow = document.getElementById("shadow")
+const txt_thinkertoy = document.getElementById("thinkertoy")
+// ui sections
+const color = document.getElementById("color")
 const upload = document.getElementById("upload")
 const alignment = document.getElementById("alignment")
+const generator = document.getElementById("generator")
 
- // drag and drop
+// hide/unhide UI elements
+operation.addEventListener("change", function () {
+    const value = operation.options[operation.selectedIndex].value;
+    if (value === "standard") {
+        color.style.display = "none"
+        upload.style.display = "none"
+        alignment.style.display = "none"
+        generator.style.display = "unset"
+    }
+    else if (value === "color") {
+        color.style.display = "unset"
+        upload.style.display = "none"
+        alignment.style.display = "none"
+        generator.style.display = "unset"
+    }
+    else if (value === "output") {
+        color.style.display = "none"
+        upload.style.display = "none"
+        alignment.style.display = "flex"
+        generator.style.display = "unset"
+    }
+    else if (value === "align") {
+        color.style.display = "none"
+        upload.style.display = "none"
+        alignment.style.display = "flex"
+        generator.style.display = "unset"
+    }
+    else {
+        color.style.display = "none"
+        upload.style.display = "unset"
+        alignment.style.display = "none"
+        generator.style.display = "none"
+    }
+})
+
+// drag and drop
+// adapted from https://medium.com/@cwrworksite/drag-and-drop-file-upload-with-preview-using-javascript-cd85524e4a63
 const dropArea = document.querySelector("#drop_zone");
 const dragText = document.querySelector(".dragText");
 const dragButton = document.querySelector(".button");
