@@ -31,29 +31,29 @@
                             </div>
                         </form>
                         <div class="modifiers">
-                        <form action="" id="color" class="smaller">
+                        <form action="" id="color" class="smaller" name="color">
                             <div class="card">
                                 <div class="label">Choose your colour
                                 </div>
                                 <div class="toggle">
                                     <label class="radio">
-                                        <input type="radio" id="red" name="radio">
+                                        <input type="radio" value="red" id="red" name="colors">
                                         <span class="checkmark red"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" id="green" name="radio">
+                                        <input type="radio" value="green" id="green" name="colors">
                                         <span class="checkmark green"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" id="blue" name="radio">
+                                        <input type="radio" value="blue" id="blue" name="colors">
                                         <span class="checkmark blue"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" id="yellow" name="radio">
+                                        <input type="radio" value="yellow" id="yellow" name="colors">
                                         <span class="checkmark yellow"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" id="orange" name="radio">
+                                        <input type="radio" value="orange" id="orange" name="colors">
                                         <span class="checkmark orange"></span>
                                     </label>
                                 </div>
@@ -79,16 +79,16 @@
                         </div>
                     </div>
                     <div id="generator" class="smaller">
-                        <form action="" class="smaller">
+                        <form action="" class="smaller" name="text">
                             <div class="card">
                                 <div class="label">
                                     <label for="banner">Choose your style</label>
                                 </div>
                                 <div class="select">
                                     <select name="banner" id="banner">
-                                        <option class="item" value="standard" id="standard" selected>Standard</option>
-                                        <option class="item" value="shadow" id="shadow">Shadow</option>
-                                        <option class="item" value="thinkertoy" id="thinkertoy">Thinkertoy</option>
+                                        <option class="item" value="standard" id="standard" name="style" selected>Standard</option>
+                                        <option class="item" value="shadow" id="shadow" name="style">Shadow</option>
+                                        <option class="item" value="thinkertoy" id="thinkertoy" name="style">Thinkertoy</option>
                                     </select>
                                 </div>
 <!--                                <div class="label">-->
@@ -96,19 +96,19 @@
 <!--                                </div>-->
                                 <div class="toggle" id="alignment">
                                     <label class="radio">
-                                        <input type="radio" id="left" name="radio" checked>
+                                        <input type="radio" value="left" id="left" name="textAlign" checked>
                                         <span class="checkmark left"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" id="right" name="radio">
+                                        <input type="radio" value="right" id="right" name="textAlign">
                                         <span class="checkmark right"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" id="center" name="radio">
+                                        <input type="radio" value="center" id="center" name="textAlign">
                                         <span class="checkmark center"></span>
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" id="justify" name="radio">
+                                        <input type="radio" value="justify" id="justify" name="textAlign">
                                         <span class="checkmark justify"></span>
                                     </label>
                                 </div>

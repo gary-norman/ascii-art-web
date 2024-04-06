@@ -20,15 +20,22 @@ const upload = document.getElementById("upload")
 const alignment = document.getElementById("alignment")
 const generator = document.getElementById("generator")
 const asciiout = document.getElementById("asciiout")
+// forms
+const formText = document.forms['text']
+const textRadios = formText.elements['textAlign']
+const formColor = document.forms['color']
+const colorRadios = formColor.elements['colors']
 
 // reset select and radios to default on page load
-// TODO reset select and radios not functioning
+// TODO standardise not functioning
 document.addEventListener("DOMContentLoaded", reset);
 function reset() {
     operation.selectedIndex = 0;
-    // color.reset();
-    operation.selectedIndex = 0;
-    // standardise.reset();
+    standardise.selectedIndex = 0;
+    for (let i = 0; i < colorRadios.length; i++ ) {
+        colorRadios[i].checked = false;
+    }
+    textRadios.value = 'left';
     hideUI();
 }
 window.addEventListener("resize", hideUI);
