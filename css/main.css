@@ -130,7 +130,6 @@ select {
 }
 .output {
     width: 95%;
-    flex-grow: 1;
 }
 #generator {
     width: 95%;
@@ -279,6 +278,9 @@ label {
     display: flex;
     flex-direction: column;
 }
+#upload {
+    flex-direction: column;
+}
 
 /* submit button */
 #submit-reverse {
@@ -385,9 +387,10 @@ label {
         justify-content: center;
     }
     .modifiers {
+        gap: 2rem;
     }
     #generator {
-        width: 40%;
+        width: 100%;
     }
     /*.smaller {*/
     /*    width: 40%*/
