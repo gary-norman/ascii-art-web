@@ -5,6 +5,7 @@ const colorize = document.getElementById("colorize")
 const output = document.getElementById("output")
 const align = document.getElementById("align")
 const reverse = document.getElementById("reverse")
+const darkmode = document.querySelector(".darkmode")
 // selectors
 const red = document.getElementById("red")
 const green = document.getElementById("green")
@@ -25,6 +26,8 @@ const formText = document.forms['text']
 const textRadios = formText.elements['textAlign']
 const formColor = document.forms['color']
 const colorRadios = formColor.elements['colors']
+//text areas
+const asciiOutput = document.getElementById("ascii-output")
 
 // reset select and radios to default on page load
 // TODO standardise not functioning
@@ -83,6 +86,9 @@ function hideUI() {
         asciiout.style.display = "flex"
     }
 }
+darkmode.addEventListener("click", function () {
+    asciiOutput.classList.toggle("asciiOutDark");
+})
 
 // drag and drop
 // adapted from https://medium.com/@cwrworksite/drag-and-drop-file-upload-with-preview-using-javascript-cd85524e4a63
