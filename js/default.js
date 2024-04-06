@@ -23,12 +23,13 @@ const asciiout = document.getElementById("asciiout")
 
 // reset select and radios to default on page load
 // TODO reset select and radios not functioning
-window.addEventListener("DOMContentLoaded", reset, hideUI);
+document.addEventListener("DOMContentLoaded", reset);
 function reset() {
-    operation.reset();
-    color.reset();
-    alignment.reset();
-    standardise.reset();
+    operation.selectedIndex = 0;
+    // color.reset();
+    operation.selectedIndex = 0;
+    // standardise.reset();
+    hideUI();
 }
 window.addEventListener("resize", hideUI);
 // hide/unhide UI elements
@@ -131,8 +132,6 @@ function displayFile() {
     // console.log('This is an image file');
     let fileReader = new FileReader();
     fileReader.onload = () => {
-        let fileURL = fileReader.result;
-        // console.log(fileURL);
         dropArea.innerHTML = `<span class="dragText">uploaded ${file.name}</span>`;
     };
     fileReader.readAsDataURL(file);
