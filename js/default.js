@@ -22,45 +22,59 @@ const generator = document.getElementById("generator")
 const asciiout = document.getElementById("asciiout")
 
 // reset select and radios to default on page load
-window.addEventListener("load", function () {
+// TODO reset select and radios not functioning
+window.addEventListener("DOMContentLoaded", reset, hideUI);
+function reset() {
     operation.reset();
     color.reset();
     alignment.reset();
     standardise.reset();
-})
-
+}
+window.addEventListener("resize", hideUI);
 // hide/unhide UI elements
-operation.addEventListener("change", function () {
+operation.addEventListener("change", hideUI);
+function hideUI() {
+    // viewport size
+    const viewport = window.innerWidth
     const value = operation.options[operation.selectedIndex].value;
-    if (value === "standard") {
-        color.style.display = "none"
-        upload.style.display = "none"
-        alignment.style.display = "flex"
-        generator.style.display = "flex"
-        asciiout.style.display = "flex"
-    }
-    else if (value === "color") {
-        color.style.display = "flex"
-        upload.style.display = "none"
-        alignment.style.display = "none"
-        generator.style.display = "flex"
-        asciiout.style.display = "flex"
-    }
-    else if (value === "output") {
-        color.style.display = "none"
-        upload.style.display = "none"
-        alignment.style.display = "flex"
-        generator.style.display = "flex"
-        asciiout.style.display = "flex"
+    if (viewport <= 768) {
+        if (value === "standard") {
+            color.style.display = "none"
+            upload.style.display = "none"
+            alignment.style.display = "flex"
+            generator.style.display = "flex"
+            asciiout.style.display = "flex"
+        }
+        else if (value === "color") {
+            color.style.display = "flex"
+            upload.style.display = "none"
+            alignment.style.display = "none"
+            generator.style.display = "flex"
+            asciiout.style.display = "flex"
+        }
+        else if (value === "output") {
+            color.style.display = "none"
+            upload.style.display = "none"
+            alignment.style.display = "flex"
+            generator.style.display = "flex"
+            asciiout.style.display = "flex"
+        }
+        else {
+            color.style.display = "none"
+            upload.style.display = "flex"
+            alignment.style.display = "none"
+            generator.style.display = "none"
+            asciiout.style.display = "none"
+        }
     }
     else {
-        color.style.display = "none"
+        color.style.display = "flex"
         upload.style.display = "flex"
-        alignment.style.display = "none"
-        generator.style.display = "none"
-        asciiout.style.display = "none"
+        alignment.style.display = "flex"
+        generator.style.display = "flex"
+        asciiout.style.display = "flex"
     }
-})
+}
 
 // drag and drop
 // adapted from https://medium.com/@cwrworksite/drag-and-drop-file-upload-with-preview-using-javascript-cd85524e4a63

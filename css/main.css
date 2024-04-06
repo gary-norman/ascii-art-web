@@ -15,7 +15,7 @@
     --button-pressed-shadow: inset 0 0 4px 2px rgba(0,0,0,0.15);
   /* fonts */
   --font-sz-main: clamp(1.2rem, 1.4rem + 0.65vw, 2rem);
-  --font-sz-cards: clamp(1rem, 0.2rem + 0.65vw, 1rem);
+  --font-sz-cards: clamp(.8rem, 1rem + 0.65vw, 1.2rem);
   --font-primary: 'Roboto', sans-serif;
   --font-secondary: 'Roboto', sans-serif;
   --font-accent: 'Kdam Thmor Pro', sans-serif;
@@ -125,12 +125,11 @@ select {
     justify-items: center;
 }
 #generate {
-    font-size: 1.4rem;
+    font-size: var(--font-sz-cards);
     padding: .5rem 1rem;
 }
 .output {
     width: 95%;
-    flex-grow: 1;
 }
 #generator {
     width: 95%;
@@ -140,12 +139,7 @@ select {
 #generator form {
     width: 100%
 }
-#color {
-    display: none;
-}
-#upload {
-    display: none;
-}
+
 /* ----------  form styling ----------*/
 select, label, input {
     color: dimgray;
@@ -284,6 +278,9 @@ label {
     display: flex;
     flex-direction: column;
 }
+#upload {
+    flex-direction: column;
+}
 
 /* submit button */
 #submit-reverse {
@@ -302,6 +299,7 @@ label {
     /*align-content: end;*/
     justify-content: center;
     height: 8rem;
+    font-size: var(--font-sz-cards);
     background-color: #fff;
     background-image: url("../icons/upload.svg");
     background-repeat: no-repeat;
@@ -359,7 +357,7 @@ label {
         width: 95%;
     }
     .modifiers .form {
-        width: 100%
+        width: 95%
     }
     .toggle {
         display: flex;
@@ -389,13 +387,14 @@ label {
         justify-content: center;
     }
     .modifiers {
+        gap: 2rem;
     }
     #generator {
-        width: 40%;
+        width: 100%;
     }
-    .smaller {
-        width: 40%
-    }
+    /*.smaller {*/
+    /*    width: 40%*/
+    /*}*/
     form, .form {
         width: 95%;
     }
@@ -410,22 +409,7 @@ label {
         height: 4rem;
         padding: .5rem;
     }
-  /*  .frosted {*/
-  /*      display: grid;*/
-  /*      grid-template-columns: 4fr 4fr;*/
-  /*      grid-template-rows: 0.5fr .5fr 7fr;*/
-  /*      gap: 2px 0;*/
-  /*      grid-template-areas:*/
-  /*      "a a"*/
-  /*      "b c"*/
-  /*      "d d";*/
-  /*      justify-items: center;*/
-  /*      align-items: center;*/
-  /*  }*/
-  /*  .about h1 {*/
-  /*      grid-area: a;*/
-  /*      align-self: center;*/
-  /*  }*/
+
 
   /*.wrapper::-webkit-scrollbar {*/
   /*    display: none;*/
@@ -442,7 +426,49 @@ label {
 
 
 @media only screen and (min-width: 768px) {
-
+      .elements {
+          display: grid;
+          /*grid-template-columns: 4fr 4fr 4fr;*/
+          grid-template-rows: 20% 70% 10%;
+          gap: 2rem 0;
+          grid-template-areas:
+          "mod"
+          "art"
+          "foot";
+          justify-items: center;
+          align-items: center;
+      }
+      #options {
+          display: none;
+      }
+      .modifiers {
+          grid-area: mod;
+          display: grid;
+          grid-template-columns: 4fr 4fr 4fr;
+          /*grid-template-rows: 4fr 7fr .5fr;*/
+          gap: 2rem;
+          grid-template-areas:
+          "gen col up";
+          /*justify-items: center;*/
+          justify-content: space-between;
+          align-items: start;
+      }
+      #generator {
+          grid-area: gen;
+          width: 100%
+      }
+      #color {
+          grid-area: col;
+          width: 100%
+      }
+      #upload {
+          grid-area: up;
+          width: 100%
+      }
+      #asciiout {
+          grid-area: art;
+          height: 100%;
+      }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
