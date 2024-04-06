@@ -6,6 +6,7 @@ const output = document.getElementById("output")
 const align = document.getElementById("align")
 const reverse = document.getElementById("reverse")
 const darkmode = document.querySelector(".darkmode")
+const colorReset = document.querySelector(".reset")
 // selectors
 const red = document.getElementById("red")
 const green = document.getElementById("green")
@@ -41,6 +42,11 @@ function reset() {
     textRadios.value = 'left';
     hideUI();
 }
+colorReset.addEventListener("click", function () {
+    for (let i = 0; i < colorRadios.length; i++ ) {
+        colorRadios[i].checked = false;
+    }
+})
 window.addEventListener("resize", hideUI);
 // hide/unhide UI elements
 operation.addEventListener("change", hideUI);
