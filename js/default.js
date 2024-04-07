@@ -16,6 +16,17 @@ const orange = document.getElementById("orange")
 const txt_standard = document.getElementById("standard")
 const txt_shadow = document.getElementById("shadow")
 const txt_thinkertoy = document.getElementById("thinkertoy")
+const txt_right_radio = document.getElementById("radioright")
+const txt_center_radio = document.getElementById("radiocenter")
+const txt_justify_radio = document.getElementById("radiojustify")
+const txt_left_input = document.querySelector("#left")
+const txt_right_input = document.querySelector("#right")
+const txt_center_input = document.querySelector("#center")
+const txt_justify_input = document.querySelector("#justify")
+const txt_right_image = document.querySelector(".right")
+const txt_center_image = document.querySelector(".center")
+const txt_justify_image = document.querySelector(".justify")
+
 // ui sections
 const color = document.getElementById("color")
 const upload = document.getElementById("upload")
@@ -30,26 +41,7 @@ const colorRadios = formColor.elements['colors']
 //text areas
 const asciiOutput = document.getElementById("ascii-output")
 
-// reset select and radios to default on page load
-// TODO standardise not functioning
-document.addEventListener("DOMContentLoaded", reset);
-function reset() {
-    operation.selectedIndex = 0;
-    standardise.selectedIndex = 0;
-    for (let i = 0; i < colorRadios.length; i++ ) {
-        colorRadios[i].checked = false;
-    }
-    textRadios.value = 'left';
-    hideUI();
-}
-colorReset.addEventListener("click", function () {
-    for (let i = 0; i < colorRadios.length; i++ ) {
-        colorRadios[i].checked = false;
-    }
-})
-window.addEventListener("resize", hideUI);
-// hide/unhide UI elements
-operation.addEventListener("change", hideUI);
+// functions
 function hideUI() {
     // viewport size
     const viewport = window.innerWidth
@@ -92,6 +84,59 @@ function hideUI() {
         asciiout.style.display = "flex"
     }
 }
+function reset() {
+    operation.selectedIndex = 0;
+    standardise.selectedIndex = 0;
+    textRadios.value = 'left';
+    resetColors();
+    hideUI();
+}
+function resetColors() {
+    for (let i = 0; i < colorRadios.length; i++ ) {
+        colorRadios[i].checked = false;
+        justifyDisable();
+    }}
+function justifyDisable() {
+    let selected = false;
+    for (let i = 0; i < colorRadios.length; i++ ) {
+        if (colorRadios[i].checked === true) {
+            selected = true
+        }
+    }
+    if (selected === true) {
+        txt_right_image.classList.add("checkmark2")
+        txt_right_image.classList.remove("checkmark")
+        txt_center_image.classList.add("checkmark2")
+        txt_center_image.classList.remove("checkmark")
+        txt_justify_image.classList.add("checkmark2")
+        txt_justify_image.classList.remove("checkmark")
+        txt_right_input.disabled = true
+        txt_center_input.disabled = true
+        txt_justify_input.disabled = true
+        textRadios.value = 'left';
+    }
+    else {
+        txt_right_image.classList.add("checkmark")
+        txt_right_image.classList.remove("checkmark2")
+        txt_center_image.classList.add("checkmark")
+        txt_center_image.classList.remove("checkmark2")
+        txt_justify_image.classList.add("checkmark")
+        txt_justify_image.classList.remove("checkmark2")
+        txt_right_input.disabled = false
+        txt_center_input.disabled = false
+        txt_justify_input.disabled = false
+    }
+}
+// events
+
+// reset select and radios to default on page load
+// TODO standardise not functioning
+document.addEventListener("DOMContentLoaded", reset);
+red.addEventListener("change", justifyDisable);
+colorReset.addEventListener("click", resetColors);
+window.addEventListener("resize", hideUI);
+// hide/unhide UI elements
+operation.addEventListener("change", hideUI);
 darkmode.addEventListener("click", function () {
     asciiOutput.classList.toggle("asciiOutDark");
 })
