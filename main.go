@@ -16,7 +16,7 @@ func init() {
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 
-	t, err := template.ParseFiles("templates/index.html")
+	t, err := template.ParseFiles("templates/index_kamil.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -50,13 +50,18 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	chosenInput := r.FormValue("generate")
+	fmt.Println("chosenInput is:", chosenInput)
 	chosenStyle := r.FormValue("style")
 	fmt.Println("chosenStyle is:", chosenStyle)
 	chosenColor := r.FormValue("colors")
+	fmt.Println("chosenColor is:", chosenColor)
 	colorInput := r.FormValue("colour-text")
+	fmt.Println("colorInput is:", colorInput)
 	defaultValue := "default"
 	artInput := r.FormValue("file-drop")
+	fmt.Println("artInput is:", artInput)
 	chosenAlign := r.FormValue("text-align")
+	fmt.Println("chosenAlign is:", chosenAlign)
 	outputResult := ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
 
 	d := struct {

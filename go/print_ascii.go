@@ -5,11 +5,10 @@ import (
 	"strings"
 )
 
-var outputString string
-
 // Prints each ascii character, 1 by 1, line by line and handles colour
 func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour string, output string, align string) string {
 	var newString string
+	var outputString string
 	spaces := 0
 	// Iterate over each line of the ASCII art
 	for i := 0; i < 8; i++ {
