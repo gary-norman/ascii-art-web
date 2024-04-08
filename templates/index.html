@@ -31,7 +31,7 @@
                             </div>
                         </form>
                         <div class="modifiers">
-                        <form action="" id="color" class="smaller" name="color">
+                        <form action="/processor" id="color" class="smaller" name="color" method="POST" >
                             <div class="card">
                                 <div class="buttonedLabel">
                                     <div class="labelwbtn">Choose your colour</div>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div id="generator" class="smaller">
-                        <form action="" class="smaller" name="text">
+                        <form action="/processor" class="smaller" name="text" method="POST">
                             <div class="card">
                                 <div class="label">
                                     <label for="banner">Choose your style</label>
@@ -98,19 +98,19 @@
 <!--                                </div>-->
                                 <div class="toggle" id="alignment">
                                     <label class="radio" id="radioleft">
-                                        <input type="radio" value="left" id="left" name="textAlign" checked>
+                                        <input type="radio" value="left" id="left" name="text-align" checked>
                                         <span class="checkmark left"></span>
                                     </label>
                                     <label class="radio" id="radioright">
-                                        <input type="radio" value="right" id="right" name="textAlign">
+                                        <input type="radio" value="right" id="right" name="text-align">
                                         <span class="checkmark right"></span>
                                     </label>
                                     <label class="radio" id="radiocenter">
-                                        <input type="radio" value="center" id="center" name="textAlign">
+                                        <input type="radio" value="center" id="center" name="text-align">
                                         <span class="checkmark center"></span>
                                     </label>
                                     <label class="radio" id="radiojustify">
-                                        <input type="radio" value="justify" id="justify" name="textAlign">
+                                        <input type="radio" value="justify" id="justify" name="text-align">
                                         <span class="checkmark justify"></span>
                                     </label>
 <!--                                <div class="justifyBlock" id="justifyBlock">unavailable with colour</div>-->
@@ -149,7 +149,7 @@
                                     </svg>
                                 </label>
                             </div>
-                                <div class="artput" id="ascii-output">{{call .ToArt}}</div>
+                                <div class="artput" id="ascii-output">{{.ToArt}}</div>
                         </div>
                     </div>
                 </article>
