@@ -281,6 +281,9 @@ func MakeArt(origString string, y map[int][]string) string {
 	art = strings.TrimRight(art, "\n") // remove the final line break
 	return art
 }
+func RunMakeArt() {
+	MakeArt("test", GetChars(PrepareBan("standard")))
+}
 
 // MakeArtAligned Transform the input text origString to the output art, line by line, with left, right, or center aligned content
 func MakeArtAligned(origString string, y map[int][]string, ds []int, ws Winsize, divider int) string {
