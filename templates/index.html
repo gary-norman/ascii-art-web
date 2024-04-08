@@ -66,20 +66,20 @@
                                     </div>
                             </div>
                         </form>
-                    <div class="form smaller" id="upload">
+                        <form action="" id="upload" class="smaller" name="upload">
                         <div class="card">
                             <div class="label">
                                 <label class="" for="browse">Upload your file</label>
                             </div>
                             <div id="drop_zone">
-                                <span class="dragText">drag and drop your file, or</span>
-                                <span class="button">browse</span>
-                                <input type="file" id="browse" hidden />
+<!--                                <span class="dragText">drag and drop your file, or</span>-->
+<!--                                <span class="button">browse</span>-->
+                                <input type="file" id="browse" name="file-drop" />
                             </div>
                             <div class="label artsays">Your art says:</div>
                             <div class="select textarea" id="reverse-output">{{.FromArt}}</div>
                         </div>
-                    </div>
+                    </form>
                     <div id="generator" class="smaller">
                         <form action="" class="smaller" name="text">
                             <div class="card">
@@ -98,19 +98,19 @@
 <!--                                </div>-->
                                 <div class="toggle" id="alignment">
                                     <label class="radio" id="radioleft">
-                                        <input type="radio" value="left" id="left" name="textAlign" checked>
+                                        <input type="radio" value="left" id="left" name="text-align" checked>
                                         <span class="checkmark left"></span>
                                     </label>
                                     <label class="radio" id="radioright">
-                                        <input type="radio" value="right" id="right" name="textAlign">
+                                        <input type="radio" value="right" id="right" name="text-align">
                                         <span class="checkmark right"></span>
                                     </label>
                                     <label class="radio" id="radiocenter">
-                                        <input type="radio" value="center" id="center" name="textAlign">
+                                        <input type="radio" value="center" id="center" name="text-align">
                                         <span class="checkmark center"></span>
                                     </label>
                                     <label class="radio" id="radiojustify">
-                                        <input type="radio" value="justify" id="justify" name="textAlign">
+                                        <input type="radio" value="justify" id="justify" name="text-align">
                                         <span class="checkmark justify"></span>
                                     </label>
 <!--                                <div class="justifyBlock" id="justifyBlock">unavailable with colour</div>-->
