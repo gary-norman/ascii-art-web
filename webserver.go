@@ -1,12 +1,12 @@
 package main
 
 import (
+	"ascii_art_web/pkg"
 	"html/template"
 	"net/http"
-	"piscine/pkg"
 )
 
-func homePage(w http.ResponseWriter, r *http.Request) {
+func homePageGary(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("templates/index.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -26,8 +26,8 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func handleRequests() {
-	http.HandleFunc("/", homePage)
+func handleRequestsGary() {
+	http.HandleFunc("/", homePageGary)
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/icons/", http.StripPrefix("/icons/", http.FileServer(http.Dir("icons"))))
@@ -52,6 +52,6 @@ func handleRequests() {
 //}
 
 func main() {
-	handleRequests()
+	handleRequestsGary()
 
 }
