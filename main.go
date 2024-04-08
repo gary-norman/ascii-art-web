@@ -29,6 +29,7 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 
 func handleRequests() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
+	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/icons/", http.StripPrefix("/icons/", http.FileServer(http.Dir("icons"))))
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/process", processor)
@@ -45,14 +46,14 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-	input := r.FormValue("input")
-	style := r.FormValue("style")
-	color := r.FormValue("colors")
+	chosenInput := r.FormValue("generate")
+	chosenStyle := r.FormValue("style")
+	chosenColor := r.FormValue("colors")
 	colorInput := r.FormValue("colour-text")
 	defaultValue := "default"
-	artInput := r.FormValue("art-input")
-	align := r.FormValue("text-align")
-	output := ascii_art_web.RunAscii(input, color, colorInput, defaultValue, align, artInput)
+	artInput := r.FormValue("file-drop")
+	chosenAlign := r.FormValue("text-align")
+	outputResult := ascii_art_web.RunAscii(chosenInput, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
 
 	d := struct {
 		InputText  string
@@ -64,14 +65,14 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		InputArt   string
 		ToArt      string
 	}{
-		InputText:  input,
-		Style:      style,
-		Color:      color,
+		InputText:  chosenInput,
+		Style:      chosenStyle,
+		Color:      chosenColor,
 		FileWant:   defaultValue,
 		ColorWord:  colorInput,
-		InputAlign: align,
+		InputAlign: chosenAlign,
 		InputArt:   artInput,
-		ToArt:      output,
+		ToArt:      outputResult,
 	}
 	renderTemplate(w, "index.html", d)
 }
