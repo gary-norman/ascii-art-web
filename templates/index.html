@@ -66,20 +66,20 @@
                                     </div>
                             </div>
                         </form>
-                    <div class="form smaller" id="upload">
+                        <form action="" id="upload" class="smaller" name="upload">
                         <div class="card">
                             <div class="label">
                                 <label class="" for="browse">Upload your file</label>
                             </div>
                             <div id="drop_zone">
-                                <span class="dragText">drag and drop your file, or</span>
-                                <span class="button">browse</span>
-                                <input type="file" id="browse" hidden />
+<!--                                <span class="dragText">drag and drop your file, or</span>-->
+<!--                                <span class="button">browse</span>-->
+                                <input type="file" id="browse" name="file-drop" />
                             </div>
                             <div class="label artsays">Your art says:</div>
                             <div class="select textarea" id="reverse-output">{{.FromArt}}</div>
                         </div>
-                    </div>
+                    </form>
                     <div id="generator" class="smaller">
                         <form action="/processor" class="smaller" name="text" method="POST">
                             <div class="card">
