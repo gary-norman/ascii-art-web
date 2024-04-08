@@ -8,8 +8,7 @@ import (
 func RunAscii(input, colour, toColour, output, align, reverse string) string {
 	var word = input
 	var words, source []string
-	var asciiMap map[int][]string
-	//standardMap, shadowMap, thinkertoyMap map[int][]string
+	var asciiMap, standardMap, shadowMap, thinkertoyMap map[int][]string
 
 	////initialise flags
 	//colour := flag.String("color", "default", "colour of the text")
@@ -27,26 +26,27 @@ func RunAscii(input, colour, toColour, output, align, reverse string) string {
 	//}
 	//
 	//prepare correct ascii map(s)
-	//if reverse != "default" {
-	//	//standardMap = AsciiMap(PrepareBanner("standard"))
-	//	//shadowMap = AsciiMap(PrepareBanner("shadow"))
-	//	//thinkertoyMap = AsciiMap(PrepareBanner("thinkertoy"))
-	//	source = ArtFromFile(reverse)
-	//} else {
-	//prepare the text file for the characters
-	source = PrepareBanner("")
-	//if file is non-existent, return
-	if source == nil {
-		return ""
-	}
+	if reverse != "default" {
+		standardMap = AsciiMap(PrepareBanner("standard"))
+		shadowMap = AsciiMap(PrepareBanner("shadow"))
+		thinkertoyMap = AsciiMap(PrepareBanner("thinkertoy"))
+		source = ArtFromFile(reverse)
+	} else {
+		//prepare the text file for the characters
+		source = PrepareBanner("")
 
-	//prepare ascii map
-	asciiMap = AsciiMap(source)
-	//}
+		//if file is non-existent, return
+		if source == nil {
+			return ""
+		}
+
+		//prepare ascii map
+		asciiMap = AsciiMap(source)
+	}
 
 	////handle all flags and prepare arguments and variables
 	//if colour != "default" {
-	//	if len(otherArgs) == 1 {
+	//	if toColour == "default" {
 	//		word = otherArgs[0]
 	//		toColour = word
 	//	} else {
