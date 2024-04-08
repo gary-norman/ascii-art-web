@@ -234,6 +234,7 @@ label {
     width: 32px;
 }
 .artput {
+    margin: 0;
     height: 20rem;
     padding: 1rem;
     color: dimgray;
