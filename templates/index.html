@@ -8,30 +8,31 @@
     <link rel="stylesheet" href="../css/andy_bell-css_reset.css">
 </head>
 <body>
-    <div class="wrapper">
-        <section class="frontpage">
-            <main>
-                <h1 >ASCII Art Generator</h1>
-                <article class="frosted">
-                    <div class="elements">
-                         <form action="" id="options">
-                            <div class="card">
-                                <div class="label">
-                                    <label for="function">What would you like to do?</label>
-                                </div>
-                                <div class="select">
-                                    <select name="banner" id="function">
-                                        <option class="item" value="standard" id="standardise" selected>Convert text to ASCII art</option>
-                                        <option class="item" value="color" id="colorize">Colourise the output</option>
-                                        <option class="item" value="output" id="output">Export to file</option>
-                                        <option class="item" value="reverse" id="reverse">Get text from file</option>
-                                    </select>
-                                    <span class="focus"></span>
-                                </div>
+<div class="wrapper">
+    <section class="frontpage">
+        <main>
+            <h1 >ASCII Art Generator</h1>
+            <article class="frosted">
+                <div class="elements">
+                    <form action="/process" method="POST">
+                        <div class="card">
+                            <div class="label">
+                                <label for="function">What would you like to do?</label>
                             </div>
-                        </form>
-                        <div class="modifiers">
-                        <form action="" id="color" class="smaller" name="color">
+                            <div class="select">
+                                <select name="banner" id="function">
+                                    <option class="item" value="standard" id="standardise" selected>Convert text to ASCII art</option>
+                                    <option class="item" value="color" id="colorize">Colourise the output</option>
+                                    <option class="item" value="output" id="output">Export to file</option>
+                                    <option class="item" value="reverse" id="reverse">Get text from file</option>
+                                </select>
+                                <span class="focus"></span>
+                            </div>
+                        </div>
+
+
+                    <div class="modifiers">
+
                             <div class="card">
                                 <div class="buttonedLabel">
                                     <div class="labelwbtn">Choose your colour</div>
@@ -59,103 +60,104 @@
                                         <span class="checkmark orange"></span>
                                     </label>
                                 </div>
-                                    <div class="select">
-                                        <label class="" for="color-txt"></label>
-                                        <input id="color-txt" name="colour-text"
-                                               value="Enter specific letters to colourise (optional)">
-                                    </div>
+                                <div class="select">
+                                    <label class="" for="color-txt"></label>
+                                    <input id="color-txt" name="colour-text"
+                                           placeholder="Enter specific letters to colourise (optional)">
+                                </div>
                             </div>
                         </form>
-                    <div class="form smaller" id="upload">
-                        <div class="card">
-                            <div class="label">
-                                <label class="" for="browse">Upload your file</label>
-                            </div>
-                            <div id="drop_zone">
-                                <span class="dragText">drag and drop your file, or</span>
-                                <span class="button">browse</span>
-                                <input type="file" id="browse" hidden />
-                            </div>
-                            <div class="label artsays">Your art says:</div>
-                            <div class="select textarea" id="reverse-output">your\ntext</div>
-                        </div>
-                    </div>
-                    <div id="generator" class="smaller">
-                        <form action="" class="smaller" name="text">
+                        <div class="form smaller" id="upload">
                             <div class="card">
                                 <div class="label">
-                                    <label for="banner">Choose your style</label>
+                                    <label class="" for="browse">Upload your file</label>
                                 </div>
-                                <div class="select">
-                                    <select name="banner" id="banner">
-                                        <option class="item" value="standard" id="standard" name="style" selected>Standard</option>
-                                        <option class="item" value="shadow" id="shadow" name="style">Shadow</option>
-                                        <option class="item" value="thinkertoy" id="thinkertoy" name="style">Thinkertoy</option>
-                                    </select>
+                                <div id="drop_zone">
+                                    <span class="dragText">drag and drop your file, or</span>
+                                    <span class="button">browse</span>
+                                    <input type="file" id="browse" name="art-input" hidden />
                                 </div>
-<!--                                <div class="label">-->
-<!--                                    <label class="" for="generate">Enter your text</label>-->
-<!--                                </div>-->
-                                <div class="toggle" id="alignment">
-                                    <label class="radio" id="radioleft">
-                                        <input type="radio" value="left" id="left" name="textAlign" checked>
-                                        <span class="checkmark left"></span>
-                                    </label>
-                                    <label class="radio" id="radioright">
-                                        <input type="radio" value="right" id="right" name="textAlign">
-                                        <span class="checkmark right"></span>
-                                    </label>
-                                    <label class="radio" id="radiocenter">
-                                        <input type="radio" value="center" id="center" name="textAlign">
-                                        <span class="checkmark center"></span>
-                                    </label>
-                                    <label class="radio" id="radiojustify">
-                                        <input type="radio" value="justify" id="justify" name="textAlign">
-                                        <span class="checkmark justify"></span>
-                                    </label>
-<!--                                <div class="justifyBlock" id="justifyBlock">unavailable with colour</div>-->
-                                </div>
-                                <div class="select ">
-                                    <label class="" for="generate"></label>
-                                    <input id="generate" name="generate"
-                                           value="Enter your text">
-                                </div>
+                                <div class="label artsays">Your art says:</div>
+                                <div class="select textarea" id="reverse-output">your\ntext</div>
                             </div>
-                        </form>
-                    </div>
-                    </div>
-                        <div class="card output" id="asciiout">
-                            <div class="buttonedLabel">
-                                <div class="labelwbtn">Your art:</div>
-                                <input type="checkbox" id="darkmode-toggle">
-                                <label class="darkmode" for="darkmode-toggle">
-                                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                         viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1"
-                                         stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="5"></circle>
-                                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                                    </svg>
-                                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                         viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1"
-                                         stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                                    </svg>
-                                </label>
-                            </div>
-                                <div class="artput" id="ascii-output">your\ntext</div>
+                        </div>
+                        <div id="generator" class="smaller">
+                                <div class="card">
+                                    <div class="label">
+                                        <label for="banner">Choose your style</label>
+                                    </div>
+                                    <form action="/process" method="POST">
+                                    <div class="select">
+                                        <select name="banner" id="banner">
+                                            <option class="item" value="standard" id="standard" name="style" selected>Standard</option>
+                                            <option class="item" value="shadow" id="shadow" name="style">Shadow</option>
+                                            <option class="item" value="thinkertoy" id="thinkertoy" name="style">Thinkertoy</option>
+                                        </select>
+                                    </div>
+                                    <!--                                <div class="label">-->
+                                    <!--                                    <label class="" for="generate">Enter your text</label>-->
+
+                                    <div class="toggle" id="alignment">
+                                        <label class="radio" id="radioleft">
+                                            <input type="radio" value="left" id="left" name="text-align" checked>
+                                            <span class="checkmark left"></span>
+                                        </label>
+                                        <label class="radio" id="radioright">
+                                            <input type="radio" value="right" id="right" name="text-align">
+                                            <span class="checkmark right"></span>
+                                        </label>
+                                        <label class="radio" id="radiocenter">
+                                            <input type="radio" value="center" id="center" name="text-align">
+                                            <span class="checkmark center"></span>
+                                        </label>
+                                        <label class="radio" id="radiojustify">
+                                            <input type="radio" value="justify" id="justify" name="text-align">
+                                            <span class="checkmark justify"></span>
+                                        </label>
+                                        <!--                                <div class="justifyBlock" id="justifyBlock">unavailable with colour</div>-->
+                                    </div>
+                                    <div class="select ">
+                                        <label class="" for="generate"></label>
+                                        <input id="generate" name="input"
+                                               placeholder="Enter your text">
+                                    </div>
+                                        <input type="submit">
+                                    </form>
+                                </div>
                         </div>
                     </div>
-                </article>
-            </main>
-        </section>
-    </div>
-    <script type="text/javascript" src="../js/default.js"></script>
+                    <div class="card output" id="asciiout">
+                        <div class="buttonedLabel">
+                            <div class="labelwbtn">Your art:</div>
+                            <input type="checkbox" id="darkmode-toggle">
+                            <label class="darkmode" for="darkmode-toggle">
+                                <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                     viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                                <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                     viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                            </label>
+                        </div>
+                        <div class="artput" id="ascii-output">your\ntext</div>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </section>
+</div>
+<script type="text/javascript" src="../js/default.js"></script>
 </body>
 </html>
