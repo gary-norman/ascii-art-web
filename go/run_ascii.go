@@ -27,22 +27,22 @@ func RunAscii(input, colour, toColour, output, align, reverse string) string {
 	//}
 	//
 	//prepare correct ascii map(s)
-	if reverse != "default" {
-		//standardMap = AsciiMap(PrepareBanner("standard"))
-		//shadowMap = AsciiMap(PrepareBanner("shadow"))
-		//thinkertoyMap = AsciiMap(PrepareBanner("thinkertoy"))
-		source = ArtFromFile(reverse)
-	} else {
-		//prepare the text file for the characters
-		source = PrepareBanner("")
-		//if file is non-existent, return
-		if source == nil {
-			return ""
-		}
-
-		//prepare ascii map
-		asciiMap = AsciiMap(source)
+	//if reverse != "default" {
+	//	//standardMap = AsciiMap(PrepareBanner("standard"))
+	//	//shadowMap = AsciiMap(PrepareBanner("shadow"))
+	//	//thinkertoyMap = AsciiMap(PrepareBanner("thinkertoy"))
+	//	source = ArtFromFile(reverse)
+	//} else {
+	//prepare the text file for the characters
+	source = PrepareBanner("")
+	//if file is non-existent, return
+	if source == nil {
+		return ""
 	}
+
+	//prepare ascii map
+	asciiMap = AsciiMap(source)
+	//}
 
 	////handle all flags and prepare arguments and variables
 	//if colour != "default" {
