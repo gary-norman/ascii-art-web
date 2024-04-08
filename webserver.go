@@ -1,44 +1,6 @@
 package main
 
-import (
-	"ascii_art_web/pkg"
-	"html/template"
-	"net/http"
-)
-
-func homePageGary(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("templates/index.html")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	type PageData struct {
-		FromArt string
-		ToArt   string
-	}
-	data := PageData{
-		FromArt: "fromart",
-		ToArt:   pkg.MakeArt("test", pkg.GetChars(pkg.PrepareBan("standard"))),
-	}
-	err = t.Execute(w, data)
-	if err != nil {
-		return
-	}
-}
-
-func handleRequestsGary() {
-	http.HandleFunc("/", homePageGary)
-	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
-	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
-	http.Handle("/icons/", http.StripPrefix("/icons/", http.FileServer(http.Dir("icons"))))
-	http.Handle("/pkg/", http.StripPrefix("/pkg/", http.FileServer(http.Dir("pkg"))))
-	http.Handle("/ascii_styles/", http.StripPrefix("/ascii_styles/", http.FileServer(http.Dir("ascii_styles"))))
-
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		return
-	}
-}
+import "ascii_art_web/api"
 
 //pkg methodHandler(w http.ResponseWriter, r *http.Request) {
 //	switch r.Method {
@@ -52,6 +14,6 @@ func handleRequestsGary() {
 //}
 
 func main() {
-	handleRequestsGary()
+	api.HandleRequestsGary()
 
 }
