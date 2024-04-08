@@ -1,45 +1,46 @@
-// function selection and functions
-const operation = document.getElementById("function")
-const standardise = document.getElementById("standardise")
-const colorize = document.getElementById("colorize")
-const output = document.getElementById("output")
-const align = document.getElementById("align")
-const reverse = document.getElementById("reverse")
-const darkmode = document.querySelector(".darkmode")
-const colorReset = document.querySelector(".reset")
+
+const operation = document.getElementById("function");
+const standardise = document.getElementById("standardise");
+const colorize = document.getElementById("colorize");
+const output = document.getElementById("output");
+const align = document.getElementById("align");
+const reverse = document.getElementById("reverse");
+const darkmode = document.querySelector(".darkmode");
+const colorReset = document.querySelector(".reset");
 // selectors
-const red = document.getElementById("red")
-const green = document.getElementById("green")
-const blue = document.getElementById("blue")
-const yellow = document.getElementById("yellow")
-const orange = document.getElementById("orange")
-const txt_standard = document.getElementById("standard")
-const txt_shadow = document.getElementById("shadow")
-const txt_thinkertoy = document.getElementById("thinkertoy")
-const txt_right_radio = document.getElementById("radioright")
-const txt_center_radio = document.getElementById("radiocenter")
-const txt_justify_radio = document.getElementById("radiojustify")
-const txt_left_input = document.querySelector("#left")
-const txt_right_input = document.querySelector("#right")
-const txt_center_input = document.querySelector("#center")
-const txt_justify_input = document.querySelector("#justify")
-const txt_right_image = document.querySelector(".right")
-const txt_center_image = document.querySelector(".center")
-const txt_justify_image = document.querySelector(".justify")
+const red = document.getElementById("red");
+const green = document.getElementById("green");
+const blue = document.getElementById("blue");
+const yellow = document.getElementById("yellow");
+const orange = document.getElementById("orange");
+const txt_standard = document.getElementById("standard");
+const txt_shadow = document.getElementById("shadow");
+const txt_thinkertoy = document.getElementById("thinkertoy");
+const txt_right_radio = document.getElementById("radioright");
+const txt_center_radio = document.getElementById("radiocenter");
+const txt_justify_radio = document.getElementById("radiojustify");
+const txt_left_input = document.querySelector("#left");
+const txt_right_input = document.querySelector("#right");
+const txt_center_input = document.querySelector("#center");
+const txt_justify_input = document.querySelector("#justify");
+const txt_right_image = document.querySelector(".right");
+const txt_center_image = document.querySelector(".center");
+const txt_justify_image = document.querySelector(".justify");
 
 // ui sections
-const color = document.getElementById("color")
-const upload = document.getElementById("upload")
-const alignment = document.getElementById("alignment")
-const generator = document.getElementById("generator")
-const asciiout = document.getElementById("asciiout")
+const color = document.getElementById("colorPicker");
+const upload = document.getElementById("upload");
+const alignment = document.getElementById("alignment");
+const generator = document.getElementById("generator");
+const asciiout = document.getElementById("asciiout");
 // forms
-const formText = document.forms['text']
-const textRadios = formText.elements['textAlign']
-const formColor = document.forms['color']
-const colorRadios = formColor.elements['colors']
+const formText = document.forms['text'];
+const textRadios = formText.elements['text-align'];
+const formColor = document.forms['colorPick'];
+const colorRadios = formColor.elements['colors'];
 //text areas
-const asciiOutput = document.getElementById("ascii-output")
+const asciiOutput = document.getElementById("ascii-output");
+
 
 // functions
 function hideUI() {
@@ -132,7 +133,7 @@ function justifyDisable() {
 // reset select and radios to default on page load
 // TODO standardise not functioning
 document.addEventListener("DOMContentLoaded", reset);
-red.addEventListener("change", justifyDisable);
+color.addEventListener("change", justifyDisable);
 colorReset.addEventListener("click", resetColors);
 window.addEventListener("resize", hideUI);
 // hide/unhide UI elements

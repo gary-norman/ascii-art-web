@@ -461,7 +461,7 @@ label {
 /*    align-items: center;*/
 /*    background: rgba(255,255,255,1);*/
 /*}*/
-#color {
+#colorPicker {
     display: flex;
     flex-direction: column;
 }
@@ -626,7 +626,7 @@ label {
           grid-area: gen;
           width: 100%
       }
-      #color {
+      #colorPicker {
           grid-area: col;
           width: 100%
       }
