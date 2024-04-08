@@ -8,6 +8,11 @@ import (
 
 func ArtFromFile(name string) []string {
 	var scanned []string
+	if name == "" {
+		log.Fatal("No file present:")
+		return scanned
+	}
+
 	// Read the ASCII art from a file
 	file, err := os.Open(name)
 	if err != nil {
