@@ -31,6 +31,8 @@ func handleRequests() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/icons/", http.StripPrefix("/icons/", http.FileServer(http.Dir("icons"))))
+	http.Handle("/ascii_styles/", http.StripPrefix("/ascii_styles/", http.FileServer(http.Dir("ascii_styles"))))
+
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/process", processor)
 
@@ -62,8 +64,8 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord  string
 		FileWant   string
 		InputAlign string
-		InputArt   string
-		ToArt      string
+		ArtToText  string
+		TextToArt  string
 	}{
 		InputText:  chosenInput,
 		Style:      chosenStyle,
@@ -71,8 +73,8 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		FileWant:   defaultValue,
 		ColorWord:  colorInput,
 		InputAlign: chosenAlign,
-		InputArt:   artInput,
-		ToArt:      outputResult,
+		ArtToText:  artInput,
+		TextToArt:  outputResult,
 	}
 	renderTemplate(w, "index.html", d)
 }
