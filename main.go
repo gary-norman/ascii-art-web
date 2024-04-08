@@ -18,5 +18,6 @@ func main() {
 }
 
 func result(w http.ResponseWriter, r *http.Request) {
-	log.Fatal(tpl.ExecuteTemplate(w, "result.html", nil))
+	//log.Fatal(tpl.ExecuteTemplate(w, "result.html", nil))
+	w.Write([]byte("Hello World"))
 }
