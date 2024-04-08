@@ -14,6 +14,7 @@ func init() {
 }
 
 func homePage(w http.ResponseWriter, r *http.Request) {
+
 	t, err := template.ParseFiles("templates/index.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -51,6 +52,7 @@ func processor(w http.ResponseWriter, r *http.Request) {
 	defaultValue := "default"
 	artInput := r.FormValue("art-input")
 	align := r.FormValue("text-align")
+	output := ascii_art_web.RunAscii(input, color, colorInput, defaultValue, align, artInput)
 
 	d := struct {
 		InputText  string
@@ -60,7 +62,7 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		FileWant   string
 		InputAlign string
 		InputArt   string
-		Output     string
+		ToArt      string
 	}{
 		InputText:  input,
 		Style:      style,
@@ -69,9 +71,9 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord:  colorInput,
 		InputAlign: align,
 		InputArt:   artInput,
-		Output:     ascii_art_web.RunAscii(input, color, colorInput, defaultValue, align, artInput),
+		ToArt:      output,
 	}
-	renderTemplate(w, "html.html", d)
+	renderTemplate(w, "index.html", d)
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
