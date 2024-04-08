@@ -16,30 +16,23 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 		wordCount := 0
 		var sep []string
 		var alignedString string
-
 		// Iterate over each character in the line
 		for letterNum := 0; letterNum < len(word); letterNum++ {
-
 			// Check if the ASCII value exists in the map and if it matches the current character in the word
 			if asciiStr, ok := asciiMap[int(word[letterNum])]; ok {
-
 				//check if there are any characters to colour
 				if strings.Contains(toColour, string(word[letterNum])) {
 					outputString += asciiStr[i]
 					PrintColorised(colour, asciiStr[i])
 					// Print the corresponding line of ASCII art from the map
 				} else {
-
 					alignedString += asciiStr[i]
-
 					outputString += asciiStr[i]
-
 					if align == "default" {
 						// fmt.Print("b")
 						fmt.Print(asciiStr[i])
 					} else {
 						spaces = len(word) - 1
-
 						if letterNum == 0 {
 							sep = append(sep, asciiStr[i])
 						} else {
@@ -50,13 +43,11 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 								sep[wordCount] += asciiStr[i]
 							}
 						}
-
 					}
 				}
 			}
 		}
 		outputString += "\n"
-
 		if align == "default" {
 			fmt.Println()
 		} else {

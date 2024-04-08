@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASCII Art Generator</title>
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/andy_bell-css_reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/andy_bell-css_reset.css">
 </head>
 <body>
 <div class="wrapper">
@@ -31,7 +31,7 @@
                         </div>
                     </form>
                     <div class="modifiers">
-                        <form action="" id="colorPicker" class="smaller" name="color">
+                        <form action="/process" id="colorPicker" class="smaller" name="colorPick" method="POST" >
                             <div class="card">
                                 <div class="buttonedLabel">
                                     <div class="labelwbtn">Choose your colour</div>
@@ -62,35 +62,34 @@
                                 <div class="select">
                                     <label class="" for="color-txt"></label>
                                     <input id="color-txt" name="colour-text"
-                                           placeholder="Enter specific letters to colourise (optional)">
-
+                                           placeholder="Enter specific letters to colourise (optional)" value="">
                                 </div>
                             </div>
                         </form>
-                        <div class="form smaller" id="upload">
+                        <form action="" id="upload" class="smaller" name="upload">
                             <div class="card">
                                 <div class="label">
                                     <label class="" for="browse">Upload your file</label>
                                 </div>
                                 <div id="drop_zone">
-                                    <span class="dragText">drag and drop your file, or</span>
-                                    <span class="button">browse</span>
-                                    <input type="file" id="browse" hidden />
+                                    <!--                                <span class="dragText">drag and drop your file, or</span>-->
+                                    <!--                                <span class="button">browse</span>-->
+                                    <input type="file" id="browse" name="file-drop" />
                                 </div>
                                 <div class="label artsays">Your art says:</div>
-                                <div class="select textarea" id="reverse-output">your\ntext</div>
+                                <div class="select textarea" id="reverse-output"></div>
                             </div>
-                        </div>
+                        </form>
                         <div id="generator" class="smaller">
-                            <form action="" class="smaller" name="text">
+                            <form action="/process" class="smaller" name="text" method="POST">
                                 <div class="card">
                                     <div class="label">
                                         <label for="banner">Choose your style</label>
                                     </div>
                                     <div class="select">
                                         <select name="banner" id="banner">
-                                            <option class="item" value="standard" id="standard" name="style" selected>Standard</option>
-                                            <option class="item" value="shadow" id="shadow" name="style">Shadow</option>
+                                            <option class="item" value="standard" id="standard" name="style">Standard</option>
+                                            <option class="item" value="shadow" id="shadow" name="style" selected>Shadow</option>
                                             <option class="item" value="thinkertoy" id="thinkertoy" name="style">Thinkertoy</option>
                                         </select>
                                     </div>
@@ -99,31 +98,29 @@
                                     <!--                                </div>-->
                                     <div class="toggle" id="alignment">
                                         <label class="radio" id="radioleft">
-                                            <input type="radio" value="left" id="left" name="textAlign" checked>
+                                            <input type="radio" value="left" id="left" name="text-align" checked>
                                             <span class="checkmark left"></span>
                                         </label>
                                         <label class="radio" id="radioright">
-                                            <input type="radio" value="right" id="right" name="textAlign">
+                                            <input type="radio" value="right" id="right" name="text-align">
                                             <span class="checkmark right"></span>
                                         </label>
                                         <label class="radio" id="radiocenter">
-                                            <input type="radio" value="center" id="center" name="textAlign">
+                                            <input type="radio" value="center" id="center" name="text-align">
                                             <span class="checkmark center"></span>
                                         </label>
                                         <label class="radio" id="radiojustify">
-                                            <input type="radio" value="justify" id="justify" name="textAlign">
+                                            <input type="radio" value="justify" id="justify" name="text-align">
                                             <span class="checkmark justify"></span>
                                         </label>
                                         <!--                                <div class="justifyBlock" id="justifyBlock">unavailable with colour</div>-->
                                     </div>
                                     <div class="select ">
-
-                                        <form action="/process" method="POST">
-                                            <label class="" for="generate"></label>
-                                            <input id="generate" name="input" placeholder="Enter your text">
-                                            <input type="submit">
-                                        </form>
+                                        <label class="" for="generate"></label>
+                                        <input id="generate" name="generate"
+                                               placeholder="Enter your text" value="">
                                     </div>
+                                    <input type="submit" >
                                 </div>
                             </form>
                         </div>
@@ -153,7 +150,7 @@
                                 </svg>
                             </label>
                         </div>
-                        <div class="artput" id="ascii-output" name="output">{{.ToArt}}</div>
+                        <pre class="artput" id="ascii-output">{{.TextToArt}}</pre>
                     </div>
                 </div>
             </article>

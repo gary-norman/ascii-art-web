@@ -2,6 +2,7 @@ package main
 
 import (
 	ascii_art_web "ascii_art_web/go"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -50,12 +51,13 @@ func processor(w http.ResponseWriter, r *http.Request) {
 	}
 	chosenInput := r.FormValue("generate")
 	chosenStyle := r.FormValue("style")
+	fmt.Println("chosenStyle is:", chosenStyle)
 	chosenColor := r.FormValue("colors")
 	colorInput := r.FormValue("colour-text")
 	defaultValue := "default"
 	artInput := r.FormValue("file-drop")
 	chosenAlign := r.FormValue("text-align")
-	outputResult := ascii_art_web.RunAscii(chosenInput, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
+	outputResult := ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
 
 	d := struct {
 		InputText  string
@@ -76,5 +78,5 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ArtToText:  artInput,
 		TextToArt:  outputResult,
 	}
-	tpl.ExecuteTemplate(w, "index.html", d)
+	tpl.ExecuteTemplate(w, "result.html", d)
 }
