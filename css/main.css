@@ -234,12 +234,16 @@ label {
     width: 32px;
 }
 .artput {
+    margin: 0;
     height: 20rem;
     padding: 1rem;
     color: dimgray;
     background: #fff;
     transition: .3s;
+    flex-grow: 0;
+    font-size: .8vw;
 }
+
 .asciiOutDark {
     color: #8c8c8c;
     background: #272727;
@@ -637,6 +641,8 @@ label {
       #asciiout {
           grid-area: art;
           height: 100%;
+          /*max-width: 100%;*/
+          /*flex-grow: 0;*/
       }
 }
 

@@ -30,8 +30,46 @@
                                 </div>
                             </div>
                         </form>
+                        <form enctype="multipart/form-data" action="/process" id="mainForm"  name="mainForm" method="POST">
                         <div class="modifiers">
-                        <form action="/process" id="colorPicker" class="smaller" name="colorPick" method="POST" >
+                            <div id="generator" class="smaller">
+                                <div class="card">
+                                    <div class="label">
+                                        <label for="banner">Choose your style</label>
+                                    </div>
+                                    <div class="select">
+                                        <select name="banner" id="banner">
+                                            <option class="item" value="standard" id="standard" name="style" selected>Standard</option>
+                                            <option class="item" value="shadow" id="shadow" name="style">Shadow</option>
+                                            <option class="item" value="thinkertoy" id="thinkertoy" name="style">Thinkertoy</option>
+                                        </select>
+                                    </div>
+                                    <div class="toggle" id="alignment">
+                                        <label class="radio" id="radioleft">
+                                            <input type="radio" value="left" id="left" name="text-align" checked>
+                                            <span class="checkmark left"></span>
+                                        </label>
+                                        <label class="radio" id="radioright">
+                                            <input type="radio" value="right" id="right" name="text-align">
+                                            <span class="checkmark right"></span>
+                                        </label>
+                                        <label class="radio" id="radiocenter">
+                                            <input type="radio" value="center" id="center" name="text-align">
+                                            <span class="checkmark center"></span>
+                                        </label>
+                                        <label class="radio" id="radiojustify">
+                                            <input type="radio" value="justify" id="justify" name="text-align">
+                                            <span class="checkmark justify"></span>
+                                        </label>
+                                        </div>
+                                    <div class="select ">
+                                        <label class="" for="generate"></label>
+                                        <input id="generate" name="generate"
+                                               placeholder="Enter your text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="smaller" id="colorPicker">
                             <div class="card">
                                 <div class="buttonedLabel">
                                     <div class="labelwbtn">Choose your colour</div>
@@ -65,9 +103,9 @@
                                                placeholder="Enter specific letters to colourise (optional)" value="">
                                     </div>
                             </div>
-                        </form>
-                        <form action="" id="upload" class="smaller" name="upload">
-                        <div class="card">
+                        </div>
+                        <div id="upload" class="smaller">
+                            <div class="card">
                             <div class="label">
                                 <label class="" for="browse">Upload your file</label>
                             </div>
@@ -75,56 +113,15 @@
 <!--                                <span class="dragText">drag and drop your file, or</span>-->
 <!--                                <span class="button">browse</span>-->
                                 <input type="file" id="browse" name="file-drop" />
+                                <input type="submit" value="submit" />
+<!--                                <input type="file" id="browse" name="file-drop" />-->
                             </div>
                             <div class="label artsays">Your art says:</div>
-                            <div class="select textarea" id="reverse-output"></div>
+                            <div class="select textarea" id="reverse-output">{{.ArtToText}}</div>
                         </div>
-                    </form>
-                    <div id="generator" class="smaller">
-                        <form action="/process" class="smaller" name="text" method="POST">
-                            <div class="card">
-                                <div class="label">
-                                    <label for="banner">Choose your style</label>
-                                </div>
-                                <div class="select">
-                                    <select name="banner" id="banner">
-                                        <option class="item" value="standard" id="standard" name="style" selected>Standard</option>
-                                        <option class="item" value="shadow" id="shadow" name="style">Shadow</option>
-                                        <option class="item" value="thinkertoy" id="thinkertoy" name="style">Thinkertoy</option>
-                                    </select>
-                                </div>
-<!--                                <div class="label">-->
-<!--                                    <label class="" for="generate">Enter your text</label>-->
-<!--                                </div>-->
-                                <div class="toggle" id="alignment">
-                                    <label class="radio" id="radioleft">
-                                        <input type="radio" value="left" id="left" name="text-align" checked>
-                                        <span class="checkmark left"></span>
-                                    </label>
-                                    <label class="radio" id="radioright">
-                                        <input type="radio" value="right" id="right" name="text-align">
-                                        <span class="checkmark right"></span>
-                                    </label>
-                                    <label class="radio" id="radiocenter">
-                                        <input type="radio" value="center" id="center" name="text-align">
-                                        <span class="checkmark center"></span>
-                                    </label>
-                                    <label class="radio" id="radiojustify">
-                                        <input type="radio" value="justify" id="justify" name="text-align">
-                                        <span class="checkmark justify"></span>
-                                    </label>
-<!--                                <div class="justifyBlock" id="justifyBlock">unavailable with colour</div>-->
-                                </div>
-                                <div class="select ">
-                                    <label class="" for="generate"></label>
-                                    <input id="generate" name="generate"
-                                           placeholder="Enter your text" value="">
-                                </div>
-                                <input type="submit" >
-                            </div>
+                    </div>
+                    </div>
                         </form>
-                    </div>
-                    </div>
                         <div class="card output" id="asciiout">
                             <div class="buttonedLabel">
                                 <div class="labelwbtn">Your art:</div>

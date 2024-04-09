@@ -1,4 +1,4 @@
-
+z``
 const operation = document.getElementById("function");
 const standardise = document.getElementById("standardise");
 const colorize = document.getElementById("colorize");
@@ -34,10 +34,9 @@ const alignment = document.getElementById("alignment");
 const generator = document.getElementById("generator");
 const asciiout = document.getElementById("asciiout");
 // forms
-const formText = document.forms['text'];
-const textRadios = formText.elements['text-align'];
-const formColor = document.forms['colorPick'];
-const colorRadios = formColor.elements['colors'];
+const formMain = document.forms['mainForm'];
+const textRadios = formMain.elements['text-align'];
+const colorRadios = formMain.elements['colors'];
 //text areas
 const asciiOutput = document.getElementById("ascii-output");
 
