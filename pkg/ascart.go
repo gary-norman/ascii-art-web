@@ -196,7 +196,7 @@ func GetInputChars(source []string, indices []int) map[int][]string {
 }
 
 // AsciiToChars Compares getChar and getInputChar and prints the string to the terminal
-func AsciiToChars(input, standard, shadow, thinkertoy map[int][]string) {
+func AsciiToChars(input, standard, shadow, thinkertoy map[int][]string) string {
 	output := make(map[int][]int)
 	var newLine1 []string
 	for i := 0; i < 8; i++ {
@@ -224,9 +224,20 @@ func AsciiToChars(input, standard, shadow, thinkertoy map[int][]string) {
 			}
 		}
 	}
+	var outString string
+	//for _, arr := range output {
+	//	for _, digit := range arr {
+	//		char := rune(digit)
+	//		outString += string(char)
+	//	}
+	//}
 	for i := 0; i < len(output); i++ {
-		fmt.Printf("%c", output[i][0])
+		for j := 0; j < len(output[i]); j++ {
+			char := rune(output[i][j])
+			outString += string(char)
+		}
 	}
+	return outString
 }
 
 // GetCharsWidth Determine the width of each individual ascii art character
@@ -417,6 +428,29 @@ func MakeArtColorized(origString string, y map[int][]string, letters []rune, col
 	}
 	art = strings.TrimRight(art, "\n")
 	return art
+}
+
+func Reverse(fileName string) string {
+	fmt.Print("reverse")
+	file, err := os.Open(fileName)
+	if err != nil {
+		fmt.Println("Error opening the file:", err)
+		return "error" // Exit the program on error
+	}
+	//defer pkg(file os.File) {
+	//	err := file.Close()
+	//	if err != nil {
+	//		fmt.Println("Error closing the file:", err)
+	//	}
+	//}(file)
+	source := FileToVariable(file)
+	emptyCols := RemoveValidSPaceIndex(GetEmptyCols(source))
+	charMap := GetInputChars(ArtToSingleLine(source), emptyCols)
+	mapStandard := GetChars(PrepareBan("standard"))
+	mapShadow := GetChars(PrepareBan("shadow"))
+	mapThinkertoy := GetChars(PrepareBan("thinkertoy"))
+	return AsciiToChars(charMap, mapStandard, mapShadow, mapThinkertoy)
+
 }
 
 //pkg main() {

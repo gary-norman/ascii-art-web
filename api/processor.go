@@ -1,7 +1,7 @@
 package api
 
 import (
-	ascii_art_web "ascii_art_web/go"
+	"ascii_art_web/pkg"
 	"html/template"
 	"net/http"
 )
@@ -11,15 +11,14 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+
 	chosenInput := r.FormValue("generate")
-	chosenStyle := r.FormValue("style")
+	chosenStyle := r.FormValue("banner")
 	chosenColor := r.FormValue("colors")
 	colorInput := r.FormValue("colour-text")
 	defaultValue := "default"
-	artInput := r.FormValue("file-drop")
 	chosenAlign := r.FormValue("text-align")
-	outputResult := ascii_art_web.RunAscii(chosenInput, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
-
+	outputResult := pkg.MakeArt(chosenInput, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
 	d := struct {
 		InputText  string
 		Style      string
@@ -27,7 +26,6 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord  string
 		FileWant   string
 		InputAlign string
-		ArtToText  string
 		TextToArt  string
 	}{
 		InputText:  chosenInput,
@@ -36,10 +34,9 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		FileWant:   defaultValue,
 		ColorWord:  colorInput,
 		InputAlign: chosenAlign,
-		ArtToText:  artInput,
 		TextToArt:  outputResult,
 	}
-	renderTemplate(w, "index.html", d)
+	tpl.ExecuteTemplate(w, "index.html", d)
 }
 func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 	// Parse the template file
