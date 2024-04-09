@@ -240,7 +240,10 @@ label {
     color: dimgray;
     background: #fff;
     transition: .3s;
+    flex-grow: 0;
+    font-size: 1vw;
 }
+
 .asciiOutDark {
     color: #8c8c8c;
     background: #272727;
@@ -638,6 +641,8 @@ label {
       #asciiout {
           grid-area: art;
           height: 100%;
+          /*max-width: 100%;*/
+          /*flex-grow: 0;*/
       }
 }
 

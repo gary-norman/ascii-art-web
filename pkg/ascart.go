@@ -425,6 +425,7 @@ func MakeArtColorized(origString string, y map[int][]string, letters []rune, col
 }
 
 func Reverse(fileName string) string {
+	fmt.Print("reverse")
 	file, err := os.Open(fileName)
 	if err != nil {
 		fmt.Println("Error opening the file:", err)

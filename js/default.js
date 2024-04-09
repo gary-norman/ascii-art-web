@@ -1,4 +1,4 @@
-
+z``
 const operation = document.getElementById("function");
 const standardise = document.getElementById("standardise");
 const colorize = document.getElementById("colorize");

@@ -59,8 +59,8 @@ func uploadFileHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	artInput := r.FormValue("file-drop")
-	artInOut := pkg.Reverse("/filetoart/" + artInput)
+	//artInput := r.FormValue("file-drop")
+	artInOut := pkg.Reverse("filetoart/" + handler.Filename)
 	d := struct {
 		InputText  string
 		Style      string
@@ -88,7 +88,6 @@ func HandleRequestsGary() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/icons/", http.StripPrefix("/icons/", http.FileServer(http.Dir("icons"))))
-	//http.Handle("/pkg/", http.StripPrefix("/pkg/", http.FileServer(http.Dir("pkg"))))
 	http.Handle("/ascii_styles/", http.StripPrefix("/ascii_styles/", http.FileServer(http.Dir("ascii_styles"))))
 	http.HandleFunc("/process", processor)
 	http.HandleFunc("/upload", uploadFileHandler)
