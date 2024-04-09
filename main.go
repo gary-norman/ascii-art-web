@@ -49,10 +49,11 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	fmt.Println(r.Form)
 	chosenInput := r.FormValue("generate")
 	chosenStyle := r.FormValue("banner")
-	chosenColor := r.FormValue("colorPicker")
-	colorInput := r.FormValue("color-txt")
+	chosenColor := r.FormValue("colors")
+	colorInput := r.FormValue("colour-text")
 	defaultValue := "default"
 	artInput := r.FormValue("file-drop")
 	chosenAlign := r.FormValue("text-align")
