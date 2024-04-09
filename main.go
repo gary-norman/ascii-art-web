@@ -50,18 +50,20 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	chosenInput := r.FormValue("generate")
-	fmt.Println("chosenInput is:", chosenInput)
-	chosenStyle := r.FormValue("style")
-	fmt.Println("chosenStyle is:", chosenStyle)
-	chosenColor := r.FormValue("colors")
-	fmt.Println("chosenColor is:", chosenColor)
-	colorInput := r.FormValue("colour-text")
-	fmt.Println("colorInput is:", colorInput)
+	chosenStyle := r.FormValue("banner")
+	chosenColor := r.FormValue("colorPicker")
+	colorInput := r.FormValue("color-txt")
 	defaultValue := "default"
 	artInput := r.FormValue("file-drop")
-	fmt.Println("artInput is:", artInput)
 	chosenAlign := r.FormValue("text-align")
-	fmt.Println("chosenAlign is:", chosenAlign)
+
+	fmt.Println("chosenInput is:		", chosenInput)
+	fmt.Println("chosenStyle is:		", chosenStyle)
+	fmt.Println("chosenColor is:		", chosenColor)
+	fmt.Println("colorInput is:		", colorInput)
+	fmt.Println("artInput is:		", artInput)
+	fmt.Println("chosenAlign is:		", chosenAlign)
+	fmt.Println("------------------------------------------------")
 	outputResult := ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
 
 	d := struct {

@@ -6,12 +6,14 @@ import (
 )
 
 func RunAscii(input, style, colour, toColour, output, align, reverse string) string {
-	fmt.Println("input is", input)
-	fmt.Println("style is", style)
-	fmt.Println("colour is", colour)
-	fmt.Println("toColour is", toColour)
-	fmt.Println("output is", output)
-	fmt.Println("align is", align)
+	fmt.Println("Entering RunAscii...")
+	fmt.Println("------------------------------------------------")
+	fmt.Println("input is:", input)
+	fmt.Println("style is:", style)
+	fmt.Println("colour is:", colour)
+	fmt.Println("toColour is:", toColour)
+	fmt.Println("output is:", output)
+	fmt.Println("align is:", align)
 
 	var word = input
 	var words, source []string
@@ -75,7 +77,8 @@ func RunAscii(input, style, colour, toColour, output, align, reverse string) str
 	}
 
 	//print words
-	fmt.Println("run_ascii... > AsciiWords")
+	fmt.Println("------------------------------------------------")
+	fmt.Println("Entering AsciiWords...")
 	return AsciiWords(words, asciiMap, colour, toColour, output, align)
 
 }
