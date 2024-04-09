@@ -1,32 +1,67 @@
 package ascii_art_web
 
 import (
-	"bufio"
-	"log"
+	"fmt"
+	"io"
+	"mime/multipart"
+	"net/http"
 	"os"
+	"path/filepath"
 )
 
-func ArtFromFile(name string) []string {
-	var scanned []string
-	if name == "" {
-		log.Fatal("No file present:")
-		return scanned
-	}
+func ArtFromFile(w http.ResponseWriter, r *http.Request) string {
+	var value string
 
-	// Read the ASCII art from a file
-	file, err := os.Open(name)
+	// Limit the size of the incoming file to prevent memory issues
+	err := r.ParseMultipartForm(10 << 20) // Limit upload size to 10MB
 	if err != nil {
-		log.Fatal("Error reading ASCII art file:", err)
+		fmt.Println("Error parsing form data:", err)
+		return ""
 	}
 
-	scan := bufio.NewScanner(file)
+	// Retrieve the file from form data
+	file, handler, err := r.FormFile("file-drop")
+	if err != nil {
+		fmt.Println("Error retrieving the file:", err)
+		return ""
+	}
+	defer func(file multipart.File) {
+		err := file.Close()
+		if err != nil {
+			fmt.Println("Error closing the file:", err)
+		}
+	}(file)
 
-	for scan.Scan() {
-		scanned = append(scanned, scan.Text())
+	// Create a file in the server's local storage
+	dst, err := os.Create(filepath.Join("filetoart", handler.Filename))
+	if err != nil {
+		fmt.Println("Error creating the file:", err)
+		return ""
+	}
+	defer func(dst *os.File) {
+		err := dst.Close()
+		if err != nil {
+			fmt.Println("Error closing the file:", err)
+		}
+	}(dst)
+
+	// Copy the uploaded file data to the server's file
+	_, err = io.Copy(dst, file)
+	if err != nil {
+		fmt.Println("Error saving the file:", err)
+		return ""
 	}
 
-	defer file.Close()
-	// fmt.Println("scanned:", scanned)
-	// Return string
-	return scanned
+	// Read the content of the text file
+	content, err := os.ReadFile(filepath.Join("filetoart", handler.Filename))
+	if err != nil {
+		fmt.Println("Error reading the file:", err)
+		return ""
+	}
+
+	// Convert byte slice to string
+	value = string(content)
+
+	fmt.Println("Value extracted from file:", value)
+	return value
 }

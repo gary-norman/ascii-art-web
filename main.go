@@ -36,7 +36,6 @@ func handleRequests() {
 
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/process", processor)
-	//http.HandleFunc("/upload", api.Reverse)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
@@ -56,14 +55,9 @@ func processor(w http.ResponseWriter, r *http.Request) {
 	chosenColor := r.FormValue("colors")
 	colorInput := r.FormValue("colour-text")
 	defaultValue := "default"
-	artInput := r.FormValue("file-drop")
+	artInput := ascii_art_web.ArtFromFile(w, r)
 	chosenAlign := r.FormValue("text-align")
-
-	//if ascii_art_web.CheckReverse(w, r) == "" {
-	//	artInput = defaultValue
-	//} else {
 	artOutput := ascii_art_web.CheckReverse(w, r)
-	//}
 
 	if colorInput == "" && chosenInput != "" {
 		colorInput = chosenInput
