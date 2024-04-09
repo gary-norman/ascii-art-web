@@ -76,21 +76,5 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ArtToText:  artInput,
 		TextToArt:  outputResult,
 	}
-	renderTemplate(w, "index.html", d)
-}
-
-func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
-	// Parse the template file
-	t, err := template.ParseFiles(tmpl)
-	if err != nil {
-		http.Error(w, "Error parsing template file", http.StatusInternalServerError)
-		return
-	}
-
-	// Execute the template with the provided data and write the result to the response writer
-	err = t.Execute(w, data)
-	if err != nil {
-		http.Error(w, "Error executing template", http.StatusInternalServerError)
-		return
-	}
+	tpl.ExecuteTemplate(w, "index.html", d)
 }

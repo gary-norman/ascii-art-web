@@ -8,7 +8,7 @@ import (
 
 func PrepareFile(style string) []string {
 	var scanned []string
-	file, err := os.Open(style + ".txt")
+	file, err := os.Open("ascii_styles/" + style + ".txt")
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil
