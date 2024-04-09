@@ -5,10 +5,7 @@ func PrepareBanner(style string) []string {
 
 	//if empty string is passed, most functions work, except for reverse
 	if style == "" {
-
 		scanned = PrepareFile("standard")
-
-		//in case of reverse, style is passed in the string and set accordingly to scanned
 	} else {
 		scanned = PrepareFile(style)
 	}

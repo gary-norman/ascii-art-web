@@ -5,7 +5,16 @@ import (
 	"strings"
 )
 
-func RunAscii(input, colour, toColour, output, align, reverse string) string {
+func RunAscii(input, style, colour, toColour, output, align, reverse string) string {
+	fmt.Println("Entering RunAscii...")
+	fmt.Println("------------------------------------------------")
+	fmt.Println("input is:", input)
+	fmt.Println("style is:", style)
+	fmt.Println("colour is:", colour)
+	fmt.Println("toColour is:", toColour)
+	fmt.Println("output is:", output)
+	fmt.Println("align is:", align)
+
 	var word = input
 	var words, source []string
 	var asciiMap map[int][]string
@@ -28,13 +37,14 @@ func RunAscii(input, colour, toColour, output, align, reverse string) string {
 	//
 	//prepare correct ascii map(s)
 	//if reverse != "default" {
-	//	//standardMap = AsciiMap(PrepareBanner("standard"))
-	//	//shadowMap = AsciiMap(PrepareBanner("shadow"))
-	//	//thinkertoyMap = AsciiMap(PrepareBanner("thinkertoy"))
+	//	standardMap = AsciiMap(PrepareBanner("standard"))
+	//	shadowMap = AsciiMap(PrepareBanner("shadow"))
+	//	thinkertoyMap = AsciiMap(PrepareBanner("thinkertoy"))
 	//	source = ArtFromFile(reverse)
 	//} else {
 	//prepare the text file for the characters
-	source = PrepareBanner("")
+	source = PrepareBanner(style)
+
 	//if file is non-existent, return
 	if source == nil {
 		return ""
@@ -46,20 +56,15 @@ func RunAscii(input, colour, toColour, output, align, reverse string) string {
 
 	////handle all flags and prepare arguments and variables
 	//if colour != "default" {
-	//	if len(otherArgs) == 1 {
-	//		word = otherArgs[0]
+	//	if toColour == "default" {
 	//		toColour = word
-	//	} else {
-	//		toColour = otherArgs[0]
-	//		word = otherArgs[1]
 	//	}
-	//} else if reverse != "default" {
+	//} else
+	//if reverse != "default" {
 	//	// fmt.Println("source is:", source)
 	//	emptyCols := RemoveValidSpaceIndex(GetEmptyCols(source))
 	//	charMap := CharMap(ArtToSingleLine(source), emptyCols)
 	//	AsciiToChars(charMap, standardMap, shadowMap, thinkertoyMap)
-	//} else {
-	//	word = otherArgs[0]
 	//}
 
 	//if the word has \n in it, split into separate words
@@ -72,7 +77,8 @@ func RunAscii(input, colour, toColour, output, align, reverse string) string {
 	}
 
 	//print words
-	fmt.Println("testing 1")
-	return PrintAsciiWords(words, asciiMap, colour, toColour, output, align)
+	fmt.Println("------------------------------------------------")
+	fmt.Println("Entering AsciiWords...")
+	return AsciiWords(words, asciiMap, colour, toColour, output, align)
 
 }

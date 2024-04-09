@@ -2,6 +2,7 @@ package main
 
 import (
 	ascii_art_web "ascii_art_web/go"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -15,7 +16,7 @@ func init() {
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 
-	t, err := template.ParseFiles("templates/index.html")
+	t, err := template.ParseFiles("templates/index_kamil.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -48,14 +49,23 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	fmt.Println(r.Form)
 	chosenInput := r.FormValue("generate")
-	chosenStyle := r.FormValue("style")
+	chosenStyle := r.FormValue("banner")
 	chosenColor := r.FormValue("colors")
 	colorInput := r.FormValue("colour-text")
 	defaultValue := "default"
 	artInput := r.FormValue("file-drop")
 	chosenAlign := r.FormValue("text-align")
-	outputResult := ascii_art_web.RunAscii(chosenInput, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
+
+	fmt.Println("chosenInput is:		", chosenInput)
+	fmt.Println("chosenStyle is:		", chosenStyle)
+	fmt.Println("chosenColor is:		", chosenColor)
+	fmt.Println("colorInput is:		", colorInput)
+	fmt.Println("artInput is:		", artInput)
+	fmt.Println("chosenAlign is:		", chosenAlign)
+	fmt.Println("------------------------------------------------")
+	outputResult := ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
 
 	d := struct {
 		InputText  string
@@ -76,5 +86,5 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ArtToText:  artInput,
 		TextToArt:  outputResult,
 	}
-	tpl.ExecuteTemplate(w, "index.html", d)
+	tpl.ExecuteTemplate(w, "result.html", d)
 }
