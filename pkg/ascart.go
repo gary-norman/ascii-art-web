@@ -225,9 +225,15 @@ func AsciiToChars(input, standard, shadow, thinkertoy map[int][]string) string {
 		}
 	}
 	var outString string
-	for _, arr := range output {
-		for _, digit := range arr {
-			char := rune(digit)
+	//for _, arr := range output {
+	//	for _, digit := range arr {
+	//		char := rune(digit)
+	//		outString += string(char)
+	//	}
+	//}
+	for i := 0; i < len(output); i++ {
+		for j := 0; j < len(output[i]); j++ {
+			char := rune(output[i][j])
 			outString += string(char)
 		}
 	}

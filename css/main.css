@@ -241,7 +241,7 @@ label {
     background: #fff;
     transition: .3s;
     flex-grow: 0;
-    font-size: 1vw;
+    font-size: .8vw;
 }
 
 .asciiOutDark {

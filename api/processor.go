@@ -16,8 +16,8 @@ func processor(w http.ResponseWriter, r *http.Request) {
 	chosenColor := r.FormValue("colors")
 	colorInput := r.FormValue("colour-text")
 	defaultValue := "default"
-	artInput := r.FormValue("file-drop")
-	artInOut := pkg.Reverse("/filetoart/" + artInput)
+	//artInput := r.FormValue("file-drop")
+	artInOut := "" // pkg.Reverse("filetoart/" + artInput)
 	chosenAlign := r.FormValue("text-align")
 	//outputResult := "poo"
 	outputResult := pkg.MakeArt(chosenInput, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
