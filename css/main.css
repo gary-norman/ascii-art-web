@@ -10,7 +10,7 @@
   --border-rad: 0.4rem;
     --box-shadow: 0 0.25 1rem rgb(0 0 0 / .5);
     --main-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-    --button-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    --button-shadow: 1px 1px 0px rgba(74, 74, 74, 0.5), inset -1px -1px 5px 2px rgba(0 0 0 / 0);
     --button-hover-shadow: 4px 4px 5px -1px rgba(0,0,0,0.45);
     --button-pressed-shadow: inset 0 4px 3px -2px rgba(0 0 0 / .4), inset 0 -1px 1px -1px rgba(0 0 0  / .3);
   /* fonts */
@@ -169,17 +169,33 @@ select, label, input {
     width: 100%;
 }
 .labelwbtn {
-    padding: .4rem 1rem;
+    padding: 0  1rem;
     color: #fff;
 }
 .buttonedLabel {
     display: flex;
     justify-content: space-between;
+    height: 2rem;
     border-radius: var(--border-rad) var(--border-rad) 0 0;
     background-color: var(--bg-clr-select_header);
 }
+.buttonRow {
+    display: flex;
+    padding: 2px 0;
+    background: #fff;
+    justify-content: space-evenly;
+}
 button {
     margin: .5rem 1rem;
+}
+.buttonRow input {
+    background: radial-gradient(ellipse farthest-side at center center, #ffffff 50%, #f1f1f1 160%);
+    height: 24px;
+    width: 5rem;
+    margin: 2px 0 0 0;
+    border-radius: 1rem;
+    box-shadow: var(--button-shadow);
+    cursor: pointer;
 }
 label {
     color: white;
@@ -247,9 +263,14 @@ label {
     background: #fff;
     transition: .3s;
     line-height: 1;
-    font-size: clamp(.8vw, .8rem + 1vw, .8vw);
+    width: auto;
+    font-size: clamp(.8vw, .8rem + 1vw, 1.2vw);
 }
-
+#asciiout {
+    overflow: hidden;
+}
+.autoscroll {overflow: auto
+}
 .asciiOutDark {
     color: #8c8c8c;
     background: #272727;
@@ -497,7 +518,7 @@ label {
     border-radius: var(--border-rad);
 }
 #color-txt {
-    font-size: 1.4rem;
+    font-size: var(--font-sz-cards);
     padding: .5rem 1rem;
 }
 
