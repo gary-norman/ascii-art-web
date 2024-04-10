@@ -126,6 +126,20 @@ function justifyDisable() {
         txt_justify_input.disabled = false
     }
 }
+// function adjustTextSize(containerId) {
+//     let fontSize = 1; // Starting font size
+//     const step = 0.1; // Decrease step
+//     asciiOutput.style.fontSize = fontSize + 'vw';
+//
+//     while (asciiOutput.scrollWidth > asciiOutput.offsetWidth) {
+//         fontSize -= step;
+//         asciiOutput.style.fontSize = fontSize + 'vw';
+//         if (fontSize <= 0) break; // Prevents infinite loop
+//     }
+// }
+
+// fitText(asciiOutput, 5)
+
 // events
 
 // reset select and radios to default on page load
@@ -136,6 +150,7 @@ colorReset.addEventListener("click", resetColors);
 window.addEventListener("resize", hideUI);
 // hide/unhide UI elements
 operation.addEventListener("change", hideUI);
+// document.addEventListener("DOMContentLoaded", adjustTextSize);
 darkmode.addEventListener("click", function () {
     asciiOutput.classList.toggle("asciiOutDark");
 })
