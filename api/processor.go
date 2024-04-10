@@ -1,12 +1,13 @@
 package api
 
 import (
+	ascii_art_web "ascii_art_web/go"
 	"ascii_art_web/pkg"
 	"html/template"
 	"net/http"
 )
 
-func processor(w http.ResponseWriter, r *http.Request) {
+func Processor(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -17,8 +18,10 @@ func processor(w http.ResponseWriter, r *http.Request) {
 	chosenColor := r.FormValue("colors")
 	colorInput := r.FormValue("colour-text")
 	defaultValue := "default"
+	artInput := ascii_art_web.ArtFromFile(w, r)
 	chosenAlign := r.FormValue("text-align")
 	outputResult := pkg.MakeArt(chosenInput, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
+	artOutput := ascii_art_web.CheckReverse(w, r)
 	d := struct {
 		InputText  string
 		Style      string
@@ -26,6 +29,8 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord  string
 		FileWant   string
 		InputAlign string
+		CurrentArt string
+		ArtToText  string
 		TextToArt  string
 	}{
 		InputText:  chosenInput,
@@ -34,6 +39,8 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		FileWant:   defaultValue,
 		ColorWord:  colorInput,
 		InputAlign: chosenAlign,
+		CurrentArt: artInput,
+		ArtToText:  artOutput,
 		TextToArt:  outputResult,
 	}
 	tpl.ExecuteTemplate(w, "index.html", d)
