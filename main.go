@@ -50,19 +50,25 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	var artInput, artOutput string
+
 	chosenInput := r.FormValue("generate")
 	chosenStyle := r.FormValue("banner")
 	chosenColor := r.FormValue("colors")
 	colorInput := r.FormValue("colour-text")
-	defaultValue := "default"
-	artInput := ascii_art_web.ArtFromFile(w, r)
 	chosenAlign := r.FormValue("text-align")
-	artOutput := ascii_art_web.CheckReverse(w, r)
-
+	defaultValue := "default"
+	fmt.Println("the value in file-drop is:", r.FormValue("file-drop"))
+	if ascii_art_web.IsFilePresent(w, r) {
+		artInput = ascii_art_web.ArtFromFile(w, r)
+		fmt.Println("condition: artInput is:		", artInput)
+		artOutput = ascii_art_web.CheckReverse(w, r)
+		fmt.Println("condition: artOutput is:		", artOutput)
+	}
 	if colorInput == "" && chosenInput != "" {
+
 		colorInput = chosenInput
 	}
-
 	fmt.Println("chosenInput is:		", chosenInput)
 	fmt.Println("chosenStyle is:		", chosenStyle)
 	fmt.Println("chosenColor is:		", chosenColor)
@@ -71,7 +77,15 @@ func processor(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("artOutput is:		", artOutput)
 	fmt.Println("chosenAlign is:		", chosenAlign)
 	fmt.Println("------------------------------------------------")
+
 	outputResult := ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
+
+	if artInput != "" {
+		outputResult = artInput
+		fmt.Println("file present... outputResult is now = artInput -> outputResult:", outputResult)
+
+	}
+
 	fmt.Println("------------------------------------------------------------------------------------------------")
 	d := struct {
 		InputText  string
@@ -80,7 +94,6 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord  string
 		FileWant   string
 		InputAlign string
-		CurrentArt string
 		ArtToText  string
 		TextToArt  string
 	}{
@@ -90,7 +103,6 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		FileWant:   defaultValue,
 		ColorWord:  colorInput,
 		InputAlign: chosenAlign,
-		CurrentArt: artInput,
 		ArtToText:  artOutput,
 		TextToArt:  outputResult,
 	}

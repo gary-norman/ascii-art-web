@@ -1,6 +1,9 @@
 package ascii_art_web
 
-import "fmt"
+import (
+	"fmt"
+	"html"
+)
 
 var Reset = "\033[0m"
 var Red = "\033[31m"
@@ -13,35 +16,41 @@ var Orange = "\033[38;5;208m"
 var Gray = "\033[37m"
 var White = "\033[97m"
 
-func PrintColorised(colour string, asciiStr string) {
+func PrintColorised(colour string, asciiStr string) string {
 	var extraColour string
+	newColoredString := ""
 	switch colour {
 	case "red":
-		extraColour = Red
+		extraColour = "color: red;"
 	case "#ff0000":
-		extraColour = Red
+		extraColour = "color: red;"
 	case "rgb(255, 0, 0)":
-		extraColour = Red
+		extraColour = "color: red;"
 	case "hsl(0, 100%, 50%)":
-		extraColour = Red
+		extraColour = "color: red;"
 	case "blue":
-		extraColour = Blue
+		extraColour = "color: blue;"
 	case "green":
-		extraColour = Green
+		extraColour = "color: green;"
 	case "yellow":
-		extraColour = Yellow
+		extraColour = "color: yellow;"
 	case "purple":
-		extraColour = Purple
+		extraColour = "color: purple;"
 	case "cyan":
-		extraColour = Cyan
-	case "gray":
-		extraColour = Gray
+		extraColour = "color: cyan;"
+	case "grey":
+		extraColour = "color: grey;"
 	case "orange":
-		extraColour = Orange
+		extraColour = "color: orange;"
 	default:
-		extraColour = Reset
+		extraColour = ""
 	}
 
-	newString := extraColour + asciiStr + Reset
-	fmt.Print(newString)
+	newColoredString = fmt.Sprintf(`<span style="%s">%s</span>`, extraColour, asciiStr)
+
+	// HTML escape characters
+	newColoredString = html.UnescapeString(newColoredString)
+	fmt.Println("newColoredString is:", newColoredString)
+	return newColoredString
+
 }
