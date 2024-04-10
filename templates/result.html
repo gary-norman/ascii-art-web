@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASCII Art Generator</title>
-    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/andy_bell-css_reset.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 <div class="wrapper">
@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="smaller" id="colorPicker">
+                            <div id="colorPicker" class="smaller">
                                 <div class="card">
                                     <div class="buttonedLabel">
                                         <div class="labelwbtn">Choose your colour</div>
@@ -113,7 +113,7 @@
                                         <!--                                <span class="dragText">drag and drop your file, or</span>-->
                                         <!--                                <span class="button">browse</span>-->
                                         <input type="file" id="browse" name="file-drop" />
-                                        <input type="submit" value="submit" />
+                                        <input type="submit" id="fileSubmit" value="submit" />
                                         <!--                                <input type="file" id="browse" name="file-drop" />-->
                                     </div>
                                     <div class="label artsays">Your art says:</div>
@@ -155,5 +155,6 @@
     </section>
 </div>
 <script type="text/javascript" src="../js/default.js"></script>
+<script type="text/javascript" src="../js/fittext.js"></script>
 </body>
 </html>

@@ -47,6 +47,9 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+h1 {
+    margin: 1rem 0;
+}
 
 .wrapper {
     height: 100dvh;
@@ -132,12 +135,9 @@ select {
     width: 95%;
 }
 #generator {
-    width: 95%;
+    /*width: 95%;*/
     display: flex;
     flex-direction: column;
-}
-#generator form {
-    width: 100%
 }
 
 /* ----------  form styling ----------*/
@@ -161,6 +161,12 @@ select, label, input {
     border-radius: var(--border-rad) var(--border-rad) 0 0;
     background-color: var(--bg-clr-select_header);
     color: #fff;
+}
+#browse {
+    width: 75%;
+}
+#fileSubmit {
+    width: 100%;
 }
 .labelwbtn {
     padding: .4rem 1rem;
@@ -240,8 +246,8 @@ label {
     color: dimgray;
     background: #fff;
     transition: .3s;
-    flex-grow: 0;
-    font-size: .8vw;
+    line-height: 1;
+    font-size: clamp(.8vw, .8rem + 1vw, .8vw);
 }
 
 .asciiOutDark {
@@ -298,39 +304,14 @@ label {
     height: 4rem;
     padding: .5rem;
 }
-/*.textToggle {*/
-/*    background-color: #fff;*/
-/*    border: solid var(--bg-clr-select_header);*/
-/*    border-width: 0 0 1px 0;*/
-/*    display: grid;*/
-/*    grid-template-columns: auto;*/
-/*    grid-template-areas:*/
-/*    "a" "b" "c" "d";*/
-/*    justify-items: center;*/
-/*    align-items: center;*/
-/*}*/
-/*#radioleft {*/
-/*    grid-area: a;*/
-/*}*/
-/*#radioright {*/
-/*    grid-area: b;*/
-/*}*/
-/*#radiocenter {*/
-/*    grid-area: c;*/
-/*}*/
-/*#radiojustify {*/
-/*    grid-area: d;*/
-/*}*/
-/*#radiojustify:after {*/
-/*    content: "unavailable with colour";*/
-/*    position: absolute;*/
-/*    top: 7px;*/
-/*    right: 0;*/
-/*    width: 15rem;*/
-/*    font-size: 1.4rem;*/
-/*    text-align: center;*/
-/*    background: #fff;*/
-/*}*/
+.modifiers {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.smaller {
+    width: 100%;
+}
 .radio {
     display: block;
     position: relative;
@@ -459,12 +440,6 @@ label {
     -moz-box-shadow: var(--button-pressed-shadow);
     box-shadow: var(--button-pressed-shadow);
 }
-/*#upload {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    background: rgba(255,255,255,1);*/
-/*}*/
 #colorPicker {
     display: flex;
     flex-direction: column;
@@ -487,8 +462,9 @@ label {
 }
 #drop_zone {
     display: flex;
-    /*align-content: end;*/
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     height: 8rem;
     font-size: var(--font-sz-cards);
     background-color: #fff;
@@ -536,66 +512,36 @@ label {
         align-items: center;
         justify-items: center;
     }
-    .modifiers {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-    }
     form, .form {
         width: 95%;
-    }
-    .modifiers .form {
-        width: 95%
+        display: grid;
     }
 }
-@media only screen and (min-width: 601px)  {
+@media only screen and (min-width: 601px) {
     body {
         width: 95%;
         margin: 0 auto;
     }
+
     .frontpage {
         height: 95%;
         scroll-snap-align: start;
-            position: relative;
-            top: 50%;
-          transform: translateY(-50%);
-            margin: auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: auto;
     }
+
     .frosted {
         display: flex;
         align-items: start;
         justify-content: center;
     }
-    .modifiers {
-        gap: 2rem;
-    }
-    #generator {
-        width: 100%;
-    }
-    /*.smaller {*/
-    /*    width: 40%*/
-    /*}*/
+
     form, .form {
         width: 95%;
     }
-    .modifiers .form {
-        width: 100%;
-    }
-
-
-  /*.wrapper::-webkit-scrollbar {*/
-  /*    display: none;*/
-  /*}*/
-
-  /*main {*/
-  /*    height: 90%;*/
-  /*    width: 90%;*/
-  /*    position: relative;*/
-  /*    top: 50%;*/
-  /*  transform: translateY(-50%);*/
-  /*    margin: auto;*/
-  }
-
+}
 
 @media only screen and (min-width: 768px) {
       .elements {
@@ -614,6 +560,7 @@ label {
           display: none;
       }
       .modifiers {
+          width: 100%;
           grid-area: mod;
           display: grid;
           height: 100%;
@@ -628,15 +575,15 @@ label {
       }
       #generator {
           grid-area: gen;
-          width: 100%
+          /*width: 100%*/
       }
       #colorPicker {
           grid-area: col;
-          width: 100%
+          /*width: 100%*/
       }
       #upload {
           grid-area: up;
-          width: 100%
+          /*width: 100%*/
       }
       #asciiout {
           grid-area: art;
@@ -644,6 +591,9 @@ label {
           /*max-width: 100%;*/
           /*flex-grow: 0;*/
       }
+      /*.artput {*/
+      /*    font-size: clamp(1rem, -2.5556rem + 7.4074vw, 3rem);*/
+      /*}*/
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
