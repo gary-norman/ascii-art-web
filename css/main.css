@@ -247,9 +247,14 @@ label {
     background: #fff;
     transition: .3s;
     line-height: 1;
-    font-size: clamp(.8vw, .8rem + 1vw, .8vw);
+    width: auto;
+    font-size: clamp(.8vw, .8rem + 1vw, 1.2vw);
 }
-
+#asciiout {
+    overflow: hidden;
+}
+.autoscroll {overflow: auto
+}
 .asciiOutDark {
     color: #8c8c8c;
     background: #272727;
