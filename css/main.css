@@ -162,6 +162,12 @@ select, label, input {
     background-color: var(--bg-clr-select_header);
     color: #fff;
 }
+#browse {
+    width: 75%;
+}
+#fileSubmit {
+    width: 100%;
+}
 .labelwbtn {
     padding: .4rem 1rem;
     color: #fff;
@@ -458,6 +464,7 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     height: 8rem;
     font-size: var(--font-sz-cards);
     background-color: #fff;
@@ -509,9 +516,6 @@ label {
         width: 95%;
         display: grid;
     }
-    /*.modifiers .form {*/
-    /*    width: 95%*/
-    /*}*/
 }
 @media only screen and (min-width: 601px) {
     body {
