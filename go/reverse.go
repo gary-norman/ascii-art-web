@@ -6,6 +6,9 @@ import (
 
 // Compares getChar and getInputChar and prints the string to the terminal
 func AsciiToChars(input, standard, shadow, thinkertoy map[int][]string) {
+	fmt.Println("entering AsciiToChars")
+	fmt.Println("------------------------------------------------")
+
 	output := make(map[int][]int)
 	var newLine1 []string
 	for i := 0; i < 8; i++ {
@@ -34,8 +37,9 @@ func AsciiToChars(input, standard, shadow, thinkertoy map[int][]string) {
 		}
 	}
 	for i := 0; i < len(output); i++ {
-		fmt.Printf("%v", string(rune(output[i][0])))
+		fmt.Printf("output[i][0]: %v\n", string(rune(output[i][0])))
 	}
+	fmt.Println("reverse.go -> output is:", output)
 }
 
 // CompareSlices compares two slices for equality.

@@ -21,8 +21,6 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 			if asciiStr, ok := asciiMap[int(word[letterNum])]; ok {
 				//check if there are any characters to colour
 				if strings.Contains(toColour, string(word[letterNum])) {
-
-					fmt.Printf("before PrintColorised... colour is: %v, asciiStr[i] is: %v\n", colour, asciiStr[i])
 					outputString += PrintColorised(colour, asciiStr[i])
 					// Print the corresponding line of ASCII art from the map
 				} else {

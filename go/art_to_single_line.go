@@ -1,13 +1,22 @@
 package ascii_art_web
 
+import "fmt"
+
 // Places each line of characters from FileToVariable on a single line, delineated by "** "
 func ArtToSingleLine(source []string) []string {
+	fmt.Println("entering ArtToSingleLine")
+	fmt.Println("------------------------------------------------")
 	var output []string
 
+	for index, char := range source {
+		fmt.Println(index, char)
+	}
+
+	fmt.Println("len of source:", len(source))
 	//if source has only 8 lines, it means the words are in one line, not separated by \n
-	if len(source) == 8 {
+	if len(source) == 9 {
 		//then return it back
-		return source
+		source = source[:8]
 	}
 
 	//loop over each line and asign source's lines to output
@@ -16,9 +25,9 @@ func ArtToSingleLine(source []string) []string {
 	}
 
 	//if output is longer than 8, means that words are separated by \n
-	if len(source) > 8 {
+	if len(source) > 9 {
 		// make source everything after the 8
-		source = source[8:]
+		source = source[10:]
 	}
 
 	//loop until source has no lines

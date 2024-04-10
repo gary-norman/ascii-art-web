@@ -50,7 +50,10 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var artInput, artOutput string
+	var artInput, artOutput, outputResult string
+	//standardMap := ascii_art_web.AsciiMap(ascii_art_web.PrepareBanner("standard"))
+	//shadowMap := ascii_art_web.AsciiMap(ascii_art_web.PrepareBanner("shadow"))
+	//thinkertoyMap := ascii_art_web.AsciiMap(ascii_art_web.PrepareBanner("thinkertoy"))
 
 	chosenInput := r.FormValue("generate")
 	chosenStyle := r.FormValue("banner")
@@ -58,10 +61,16 @@ func processor(w http.ResponseWriter, r *http.Request) {
 	colorInput := r.FormValue("colour-text")
 	chosenAlign := r.FormValue("text-align")
 	defaultValue := "default"
-	fmt.Println("the value in file-drop is:", r.FormValue("file-drop"))
+
 	if ascii_art_web.IsFilePresent(w, r) {
+		emptyCols := ascii_art_web.RemoveValidSpaceIndex(ascii_art_web.GetEmptyCols(ascii_art_web.ArtFromFileLines(w, r)))
+		fmt.Println("emptyCols", emptyCols)
+
+		charMap := ascii_art_web.CharMap(ascii_art_web.ArtToSingleLine(ascii_art_web.ArtFromFileLines(w, r)), emptyCols)
+		fmt.Println("charMap:", charMap)
+
 		artInput = ascii_art_web.ArtFromFile(w, r)
-		fmt.Println("condition: artInput is:		", artInput)
+		fmt.Println("conditi n: artInput is:		", artInput)
 		artOutput = ascii_art_web.CheckReverse(w, r)
 		fmt.Println("condition: artOutput is:		", artOutput)
 	}
@@ -78,12 +87,12 @@ func processor(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("chosenAlign is:		", chosenAlign)
 	fmt.Println("------------------------------------------------")
 
-	outputResult := ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
-
 	if artInput != "" {
 		outputResult = artInput
 		fmt.Println("file present... outputResult is now = artInput -> outputResult:", outputResult)
 
+	} else {
+		outputResult = ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
 	}
 
 	fmt.Println("------------------------------------------------------------------------------------------------")
