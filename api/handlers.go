@@ -18,7 +18,7 @@ func HandleRequestsGary() {
 	http.Handle("/icons/", http.StripPrefix("/icons/", http.FileServer(http.Dir("icons"))))
 	http.Handle("/ascii_styles/", http.StripPrefix("/ascii_styles/", http.FileServer(http.Dir("ascii_styles"))))
 	http.HandleFunc("/process", processor)
-	http.HandleFunc("/upload", reverse)
+	//http.HandleFunc("/upload" Reverse)
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		return

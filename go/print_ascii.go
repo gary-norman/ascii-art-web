@@ -27,7 +27,7 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 				} else {
 					alignedString += asciiStr[i]
 					outputString += asciiStr[i]
-					if align == "default" {
+					if align == "default" || align == "left" {
 						// fmt.Print("b")
 						fmt.Print(asciiStr[i])
 					} else {
@@ -47,14 +47,13 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 			}
 		}
 		outputString += "\n"
-		if align == "default" {
+		if align == "default" || align == "left" {
 			fmt.Println()
 		} else {
 			PrintAligned(align, sep, spaces, alignedString)
 		}
 		newString = outputString
 	}
-	fmt.Println("testing 2")
 	return newString
 	////handle outputfile if present
 	//if output != "default" {

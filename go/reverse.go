@@ -4,29 +4,6 @@ import (
 	"fmt"
 )
 
-/*
-	Reverse Plan:
-	1. loop over text file:
-		-loop over each character in a line
-			-how to distinguish where each character starts and ends?
-				shown below
-		-loop over the amount of lines
-	2. when looping, check if each ascii character's string matches the ascii map
-	3. if all 8 checks for each line are equal to the same letter, store that letter
-	4. create a new string and keep adding each letter to create the word to print
-	5. print the word
-
-	How to separate the characters in the ascii art
-	1. create a map for each character style - standard, shadow, thinkertoy
-	2. use empty space across all 8 lines as a separator
-	3. extract these as an array of indexes
-	4. add a star at these indexes in the lines
-	5. strings.Split using * as a separator
-	6. go over the arrays and add the characters for each letter/symbol together and map them
-	7. compare the input text ascii map with each of the prepared maps
-	8. Print each word
-*/
-
 // Compares getChar and getInputChar and prints the string to the terminal
 func AsciiToChars(input, standard, shadow, thinkertoy map[int][]string) {
 	output := make(map[int][]int)

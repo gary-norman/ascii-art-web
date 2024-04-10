@@ -16,7 +16,7 @@ func init() {
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 
-	t, err := template.ParseFiles("templates/index_kamil.html")
+	t, err := template.ParseFiles("templates/index.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -49,24 +49,30 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-	fmt.Println(r.Form)
+
 	chosenInput := r.FormValue("generate")
 	chosenStyle := r.FormValue("banner")
 	chosenColor := r.FormValue("colors")
 	colorInput := r.FormValue("colour-text")
 	defaultValue := "default"
-	artInput := r.FormValue("file-drop")
+	artInput := ascii_art_web.ArtFromFile(w, r)
 	chosenAlign := r.FormValue("text-align")
+	artOutput := ascii_art_web.CheckReverse(w, r)
+
+	if colorInput == "" && chosenInput != "" {
+		colorInput = chosenInput
+	}
 
 	fmt.Println("chosenInput is:		", chosenInput)
 	fmt.Println("chosenStyle is:		", chosenStyle)
 	fmt.Println("chosenColor is:		", chosenColor)
 	fmt.Println("colorInput is:		", colorInput)
 	fmt.Println("artInput is:		", artInput)
+	fmt.Println("artOutput is:		", artOutput)
 	fmt.Println("chosenAlign is:		", chosenAlign)
 	fmt.Println("------------------------------------------------")
 	outputResult := ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
-
+	fmt.Println("------------------------------------------------------------------------------------------------")
 	d := struct {
 		InputText  string
 		Style      string
@@ -74,6 +80,7 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord  string
 		FileWant   string
 		InputAlign string
+		CurrentArt string
 		ArtToText  string
 		TextToArt  string
 	}{
@@ -83,7 +90,8 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		FileWant:   defaultValue,
 		ColorWord:  colorInput,
 		InputAlign: chosenAlign,
-		ArtToText:  artInput,
+		CurrentArt: artInput,
+		ArtToText:  artOutput,
 		TextToArt:  outputResult,
 	}
 	tpl.ExecuteTemplate(w, "result.html", d)
