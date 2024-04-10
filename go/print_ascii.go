@@ -7,8 +7,8 @@ import (
 
 // Prints each ascii character, 1 by 1, line by line and handles colour
 func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour string, output string, align string) string {
-	var newString string
-	var outputString string
+	var newString, outputString string
+
 	spaces := 0
 	// Iterate over each line of the ASCII art
 	for i := 0; i < 8; i++ {
@@ -21,8 +21,9 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 			if asciiStr, ok := asciiMap[int(word[letterNum])]; ok {
 				//check if there are any characters to colour
 				if strings.Contains(toColour, string(word[letterNum])) {
-					outputString += asciiStr[i]
-					PrintColorised(colour, asciiStr[i])
+
+					fmt.Printf("before PrintColorised... colour is: %v, asciiStr[i] is: %v\n", colour, asciiStr[i])
+					outputString += PrintColorised(colour, asciiStr[i])
 					// Print the corresponding line of ASCII art from the map
 				} else {
 					alignedString += asciiStr[i]
