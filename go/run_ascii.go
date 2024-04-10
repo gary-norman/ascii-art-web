@@ -37,9 +37,7 @@ func RunAscii(input, style, colour, toColour, output, align, reverse string) str
 	//
 	//prepare correct ascii map(s)
 	//if reverse != "default" {
-	//	standardMap = AsciiMap(PrepareBanner("standard"))
-	//	shadowMap = AsciiMap(PrepareBanner("shadow"))
-	//	thinkertoyMap = AsciiMap(PrepareBanner("thinkertoy"))
+
 	//	source = ArtFromFile(reverse)
 	//} else {
 	//prepare the text file for the characters
@@ -52,6 +50,7 @@ func RunAscii(input, style, colour, toColour, output, align, reverse string) str
 
 	//prepare ascii map
 	asciiMap = AsciiMap(source)
+	fmt.Println(asciiMap)
 	//}
 
 	////handle all flags and prepare arguments and variables
@@ -62,9 +61,7 @@ func RunAscii(input, style, colour, toColour, output, align, reverse string) str
 	//} else
 	//if reverse != "default" {
 	//	// fmt.Println("source is:", source)
-	//	emptyCols := RemoveValidSpaceIndex(GetEmptyCols(source))
-	//	charMap := CharMap(ArtToSingleLine(source), emptyCols)
-	//	AsciiToChars(charMap, standardMap, shadowMap, thinkertoyMap)
+
 	//}
 
 	//if the word has \n in it, split into separate words

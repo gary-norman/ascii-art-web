@@ -1,9 +1,14 @@
 package ascii_art_web
 
+import "fmt"
+
 func GetEmptyCols(source []string) []int {
+	fmt.Println("entering GetEmptyCols")
+	fmt.Println("------------------------------------------------")
+
 	source = ArtToSingleLine(source)
 
-	//fmt.Println("source:*", source)
+	fmt.Println("source:", source)
 
 	var emptyCols []int
 
@@ -25,6 +30,8 @@ func GetEmptyCols(source []string) []int {
 
 // Remove indices for valid spaces, before the end space
 func RemoveValidSpaceIndex(indices []int) []int {
+	fmt.Println("entering RemoveValidSpaceIndex")
+	fmt.Println("------------------------------------------------")
 	for i := 0; i < len(indices)-1; i++ {
 		if len(indices)-i > 6 {
 			if indices[i] == (indices[i+6])-6 {
