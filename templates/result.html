@@ -73,9 +73,10 @@
                             </div>
                             <div id="colorPicker" class="smaller">
                                 <div class="card">
-                                    <div class="buttonedLabel">
-                                        <div class="labelwbtn">Choose your colour</div>
-                                        <button type="button" class="reset"></button>
+                                    <div class="label">Choose your colour</div>
+<!--                                        <button type="button" class="reset"></button>-->
+                                    <div class="labelwbtn">
+                                        <span>Reset align/color</span><button type="button" class="reset"></button>
                                     </div>
                                     <div class="toggle">
                                         <label class="radio">
@@ -102,7 +103,7 @@
                                     <div class="select">
                                         <label class="" for="color-txt"></label>
                                         <input id="color-txt" name="colour-text"
-                                               placeholder="Enter specific letters to colourise (optional)" value="">
+                                               placeholder="Enter specific letters  (optional)" value="">
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +150,7 @@
                                 </svg>
                             </label>
                         </div>
-                        <div class="autoscroll"><pre class="artput" id="ascii-output">{{.TextToArt}}</pre></div>
+                        <div class="autoscroll"><pre class="artput coloredRed">{{.TextToArt}}</pre></div>
                     </div>
                 </div>
             </article>
