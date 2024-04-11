@@ -31,6 +31,11 @@
     --select-arrow: var(--select-border);
     --button-rad: 20%;
     --border-clr: rgba(0,0,0,.2);
+    /* colours for colorized text */
+    --red: #e13939;
+    --green: rgba(39, 204, 39, 0.91);
+    --blue: rgb(53, 86, 193);
+    --yellow: #fbed34;
 }
 
 html {
@@ -169,13 +174,28 @@ select, label, input {
     width: 100%;
 }
 .labelwbtn {
-    padding: 0  1rem;
+    padding: .5rem;
     color: #fff;
+}
+.whiteLabel {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem .5rem .3rem;
+    background: #fff;
+    color: dimgray;
+}
+.whiteLabel:hover {
+    color: #252525;
+    cursor: pointer;
+}
+.whiteLabel * {
+    margin: 0 .5rem;
+
 }
 .buttonedLabel {
     display: flex;
     justify-content: space-between;
-    height: 2rem;
+    height: 3.5rem;
     border-radius: var(--border-rad) var(--border-rad) 0 0;
     background-color: var(--bg-clr-select_header);
 }
@@ -256,22 +276,28 @@ label {
     width: 32px;
 }
 .artput {
-    margin: 0;
-    height: 20rem;
-    padding: 1rem;
-    color: dimgray;
-    background: #fff;
-    transition: .3s;
-    line-height: 1;
-    width: auto;
-    font-size: clamp(.8vw, .8rem + 1vw, 1.2vw);
-}
-#asciiout {
-    overflow: hidden;
 }
 .autoscroll {overflow: auto
 }
+.asciiOut {
+    overflow: hidden;
+    margin: 0;
+    height: 20rem;
+    padding: 1rem;
+    line-height: 1;
+    width: auto;
+    font-size: clamp(.8vw, .8rem + 1vw, 1.2vw);
+    color: dimgrey;
+    background: #fff;
+    transition: .3s;
+}
 .asciiOutDark {
+    overflow: hidden;
+    margin: 0;
+    height: 20rem;
+    padding: 1rem;
+    line-height: 1;
+    width: auto;
     color: #8c8c8c;
     background: #272727;
     transition: .3s;
@@ -280,7 +306,7 @@ label {
     position: relative;
     width: 24px;
     height: 24px;
-    background: rgba(0 0 0 / 0);
+    background: rgba(0 0 0 / .4);
     box-shadow: inset 0 5px 15px rgba(0 0 0 / .4), inset 0 -1px 1px rgba(255 255 255 / .4);
     border: 0;
     border-radius: 25px;
@@ -317,7 +343,7 @@ label {
 .toggle {
     background-color: #fff;
     border: solid var(--bg-clr-select_header);
-    border-width: 0 0 1px 0;
+    border-width: 1px 0 1px 0;
     display: flex;
     align-content: center;
     justify-items: center;
@@ -354,21 +380,36 @@ label {
     width: 3rem;
     /*margin: 0;*/
 }
+/* colours for colorized text */
 .red {
-    background-color: #e13939;
+    background-color: var(--red);
+}
+.colorRed {
+    color: var(--red);
 }
 .green {
-    background-color: rgba(39, 204, 39, 0.91);
+    background-color: var(--green);
+}
+.colorGreen {
+    color: var(--green);
 }
 .blue {
-    background-color: rgb(53, 86, 193);
+    background-color: var(--blue);
+}
+.colorBlue {
+    color: var(--blue);
 }
 .yellow {
-    background-color: #fbed34;
-    /*border: 1px solid #ffe022;*/
+    background-color: var(--yellow);
+}
+.colorYellow {
+    color: var(--yellow);
 }
 .orange {
     background-color: orange;
+}
+.colorOrange {
+    color: orange;
 }
 .left {
     background-image: url("../icons/align-left.svg");
