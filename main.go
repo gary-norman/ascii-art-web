@@ -58,9 +58,11 @@ func processor(w http.ResponseWriter, r *http.Request) {
 	chosenInput := r.FormValue("generate")
 	chosenStyle := r.FormValue("banner")
 	chosenColor := r.FormValue("colors")
+	fmt.Println("color is: ", chosenColor)
 	colorInput := r.FormValue("colour-text")
 	chosenAlign := r.FormValue("text-align")
 	defaultValue := "default"
+	//classVar := "colorRed"
 
 	if ascii_art_web.IsFilePresent(w, r) {
 		emptyCols := ascii_art_web.RemoveValidSpaceIndex(ascii_art_web.GetEmptyCols(ascii_art_web.ArtFromFileLines(w, r)))
@@ -74,10 +76,7 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		artOutput = ascii_art_web.CheckReverse(w, r)
 		fmt.Println("condition: artOutput is:		", artOutput)
 	}
-	if colorInput == "" && chosenInput != "" {
 
-		colorInput = chosenInput
-	}
 	fmt.Println("chosenInput is:		", chosenInput)
 	fmt.Println("chosenStyle is:		", chosenStyle)
 	fmt.Println("chosenColor is:		", chosenColor)
@@ -93,6 +92,10 @@ func processor(w http.ResponseWriter, r *http.Request) {
 
 	} else {
 		outputResult = ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
+	}
+	if colorInput == "" && chosenInput != "" {
+		colorInput = chosenInput
+		outputResult = "<pre class=\"" + chosenColor + "\">" + outputResult + "</pre>"
 	}
 
 	fmt.Println("------------------------------------------------------------------------------------------------")
@@ -113,7 +116,8 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord:  colorInput,
 		InputAlign: chosenAlign,
 		ArtToText:  artOutput,
-		TextToArt:  "<pre>this</pre><pre>is</pre><pre>a</pre><pre>test</pre>",
+		//TextToArt:  "<pre>this</pre><pre>is</pre><pre>a</pre><pre>test</pre>",
+		TextToArt: outputResult,
 	}
 	tpl.ExecuteTemplate(w, "result.html", d)
 }
