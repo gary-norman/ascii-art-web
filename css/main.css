@@ -16,6 +16,7 @@
   /* fonts */
   --font-sz-main: clamp(1rem, 1.2rem + 0.65vw, 1.6rem);
   --font-sz-cards: clamp(.8rem, 1rem + 0.65vw, 1.2rem);
+    --font-sz-ascii: clamp(.1rem, .3rem + 0.65vw, .4rem);
   --font-primary: 'Roboto', sans-serif;
   --font-secondary: 'Roboto', sans-serif;
   --font-accent: 'Kdam Thmor Pro', sans-serif;
@@ -172,6 +173,7 @@ select, label, input {
 }
 #fileSubmit {
     width: 100%;
+    height: 28px;
 }
 .labelwbtn {
     padding: .5rem;
@@ -315,6 +317,7 @@ label {
 .autoscroll {overflow: auto
 }
 .asciiOut {
+    display: flex;
     overflow: hidden;
     margin: 0;
     height: 20rem;
@@ -361,9 +364,6 @@ label {
     width: 100%;
     flex-direction: column;
     align-items: center;
-}
-.smaller {
-    width: 100%;
 }
 .radio {
     display: block;
@@ -533,7 +533,7 @@ label {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 8rem;
+    height: 10rem;
     font-size: var(--font-sz-cards);
     background-color: #fff;
     background-image: url("../icons/upload.svg");
@@ -560,6 +560,9 @@ label {
 #drop_zone p a:hover {
     color: black;
 }
+#drop_zone input {
+    cursor: pointer;
+}
 #text_input {
     width: 100%;
     border-radius: var(--border-rad);
@@ -584,13 +587,15 @@ label {
         width: 95%;
         display: grid;
     }
+    #gopher {
+        display: none;
+    }
 }
 @media only screen and (min-width: 601px) {
     body {
         width: 95%;
         margin: 0 auto;
     }
-
     .frontpage {
         height: 95%;
         scroll-snap-align: start;
@@ -599,15 +604,16 @@ label {
         transform: translateY(-50%);
         margin: auto;
     }
-
     .frosted {
         display: flex;
         align-items: start;
         justify-content: center;
     }
-
     form, .form {
         width: 95%;
+    }
+    #gopher {
+        display: none;
     }
 }
 
@@ -632,12 +638,12 @@ label {
           grid-area: mod;
           display: grid;
           height: 100%;
-          grid-template-columns: 4fr 4fr 4fr;
-          /*grid-template-rows: 4fr 7fr .5fr;*/
-          gap: 2rem;
+          grid-template-columns: 4fr 4fr 4fr 4fr 4fr 4fr;
+          grid-template-rows: 4fr 1fr;
+          gap: .5rem 2rem;
           grid-template-areas:
-          "gen col up";
-          /*justify-items: center;*/
+          "gen gen col col up up"
+          "a do do rev rev f";
           justify-content: space-between;
           align-items: start;
       }
@@ -651,7 +657,83 @@ label {
       }
       #upload {
           grid-area: up;
+          z-index: 0;
           /*width: 100%*/
+      }
+      .upload {
+          /*z-index: 0;*/
+          backface-visibility: hidden;
+          transform: rotate3d(0, 1, 0, -180deg);
+          transition: .5s ease;
+      }
+    .uploadFlip {
+        /*z-index: 1;*/
+        transform: rotate3d(0, 1, 0, 0deg);
+        transition: .5s ease;
+    }
+      #gopher {
+          grid-area: up;
+          display: flex;
+          flex-direction: column;
+      }
+      .gopher {
+          /*z-index: -1;*/
+          backface-visibility: hidden;
+          /*transform: rotate3d(0, 1, 0, -180deg);*/
+          transition: .5s ease;
+      }
+      .gopherFlip {
+          /*z-index: 1;*/
+          transform: rotate3d(0, 1, 0, 180deg);
+          transition: .5s ease;
+      }
+      #gopher div {
+          display: flex;
+          margin: 1rem 0;
+          height: 13.2rem;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+          background: #fff;
+          border: 2px dashed var(--bg-clr-select_header);
+      }
+      #gopher pre {
+          color: dimgray;
+          justify-content: center;
+          font-size: var(--font-sz-ascii);
+      }
+      #do, #rev {
+          display: grid;
+          align-items: center;
+          justify-items: center;
+          width: 75%;
+          height: 4rem;
+          justify-self: center;
+          color: dimgrey;
+          background: #fff;
+          border-radius: 20px;
+      }
+      #do:hover, #rev:hover {
+          color: #252525;
+          cursor: pointer;
+      }
+      #do {
+          grid-area: do;
+      }
+      .do {
+          box-shadow: var(--button-shadow);
+      }
+      .do:active {
+          box-shadow: var(--button-pressed-shadow);
+      }
+      #rev {
+          grid-area: rev;
+      }
+      .rev {
+          box-shadow: var(--button-shadow);
+      }
+      .revPressed {
+          box-shadow: var(--button-pressed-shadow);
       }
       #asciiout {
           grid-area: art;

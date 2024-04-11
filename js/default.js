@@ -1,3 +1,4 @@
+// options
 const operation = document.getElementById("function");
 const standardise = document.getElementById("standardise");
 const colorize = document.getElementById("colorize");
@@ -25,18 +26,21 @@ const txt_justify_input = document.querySelector("#justify");
 const txt_right_image = document.querySelector(".right");
 const txt_center_image = document.querySelector(".center");
 const txt_justify_image = document.querySelector(".justify");
-
 // ui sections
 const color = document.getElementById("colorPicker");
 const upload = document.getElementById("upload");
 const alignment = document.getElementById("alignment");
 const generator = document.getElementById("generator");
 const asciiout = document.getElementById("asciiout");
+const gopher = document.getElementById("gopher")
 // forms
 const formMain = document.forms['mainForm'];
 const textRadios = formMain.elements['text-align'];
 const colorRadios = formMain.elements['colors'];
-//text areas
+// buttons
+const make = document.getElementById("do")
+const rev = document.getElementById("rev")
+// text areas
 const asciiOutput = document.getElementById("ascii-output");
 
 
@@ -126,6 +130,11 @@ function justifyDisable() {
         txt_justify_input.disabled = false
     }
 }
+function toggleReverse() {
+    gopher.classList.toggle("gopherFlip");
+    upload.classList.toggle("uploadFlip");
+    rev.classList.toggle("revPressed")
+}
 // function adjustTextSize(containerId) {
 //     let fontSize = 1; // Starting font size
 //     const step = 0.1; // Decrease step
@@ -141,7 +150,7 @@ function justifyDisable() {
 // fitText(asciiOutput, 5)
 
 // events
-
+rev.addEventListener("click", toggleReverse)
 // reset select and radios to default on page load
 // TODO standardise not functioning
 document.addEventListener("DOMContentLoaded", reset);

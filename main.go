@@ -113,7 +113,7 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord:  colorInput,
 		InputAlign: chosenAlign,
 		ArtToText:  artOutput,
-		TextToArt:  outputResult,
+		TextToArt:  "<pre>this</pre><pre>is</pre><pre>a</pre><pre>test</pre>",
 	}
 	tpl.ExecuteTemplate(w, "result.html", d)
 }
