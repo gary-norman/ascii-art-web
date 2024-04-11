@@ -151,6 +151,7 @@ function toggleReverse() {
 
 // events
 rev.addEventListener("click", toggleReverse)
+gopher.addEventListener("click", toggleReverse)
 // reset select and radios to default on page load
 // TODO standardise not functioning
 document.addEventListener("DOMContentLoaded", reset);

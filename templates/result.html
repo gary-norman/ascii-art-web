@@ -11,7 +11,7 @@
 <div class="wrapper">
     <section class="frontpage">
         <main>
-            <h1 >ASCII Art Generator</h1>
+            <a href="http://localhost:8080">ASCII Art Generator</a>
             <article class="frosted">
                 <div class="elements">
                     <form action="/process" id="options" method="POST">
@@ -32,7 +32,7 @@
                     </form>
                     <form enctype="multipart/form-data" action="/process" id="mainForm"  name="mainForm" method="POST">
                         <div class="modifiers">
-                            <div id="generator" class="smaller">
+                            <div id="generator">
                                 <div class="card">
                                     <div class="label">
                                         <label for="banner">Choose your style</label>
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="colorPicker" class="smaller">
+                            <div id="colorPicker">
                                 <div class="card">
                                     <div class="label">Choose your colour</div>
                                     <!--                                        <button type="button" class="reset"></button>-->
@@ -108,7 +108,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="upload" class="smaller">
+                            <div id="upload" class="upload">
                                 <div class="card">
                                     <div class="label">
                                         <label class="" for="browse">Upload your file</label>
@@ -120,25 +120,27 @@
                                         <input type="submit" id="fileSubmit" value="submit" />
                                         <!--                                <input type="file" id="browse" name="file-drop" />-->
                                     </div>
-<!--                                    <div class="label artsays">Your art says:</div>-->
-<!--                                    <div class="select textarea" id="reverse-output">{{.ArtToText}}</div>-->
+                                    <!--                                    <div class="label artsays">Your art says:</div>-->
+                                    <!--                                    <div class="select textarea" id="reverse-output">{{.ArtToText}}</div>-->
                                 </div>
                             </div>
-                            <div id="gopher">
+                            <div id="gopher" class="gopher">
                                 <div>
                                     <pre>             _____    _____   _____   _____                       _____    _______
     /\      / ____|  / ____| |_   _| |_   _|              /\     |  __ \  |__   __|
    /  \    | (___   | |        | |     | |    ______     /  \    | |__) |    | |
   / /\ \    \___ \  | |        | |     | |   |______|   / /\ \   |  _  /     | |
  / ____ \   ____) | | |____   _| |_   _| |_            / ____ \  | | \ \     | |
-/_/    \_\ |_____/   \_____| |_____| |_____|          /_/    \_\ |_|  \_\    |_|</pre>
+/_/    \_\ |_____/   \_____| |_____| |_____|          /_/    \_\ |_|  \_\    |_|</pre> <!-- ascii art -->
                                 </div>
-                            </div>
+                            </div> <!-- gopher -->
+                            <div id="do" class="do">generate ascii</div>
+                            <div id="rev" class="rev">enable reverse</div>
                         </div>
                     </form>
                     <div class="card output" id="asciiout">
                         <div class="buttonedLabel">
-                            <div class="labelwbtn">Your art:</div>
+                            <div class="labelwbtn">{{.ArtToText}}</div>
                             <input type="checkbox" id="darkmode-toggle">
                             <label class="darkmode" for="darkmode-toggle">
                                 <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
