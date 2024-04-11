@@ -14,6 +14,7 @@
     --button-hover-shadow: 4px 4px 5px -1px rgba(0,0,0,0.45);
     --button-pressed-shadow: inset 0 4px 3px -2px rgba(0 0 0 / .4), inset 0 -1px 1px -1px rgba(0 0 0  / .3);
   /* fonts */
+  --font-sz-title: clamp(1.8rem, 2rem + 0.65vw, 2.2rem);
   --font-sz-main: clamp(1rem, 1.2rem + 0.65vw, 1.6rem);
   --font-sz-cards: clamp(.8rem, 1rem + 0.65vw, 1.2rem);
     --font-sz-ascii: clamp(.1rem, .3rem + 0.65vw, .4rem);
@@ -82,6 +83,10 @@ main {
     top: 50%;
     transform: translateY(-50%);
     margin: auto;
+}
+main > a {
+    font-size: var(--font-sz-title);
+    font-weight: bolder;
 }
 .frosted {
     width: 100%;
@@ -681,6 +686,7 @@ label {
           backface-visibility: hidden;
           /*transform: rotate3d(0, 1, 0, -180deg);*/
           transition: .5s ease;
+          cursor: pointer;
       }
       .gopherFlip {
           /*z-index: 1;*/

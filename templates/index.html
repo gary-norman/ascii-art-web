@@ -11,7 +11,7 @@
 <div class="wrapper">
     <section class="frontpage">
         <main>
-            <h1 >ASCII Art Generator</h1>
+            <a href="http://localhost:8080">ASCII Art Generator</a>
             <article class="frosted">
                 <div class="elements">
                     <form action="/process" id="options" method="POST">
@@ -140,7 +140,7 @@
                     </form>
                     <div class="card output" id="asciiout">
                         <div class="buttonedLabel">
-                            <div class="labelwbtn">Your art:</div>
+                            <div class="labelwbtn">{{.ArtToText}}</div>
                             <input type="checkbox" id="darkmode-toggle">
                             <label class="darkmode" for="darkmode-toggle">
                                 <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
