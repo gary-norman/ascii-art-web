@@ -16,7 +16,7 @@
   /* fonts */
   --font-sz-main: clamp(1rem, 1.2rem + 0.65vw, 1.6rem);
   --font-sz-cards: clamp(.8rem, 1rem + 0.65vw, 1.2rem);
-    --font-sz-ascii: clamp(.1rem, .4rem + 0.65vw, .5rem);
+    --font-sz-ascii: clamp(.1rem, .3rem + 0.65vw, .4rem);
   --font-primary: 'Roboto', sans-serif;
   --font-secondary: 'Roboto', sans-serif;
   --font-accent: 'Kdam Thmor Pro', sans-serif;
@@ -365,9 +365,6 @@ label {
     flex-direction: column;
     align-items: center;
 }
-.smaller {
-    width: 100%;
-}
 .radio {
     display: block;
     position: relative;
@@ -641,12 +638,12 @@ label {
           grid-area: mod;
           display: grid;
           height: 100%;
-          grid-template-columns: 4fr 4fr 4fr;
-          /*grid-template-rows: 4fr 7fr .5fr;*/
-          gap: 2rem;
+          grid-template-columns: 4fr 4fr 4fr 4fr 4fr 4fr;
+          grid-template-rows: 4fr 1fr;
+          gap: .5rem 2rem;
           grid-template-areas:
-          "gen col up";
-          /*justify-items: center;*/
+          "gen gen col col up up"
+          "a do do rev rev f";
           justify-content: space-between;
           align-items: start;
       }
@@ -663,11 +660,32 @@ label {
           z-index: 0;
           /*width: 100%*/
       }
+      .upload {
+          /*z-index: 0;*/
+          backface-visibility: hidden;
+          transform: rotate3d(0, 1, 0, -180deg);
+          transition: .5s ease;
+      }
+    .uploadFlip {
+        /*z-index: 1;*/
+        transform: rotate3d(0, 1, 0, 0deg);
+        transition: .5s ease;
+    }
       #gopher {
           grid-area: up;
           display: flex;
           flex-direction: column;
-          z-index: 1;
+      }
+      .gopher {
+          /*z-index: -1;*/
+          backface-visibility: hidden;
+          /*transform: rotate3d(0, 1, 0, -180deg);*/
+          transition: .5s ease;
+      }
+      .gopherFlip {
+          /*z-index: 1;*/
+          transform: rotate3d(0, 1, 0, 180deg);
+          transition: .5s ease;
       }
       #gopher div {
           display: flex;
@@ -684,7 +702,39 @@ label {
           justify-content: center;
           font-size: var(--font-sz-ascii);
       }
-
+      #do, #rev {
+          display: grid;
+          align-items: center;
+          justify-items: center;
+          width: 75%;
+          height: 4rem;
+          justify-self: center;
+          color: dimgrey;
+          background: #fff;
+          border-radius: 20px;
+      }
+      #do:hover, #rev:hover {
+          color: #252525;
+          cursor: pointer;
+      }
+      #do {
+          grid-area: do;
+      }
+      .do {
+          box-shadow: var(--button-shadow);
+      }
+      .do:active {
+          box-shadow: var(--button-pressed-shadow);
+      }
+      #rev {
+          grid-area: rev;
+      }
+      .rev {
+          box-shadow: var(--button-shadow);
+      }
+      .revPressed {
+          box-shadow: var(--button-pressed-shadow);
+      }
       #asciiout {
           grid-area: art;
           height: 100%;
