@@ -19,11 +19,12 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 		for letterNum := 0; letterNum < len(word); letterNum++ {
 			// Check if the ASCII value exists in the map and if it matches the current character in the word
 			if asciiStr, ok := asciiMap[int(word[letterNum])]; ok {
-				//check if there are any characters to colour
+				//check if there are any characters to colour and render them in the terminal
 				if strings.Contains(toColour, string(word[letterNum])) {
 					outputString += PrintColorised(colour, asciiStr[i])
 					// Print the corresponding line of ASCII art from the map
 				} else {
+
 					alignedString += asciiStr[i]
 					outputString += asciiStr[i]
 					if align == "default" || align == "left" {
@@ -49,7 +50,7 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 		if align == "default" || align == "left" {
 			fmt.Println()
 		} else {
-			PrintAligned(align, sep, spaces, alignedString)
+			AlignWords(align, sep, spaces, alignedString)
 		}
 		newString = outputString
 	}

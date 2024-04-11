@@ -392,34 +392,34 @@ label {
     /*margin: 0;*/
 }
 /* colours for colorized text */
-.red {
+.redSelect {
     background-color: var(--red);
 }
-.colorRed {
+.red {
     color: var(--red);
 }
-.green {
+.greenSelect {
     background-color: var(--green);
 }
-.colorGreen {
+.green {
     color: var(--green);
 }
-.blue {
+.blueSelect {
     background-color: var(--blue);
 }
-.colorBlue {
+.blue {
     color: var(--blue);
 }
-.yellow {
+.yellowSelect {
     background-color: var(--yellow);
 }
-.colorYellow {
+.yellow {
     color: var(--yellow);
 }
-.orange {
+.orangeSelect {
     background-color: orange;
 }
-.colorOrange {
+.orange {
     color: orange;
 }
 .left {

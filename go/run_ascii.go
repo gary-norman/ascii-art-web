@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func RunAscii(input, style, colour, toColour, output, align, reverse string) string {
+func RunAscii(input, style, colour, toColour, output, align, reverse string, charMap map[int][]string) string {
 	fmt.Println("Entering RunAscii...")
 	fmt.Println("------------------------------------------------")
 	fmt.Println("input is:", input)
@@ -76,6 +76,6 @@ func RunAscii(input, style, colour, toColour, output, align, reverse string) str
 	//print words
 	fmt.Println("------------------------------------------------")
 	fmt.Println("Entering AsciiWords...")
-	return AsciiWords(words, asciiMap, colour, toColour, output, align)
+	return AsciiWords(words, asciiMap, charMap, colour, toColour, output, align)
 
 }
