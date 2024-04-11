@@ -74,9 +74,10 @@
                             <div id="colorPicker" class="smaller">
                                 <div class="card">
                                     <div class="label">Choose your colour</div>
-<!--                                        <button type="button" class="reset"></button>-->
-                                    <div class="labelwbtn">
-                                        <span>Reset align/color</span><button type="button" class="reset"></button>
+                                    <!--                                        <button type="button" class="reset"></button>-->
+                                    <div class="whiteLabel">
+                                        <span>Reset colour selection</span>
+                                        <button type="button" class="reset"></button>
                                     </div>
                                     <div class="toggle">
                                         <label class="radio">
@@ -150,7 +151,7 @@
                                 </svg>
                             </label>
                         </div>
-                        <div class="autoscroll"><pre class="artput coloredRed">{{.TextToArt}}</pre></div>
+                        <div class="autoscroll asciiOut" id="ascii-output"></div>
                     </div>
                 </div>
             </article>
@@ -159,5 +160,12 @@
 </div>
 <script type="text/javascript" src="../js/default.js"></script>
 <script type="text/javascript" src="../js/fittext.js"></script>
+<script>
+    // This script will run once the HTML document is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Use the string as innerHTML for an element
+        document.getElementById('ascii-output').innerHTML = `{{.TextToArt}}`;
+    });
+</script>
 </body>
 </html>
