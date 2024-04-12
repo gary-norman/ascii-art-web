@@ -56,7 +56,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 		TextToArt:   template.HTML(outputResult),
 	}
 
-	tpl.ExecuteTemplate(w, "result.html", d)
+	tpl.ExecuteTemplate(w, "index.html", d)
 }
 func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 	// Parse the template file
