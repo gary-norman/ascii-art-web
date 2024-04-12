@@ -49,19 +49,19 @@
                                     <div class="toggle" id="alignment">
                                         <label class="radio" id="radioleft">
                                             <input type="radio" value="left" id="left" name="text-align" checked>
-                                            <span class="checkmark left"></span>
+                                            <span class="checkmark iconLeft"></span>
                                         </label>
                                         <label class="radio" id="radioright">
                                             <input type="radio" value="right" id="right" name="text-align">
-                                            <span class="checkmark right"></span>
+                                            <span class="checkmark iconRight"></span>
                                         </label>
                                         <label class="radio" id="radiocenter">
                                             <input type="radio" value="center" id="center" name="text-align">
-                                            <span class="checkmark center"></span>
+                                            <span class="checkmark iconCenter"></span>
                                         </label>
                                         <label class="radio" id="radiojustify">
                                             <input type="radio" value="justify" id="justify" name="text-align">
-                                            <span class="checkmark justify"></span>
+                                            <span class="checkmark iconJustify"></span>
                                         </label>
                                     </div>
                                     <div class="select ">
@@ -132,6 +132,8 @@
   / /\ \    \___ \  | |        | |     | |   |______|   / /\ \   |  _  /     | |
  / ____ \   ____) | | |____   _| |_   _| |_            / ____ \  | | \ \     | |
 /_/    \_\ |_____/   \_____| |_____| |_____|          /_/    \_\ |_|  \_\    |_|</pre> <!-- ascii art -->
+
+                                    <!--                                    <pre><span>/ /\ \    \___ \  | |        | |     | |   |______|   / /\ \   |  _  /     | |</span></pre>-->
                                 </div>
                             </div> <!-- gopher -->
                             <div id="do" class="do">generate ascii</div>
@@ -163,7 +165,7 @@
                                 </svg>
                             </label>
                         </div>
-                        <div class="autoscroll asciiOut" id="ascii-output"></div>
+                        <div class="autoscroll asciiOut {{.ChosenAlign}}" id="ascii-output"></div>
                     </div>
                 </div>
             </article>

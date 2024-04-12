@@ -23,9 +23,9 @@ const txt_left_input = document.querySelector("#left");
 const txt_right_input = document.querySelector("#right");
 const txt_center_input = document.querySelector("#center");
 const txt_justify_input = document.querySelector("#justify");
-const txt_right_image = document.querySelector(".right");
-const txt_center_image = document.querySelector(".center");
-const txt_justify_image = document.querySelector(".justify");
+const txt_right_image = document.querySelector(".iconRight");
+const txt_center_image = document.querySelector(".iconCenter");
+const txt_justify_image = document.querySelector(".iconJustify");
 // ui sections
 const color = document.getElementById("colorPicker");
 const upload = document.getElementById("upload");
