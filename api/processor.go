@@ -35,6 +35,9 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 			outputResult = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, true)
 		}
 	}
+	if chosenAlign == "justify" {
+		outputResult = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
+	}
 	d := struct {
 		InputText   string
 		ChosenStyle string
