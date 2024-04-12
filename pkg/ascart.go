@@ -323,73 +323,28 @@ func MakeArtJustified(origString string, y map[int][]string) string {
 	wordSlice := strings.Split(replaceNewline, "\\n")
 	var words []string
 	for i := 0; i < len(wordSlice); i++ {
-		temp := string(wordSlice[i])
-		words = append(words, strings.Split(temp, " ")...)
+		words = append(words, strings.Split(wordSlice[i], " ")...)
 	}
-	fmt.Printf("Words = %v\n", words)
-	fmt.Printf("Wordslength = %v\n", len(words))
-	//spaces := 0
-	////var index []int
-	//for _, word := range wordSlice {
-	//	for _, letter := range word {
-	//		if letter == 32 {
-	//			spaces += 1
-	//			//index = append(index, word)
-	//		}
-	//	}
-	//}
-	//fmt.Printf("Index: %v\n", index)
-
-	//var words []string
-	//for i := 0; i <= index; i++ {
-	//
-	//}
-	//fmt.Printf("Spaces: %v\n", spaces)
-	//if spaces > 0 {
-	//	line := "<pre>"
-	//	for _, word := range wordSlice {
-	//		for j := 0; j < len(y[32]); j++ {
-	//			var space bool
-	//			for _, letter := range word {
-	//				space = false
-	//				if letter == 32 {
-	//					space = true
-	//					fmt.Printf("Space1: %v\n", space)
-	//				} else {
-	//					line = line + y[int(letter)][j]
-	//					fmt.Printf("Printed letter #%v\n", j)
-	//				}
-	//			}
-	//			if space {
-	//				fmt.Printf("Space2: %v\n", space)
-	//				line += "</pre><pre>"
-	//			} else {
-	//				line += "\n"
-	//				fmt.Printf("Printed new line\n")
-	//			}
-	//		}
-	//		art += line + "</pre>"
-	//		fmt.Printf("added </pre>\n")
-	//		line = "<pre>"
-	//	}
+	//fmt.Printf("Words = %v\n", words)
+	//fmt.Printf("Wordslength = %v\n", len(words))
 
 	if len(words) > 1 {
 		var line string
 		for _, word := range words {
 			line = "<pre>"
-			fmt.Printf("Added <pre>\n")
+			//fmt.Printf("Added <pre>\n")
 			for j := 0; j < len(y[32]); j++ {
 				for _, letter := range word {
 					line = line + y[int(letter)][j]
-					fmt.Printf("Added letter #%v\n", j)
+					//fmt.Printf("Added letter #%v\n", j)
 				}
 				line += "\n"
-				fmt.Printf("Added new line\n")
+				//fmt.Printf("Added new line\n")
 			}
 			line += "</pre>"
-			fmt.Printf("Added </pre>\n")
+			//fmt.Printf("Added </pre>\n")
 			art += line
-			fmt.Printf("%v += %v\n", art, line)
+			//fmt.Printf("%v += %v\n", art, line)
 		}
 
 	} else {
@@ -405,7 +360,6 @@ func MakeArtJustified(origString string, y map[int][]string) string {
 		art += line + "</pre>"
 		line = "<pre>"
 	}
-	//art = strings.TrimRight(art, "\n")
 	return art
 }
 
@@ -651,7 +605,7 @@ func Reverse(fileName string) string {
 //	// test is for testing and debugging
 //	if *test {
 //		fmt.Println("Reserved for testing and debugging.")
-//	} else {
+//	 else {
 //		// default output
 //		if len(additionalArgs) > 2 {
 //			fmt.Println("Usage: go run . [STRING] [STYLE] (optional)\n\nEX: go run . \"something\" thinkertoy.\nAvailable styles are standard, shadow, and thinkertoy.")
