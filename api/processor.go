@@ -18,15 +18,23 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	chosenColor := r.FormValue("colors")
 	chosenAlign := r.FormValue("text-align")
 	colorWord := r.FormValue("colour-text")
+	var colSlice []rune
 	artOutput := ""
-	outputResult := pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
+	outputResult := "<pre>" + pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
 	artToText := "Your Art:"
 	if ascii_art_web.IsFilePresent(w, r) {
 		artOutput = pkg.Reverse("filetoart/" + Reverse(w, r))
 		artToText = "Your art says: " + artOutput
-		outputResult = pkg.MakeArt(artOutput, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
+		outputResult = "<pre>" + pkg.MakeArt(artOutput, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
 	}
-
+	if chosenColor != "" {
+		if colorWord != "" {
+			colSlice := []rune(colorWord)
+			outputResult = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, false)
+		} else {
+			outputResult = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, true)
+		}
+	}
 	d := struct {
 		InputText   string
 		ChosenStyle string
@@ -34,7 +42,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord   string
 		ChosenAlign string
 		ArtToText   string
-		TextToArt   string
+		TextToArt   template.HTML
 	}{
 		InputText:   inputText,
 		ChosenStyle: chosenStyle,
@@ -42,7 +50,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 		ColorWord:   colorWord,
 		ChosenAlign: chosenAlign,
 		ArtToText:   artToText,
-		TextToArt:   "<pre class=\"" + chosenColor + "\">" + outputResult + "</pre>",
+		TextToArt:   template.HTML(outputResult),
 	}
 
 	tpl.ExecuteTemplate(w, "result.html", d)

@@ -9,7 +9,7 @@ import (
 func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour string, output string, align string) string {
 	var newString, outputString string
 
-	spaces := 0
+	//spaces := 0
 	// Iterate over each line of the ASCII art
 	for i := 0; i < 8; i++ {
 		wordCount := 0
@@ -31,7 +31,7 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 						// fmt.Print("b")
 						fmt.Print(asciiStr[i])
 					} else {
-						spaces = len(word) - 1
+						//spaces = len(word) - 1
 						if letterNum == 0 {
 							sep = append(sep, asciiStr[i])
 						} else {
@@ -50,7 +50,7 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 		if align == "default" || align == "left" {
 			fmt.Println()
 		} else {
-			AlignWords(align, sep, spaces, alignedString)
+			//AlignWords(align, sep, spaces, alignedString)
 		}
 		newString = outputString
 	}

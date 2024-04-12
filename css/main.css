@@ -319,7 +319,8 @@ label {
 }
 .artput {
 }
-.autoscroll {overflow: auto
+.autoscroll {
+    overflow: auto
 }
 .asciiOut {
     display: flex;
@@ -333,6 +334,15 @@ label {
     color: dimgrey;
     background: #fff;
     transition: .3s ease;
+}
+.left {
+    justify-content: flex-start;
+}.right {
+    justify-content: flex-end;
+}.center {
+    justify-content: center;
+}.justify {
+    justify-content: space-between;
 }
 .asciiOutDark {
     overflow: hidden;
@@ -422,22 +432,22 @@ label {
 .orange {
     color: orange;
 }
-.left {
+.iconLeft {
     background-image: url("../icons/align-left.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
-.right {
+.iconRight {
     background-image: url("../icons/align-right.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
-.center {
+.iconCenter {
     background-image: url("../icons/align-center.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
-.justify {
+.iconJustify {
     background-image: url("../icons/align-justify.svg");
     background-repeat: no-repeat;
     background-position: center;
