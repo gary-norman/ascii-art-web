@@ -16,7 +16,7 @@ func AsciiWords(words []string, asciiMap, charMap map[int][]string, colour strin
 			fmt.Println("Entering PrintAscii...")
 			newString += PrintAscii(asciiMap, words[i], colour, toColour, outputFile, align)
 		} else {
-			AlignWords(charMap, words, align)
+			//AlignWords(charMap, words, align)
 		}
 
 	}
