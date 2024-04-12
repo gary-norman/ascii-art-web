@@ -750,6 +750,43 @@ label {
           justify-content: center;
           font-size: var(--font-sz-ascii);
       }
+      .thisguy {
+          height: 5rem;
+          width: 5rem;
+          position: absolute;
+          bottom: 4rem;
+          right: 1rem;
+      }
+    .gopher-animation,
+    .left-arm,
+    .right-arm,
+    .right-foot,
+    .left-foot,
+    .belly,
+    .shadow,
+    .left-eye,
+    .right-eye,
+    .mouth,
+    .tongue {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    .left-eye,
+    .right-eye {
+        animation-name: blink;
+    }
+
+    @keyframes blink {
+        0%,
+        18%,
+        100% {
+            visibility: hidden;
+        }
+        15% {
+            visibility: visible;
+        }
+    }
       #do, #rev {
           display: grid;
           align-items: center;
