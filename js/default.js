@@ -42,7 +42,12 @@ const make = document.getElementById("do")
 const rev = document.getElementById("rev")
 // text areas
 const asciiOutput = document.getElementById("ascii-output");
-
+// misc
+const eyes = document.querySelectorAll('.eyeball-left')
+const anchor = document.getElementById('eyeballs');
+const rekt = anchor.getBoundingClientRect();
+const anchorX = rekt.left + rekt.width / 2;
+const anchorY = rekt.top + rekt.height / 2;
 
 // functions
 function hideUI() {
@@ -135,6 +140,12 @@ function toggleReverse() {
     upload.classList.toggle("uploadFlip");
     rev.classList.toggle("revPressed")
 }
+function angle(cx, cy, ex, ey) {
+    const dy = ey - cy;
+    const dx = ex - cx;
+    const rad = Math.atan2(dy, dx);
+    return rad * 180 / Math.PI
+}
 // function adjustTextSize(containerId) {
 //     let fontSize = 1; // Starting font size
 //     const step = 0.1; // Decrease step
@@ -150,8 +161,18 @@ function toggleReverse() {
 // fitText(asciiOutput, 5)
 
 // events
-rev.addEventListener("click", toggleReverse)
-gopher.addEventListener("click", toggleReverse)
+// eyeballs
+document.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    const angleDeg = angle(mouseX, mouseY, anchorX, anchorY)
+    eyes.forEach(eye => {
+        eye.style.transform = `rotate(${90 + angleDeg}deg)`;
+    })
+})
+
+rev.addEventListener("click", toggleReverse);
+gopher.addEventListener("click", toggleReverse);
 // reset select and radios to default on page load
 // TODO standardise not functioning
 document.addEventListener("DOMContentLoaded", reset);

@@ -56,7 +56,9 @@
     height: 40rem;
     width: 40rem;
 }
-
+.eyeballs, .eyeball {
+    position: absolute;
+}
 .gopher-animation,
 .left-arm,
 .right-arm,

@@ -1,0 +1,29 @@
+<svg class="thatguy" fill="none" version="1.1" viewBox="0 -150 1200 1700" xmlns="http://www.w3.org/2000/svg">
+ <style>.eyeball-left {  }
+.eyeballL {   }
+.eyeball-right {   }
+.eyeballR {   }
+.left-eye {   }
+.right-eye {   }
+.eyes {   }
+.belly {   }
+.tongue {   }
+.mouth {   }
+.left-foot {   }
+.right-foot {   }
+.right-arm {   }
+.left-arm {   }
+.arms {   }</style>
+ <g class="gopher-animation" clip-rule="evenodd" fill-rule="evenodd">
+  <g class="eyeballL">
+   <path class="eyeball-left" d="m252.62 704.33c0-84.975 66.734-153.86 149.05-153.86 82.321 0 149.06 68.886 149.06 153.86s-66.734 153.86-149.06 153.86c-82.32 0-149.05-68.886-149.05-153.86z" fill="#fff" fill-opacity="0" stroke="#675243" stroke-opacity="0" stroke-width="5"/>
+   <path class="eyeball-left" d="m327.62 763.96c0-17.973 14.598-32.543 32.606-32.543s32.607 14.57 32.607 32.543-14.599 32.543-32.607 32.543-32.606-14.57-32.606-32.543z" fill="#262626" opacity=".936" stroke="#262626" stroke-width="30"/>
+   <path class="eyeball-left" d="m353.62 736.64c0-4.325 6.153-7.831 13.744-7.831 7.59 0 13.743 3.506 13.743 7.831 0 4.324-6.153 7.83-13.743 7.83-7.591 0-13.744-3.506-13.744-7.83z" fill="#fff" opacity=".936"/>
+  </g>
+  <g class="eyeballR">
+   <path class="eyeball-right" d="m638.62 704.33c0-84.975 66.734-153.86 149.05-153.86 82.321 0 149.06 68.886 149.06 153.86s-66.734 153.86-149.06 153.86c-82.32 0-149.05-68.886-149.05-153.86z" fill="#fff" fill-opacity="0" stroke="#675243" stroke-opacity="0" stroke-width="5"/>
+   <path class="eyeball-right" d="m713.62 763.96c0-17.973 14.598-32.543 32.606-32.543s32.607 14.57 32.607 32.543-14.599 32.543-32.607 32.543-32.606-14.57-32.606-32.543z" fill="#262626" opacity=".936" stroke="#262626" stroke-width="30"/>
+   <path class="eyeball-right" d="m739.62 736.64c0-4.325 6.153-7.831 13.744-7.831 7.59 0 13.743 3.506 13.743 7.831 0 4.324-6.153 7.83-13.743 7.83-7.591 0-13.744-3.506-13.744-7.83z" fill="#fff" opacity=".936"/>
+  </g>
+ </g>
+</svg>

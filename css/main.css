@@ -750,7 +750,7 @@ label {
           justify-content: center;
           font-size: var(--font-sz-ascii);
       }
-      .thisguy {
+      .thatguy {
           height: 5rem;
           width: 5rem;
           position: absolute;
