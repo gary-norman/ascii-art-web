@@ -16,9 +16,9 @@
 :root {
     --font-sz-errors: clamp(.6rem, 8rem + 0.65vw, 1rem);
 }
-* {
-    border: 1px dashed hotpink;
-}
+/** {*/
+/*    border: 1px dashed hotpink;*/
+/*}*/
 /* error messages */
 .error {
     display: flex;
