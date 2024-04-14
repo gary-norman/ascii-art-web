@@ -25,13 +25,6 @@
 .errorText {
     font-size: var(--font-sz-errors);
 }
-.lost {
-    display: grid;
-    flex-direction: column;
-    width: 35%;
-    align-self: start;
-    margin: 2% 0 0 20%;
-}
 .errorh1 {
     align-self: start;
     justify-self: center;
@@ -46,18 +39,47 @@
 }
 
 /* gopher  adapted from https://codepen.io/stivaliserna/pen/BaNROrw */
+.ohDear {
+    display: flex;
+    align-self: end;
+}
+.lost {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    align-self: center;
+}
 .thisguy {
-    position: absolute;
-    bottom: 0.1rem;
-    right: .5rem;
+    position: relative;
+    align-self: start;
+    width: 100%;
 }
-
+.gopherHolder {
+    position: absolute;
+    right: 0;
+}
 .gopher {
-    height: 40rem;
-    width: 40rem;
+    height: 34rem;
+    width: 34rem;
 }
-.eyeballs, .eyeball {
+#eyeballs, #eyeballs img, #eyelids {
     position: absolute;
+}
+#eyeballs {
+    width: 120px;
+    height: 60px;
+    right: 12.1rem;
+    bottom: 14.6rem;
+}
+#eyeballs img {
+    height: 60px;
+    width: 60px;
+}
+#eyelids {
+    height: 24rem;
+    width: 24rem;
+    right: 5rem;
+    bottom: 10.7rem;
 }
 .gopher-animation,
 .left-arm,
@@ -107,23 +129,23 @@
     }
 }
 
-.gopher-animation {
-    animation-name: jump;
-}
+/*.gopher-animation {*/
+/*    animation-name: jump;*/
+/*}*/
 
-@keyframes jump {
-    0%,
-    15%,
-    100% {
-        transform: translateY(0);
-    }
-    6% {
-        transform: translateY(5%);
-    }
-    12% {
-        transform: translateY(-30%);
-    }
-}
+/*@keyframes jump {*/
+/*    0%,*/
+/*    15%,*/
+/*    100% {*/
+/*        transform: translateY(0);*/
+/*    }*/
+/*    6% {*/
+/*        transform: translateY(5%);*/
+/*    }*/
+/*    12% {*/
+/*        transform: translateY(-30%);*/
+/*    }*/
+/*}*/
 
 .right-arm {
     animation-name: rotateRightArm;
