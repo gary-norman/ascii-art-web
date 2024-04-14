@@ -4,6 +4,7 @@
     url('../fonts/alessa/allessapersonaluse-4prl-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
 @font-face {
     font-family: 'bite_chocolateregular';
     src: url('../fonts/bite_choco/bitechocolate-2rgl-webfont.woff2') format('woff2'),
@@ -12,10 +13,12 @@
     font-style: normal;
 
 }
-}
 :root {
     --font-sz-errors: clamp(.6rem, 8rem + 0.65vw, 1rem);
 }
+/** {*/
+/*    border: 1px dashed hotpink;*/
+/*}*/
 /* error messages */
 .error {
     display: flex;
@@ -25,19 +28,12 @@
 .errorText {
     font-size: var(--font-sz-errors);
 }
-.lost {
-    display: grid;
-    flex-direction: column;
-    width: 35%;
-    align-self: start;
-    margin: 2% 0 0 20%;
-}
 .errorh1 {
     align-self: start;
     justify-self: center;
     margin: 1rem;
     font-family: bite_chocolateregular, cursive ;
-    font-size: 4rem;
+    font-size: 2.5rem;
     line-height: 1.5;
     text-shadow: rgba(37, 37, 37, 0.37) 1px 1px 3px;
 }
@@ -46,18 +42,49 @@
 }
 
 /* gopher  adapted from https://codepen.io/stivaliserna/pen/BaNROrw */
+.ohDear {
+    display: flex;
+    align-self: end;
+}
+.lost {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    align-self: center;
+}
 .thisguy {
+    position: relative;
+    align-self: start;
+    width: 100%;
+}
+.gopherHolder {
     position: absolute;
-    bottom: 0.1rem;
-    right: .5rem;
+    right: 0;
 }
-
 .gopher {
-    height: 40rem;
-    width: 40rem;
+    height: 34rem;
+    width: 34rem;
 }
-
-.gopher-animation,
+#eyeballs, #eyeballs img, #eyelids {
+    position: absolute;
+}
+#eyeballs {
+    width: 120px;
+    height: 60px;
+    right: 12.1rem;
+    bottom: 14.6rem;
+}
+#eyeballs img {
+    height: 60px;
+    width: 60px;
+}
+#eyelids {
+    height: 24rem;
+    width: 24rem;
+    right: 5rem;
+    bottom: 10.7rem;
+}
+.gopherHolder,
 .left-arm,
 .right-arm,
 .right-foot,
@@ -105,20 +132,21 @@
     }
 }
 
-.gopher-animation {
+.gopherHolder {
     animation-name: jump;
 }
 
 @keyframes jump {
     0%,
-    15%,
+    6%,
+    18%,
     100% {
         transform: translateY(0);
     }
-    6% {
+    2% {
         transform: translateY(5%);
     }
-    12% {
+    13% {
         transform: translateY(-30%);
     }
 }
