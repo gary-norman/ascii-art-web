@@ -317,39 +317,49 @@ func MakeArtAligned(origString string, y map[int][]string, ds []int, ws Winsize,
 }
 
 // MakeArtJustified Transform the input text origString to the output art, line by line, with justified content
-func MakeArtJustified(origString string, y map[int][]string, ds []int, ws Winsize) string {
+func MakeArtJustified(origString string, y map[int][]string) string {
 	var art string
 	replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
 	wordSlice := strings.Split(replaceNewline, "\\n")
+	var words []string
 	for i := 0; i < len(wordSlice); i++ {
-		for j := 0; j < len(y[32]); j++ {
-			line := "<pre>"
-			spaces := 0
-			for _, letter := range wordSlice[i] {
-				if letter == 32 {
-					spaces += 1
-				}
-			}
-			for _, letter := range wordSlice[i] {
-				if spaces > 0 {
-					line = line + y[int(letter)][j]
-					if letter == 32 {
-						line = line + "</pre><pre>"
-					}
-				} else {
-					line = line + y[int(letter)][j]
-					sliceLen := len(wordSlice[i])
-					if sliceLen >= 2 {
-						line = line + "</pre>"
-					}
-				}
-			}
-			//line = strings.TrimRight(line, " ")
-			art += line + "\n"
-			line = ""
-		}
+		words = append(words, strings.Split(wordSlice[i], " ")...)
 	}
-	art = strings.TrimRight(art, "\n")
+	//fmt.Printf("Words = %v\n", words)
+	//fmt.Printf("Wordslength = %v\n", len(words))
+
+	if len(words) > 1 {
+		var line string
+		for _, word := range words {
+			line = "<pre>"
+			//fmt.Printf("Added <pre>\n")
+			for j := 0; j < len(y[32]); j++ {
+				for _, letter := range word {
+					line = line + y[int(letter)][j]
+					//fmt.Printf("Added letter #%v\n", j)
+				}
+				line += "\n"
+				//fmt.Printf("Added new line\n")
+			}
+			line += "</pre>"
+			//fmt.Printf("Added </pre>\n")
+			art += line
+			//fmt.Printf("%v += %v\n", art, line)
+		}
+
+	} else {
+		line := "<pre>"
+		for _, word := range wordSlice {
+			for j := 0; j < len(y[32]); j++ {
+				for _, letter := range word {
+					line = line + y[int(letter)][j]
+				}
+				line += "\n"
+			}
+		}
+		art += line + "</pre>"
+		line = "<pre>"
+	}
 	return art
 }
 
@@ -595,7 +605,7 @@ func Reverse(fileName string) string {
 //	// test is for testing and debugging
 //	if *test {
 //		fmt.Println("Reserved for testing and debugging.")
-//	} else {
+//	 else {
 //		// default output
 //		if len(additionalArgs) > 2 {
 //			fmt.Println("Usage: go run . [STRING] [STYLE] (optional)\n\nEX: go run . \"something\" thinkertoy.\nAvailable styles are standard, shadow, and thinkertoy.")

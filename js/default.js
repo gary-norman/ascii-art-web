@@ -42,7 +42,7 @@ const make = document.getElementById("do")
 const rev = document.getElementById("rev")
 // text areas
 const asciiOutput = document.getElementById("ascii-output");
-
+// misc
 
 // functions
 function hideUI() {
@@ -150,8 +150,11 @@ function toggleReverse() {
 // fitText(asciiOutput, 5)
 
 // events
-rev.addEventListener("click", toggleReverse)
-gopher.addEventListener("click", toggleReverse)
+// eyeballs
+
+
+rev.addEventListener("click", toggleReverse);
+gopher.addEventListener("click", toggleReverse);
 // reset select and radios to default on page load
 // TODO standardise not functioning
 document.addEventListener("DOMContentLoaded", reset);
