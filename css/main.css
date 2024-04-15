@@ -8,15 +8,35 @@
   --bg-clr-dark: var(--text-clr-dark);
   --text-clr-light: var(--text-clr-heading);
   --bg-clr-light: var(--text-clr-heading);
-  --txt-clr-hover-light: color-mix(in lab, currentColor, rgb(255 255 255) 70%);
+  --txt-clr-hover-light: color-mix(in lab, currentColor, rgb(255 255 255) 90%);
   --txt-clr-hover-dark: color-mix(in lab, currentColor, rgb(0 0 0) 70%);
+    --svg-left-b: url("../icons/align-left.svg");
+    --svg-left-w: url("../icons/align-left-white.svg");
+    --svg-right-b: url("../icons/align-right.svg");
+    --svg-right-w: url("../icons/align-right-white.svg");
+    --svg-center-b: url("../icons/align-center.svg");
+    --svg-center-w: url("../icons/align-center-white.svg");
+    --svg-justify-b: url("../icons/align-justify.svg");
+    --svg-justify-w: url("../icons/align-justify-white.svg");
+    --svg-rotate-b: url("../icons/rotate-ccw-white.svg");
+    --svg-rotate-w: url("../icons/rotate-ccw.svg");
+    --svg-upload-b: url("../icons/upload.svg");
+    --svg-upload-w: url("../icons/upload-white.svg");
 
+
+/* dark mode */
   --bg-clr: var(--bg-clr-light);
   --txt-clr: var(--text-clr-dark);
   --txt-clr-hover: var(--txt-clr-hover-dark);
   --bg-clr-rev: var(--bg-clr-dark);
   --txt-clr-rev: var(--text-clr-light);
-    --txt-clr-hover-rev: var(--txt-clr-hover-light);
+  --txt-clr-hover-rev: var(--txt-clr-hover-light);
+    --svg-left: var(--svg-left-b);
+    --svg-right: var(--svg-right-b);
+    --svg-center: var(--svg-center-b);
+    --svg-justify: var(--svg-justify-b);
+    --svg-rotate: var(--svg-rotate-w);
+    --svg-upload: var(--svg-upload-b);
     @media (prefers-color-scheme: dark) {
         --bg-clr: var(--bg-clr-dark);
         --txt-clr: var(--text-clr-light);
@@ -24,6 +44,12 @@
         --bg-clr-rev: var(--bg-clr-light);
         --txt-clr-rev: var(--text-clr-dark);
         --txt-clr-rev-hover: var(--txt-clr-hover-dark);
+        --svg-left: var(--svg-left-w);
+        --svg-right: var(--svg-right-w);
+        --svg-center: var(--svg-center-w);
+        --svg-justify: var(--svg-justify-w);
+        --svg-rotate: var(--svg-rotate-b);
+        --svg-upload: var(--svg-upload-w);
     }
 
     --bg-clr-select_header: rgb(0 0 0 / .4);
@@ -272,8 +298,8 @@ input::file-selector-button {
     position: relative;
     width: 24px;
     height: 24px;
-    background: rgba(0 0 0 / .4);
-    box-shadow: inset 0 5px 15px rgba(0 0 0 / .2), inset 0 -1px 1px rgba(255 255 255 / .2);
+    background: rgba(0 0 0 / .1);
+    box-shadow: inset 0 1px 1px rgba(0 0 0 / .2), inset  0 -1px 2px rgba(225 225 225 / .3);
     border: 0;
     border-radius: 25px;
     cursor: pointer;
@@ -286,7 +312,7 @@ input::file-selector-button {
     height: 24px;
     top: -0px;
     left: -0px;
-    background: rgba(0 0 0 / 0) url("../icons/rotate-ccw.svg") no-repeat 5px 5px;
+    background: rgba(0 0 0 / 0) var(--svg-rotate) no-repeat 5px 5px;
     background-size: 14px 14px;
     transition: .3s ease;
 }
@@ -492,22 +518,22 @@ button {
     color: orange;
 }
 .iconLeft {
-    background-image: url("../icons/align-left.svg");
+    background-image: var(--svg-left);
     background-repeat: no-repeat;
     background-position: center;
 }
 .iconRight {
-    background-image: url("../icons/align-right.svg");
+    background-image: var(--svg-right);
     background-repeat: no-repeat;
     background-position: center;
 }
 .iconCenter {
-    background-image: url("../icons/align-center.svg");
+    background-image: var(--svg-center);
     background-repeat: no-repeat;
     background-position: center;
 }
 .iconJustify {
-    background-image: url("../icons/align-justify.svg");
+    background-image: var(--svg-justify);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -515,7 +541,7 @@ button {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: .7;
+    opacity: .6;
     height: 3rem;
     width: 3rem;
     border-radius: var(--button-rad);
@@ -552,10 +578,10 @@ button {
 /*    opacity: 1;*/
 /*}*/
 .radio input:hover ~ .checkmark {
-    opacity: 1;
+    opacity: .8;
 }
 .radio input:checked ~ .checkmark {
-    opacity: 1;
+    opacity: .8;
     border: 1px solid rgb(0 0 0 / .04);
 }
 .checkmark::after {
@@ -605,7 +631,7 @@ button {
     align-items: center;
     height: 10.3rem;
     font-size: var(--font-sz-cards);
-    background: var(--bg-clr) url("../icons/upload.svg") no-repeat center;
+    background: var(--bg-clr) var(--svg-upload) no-repeat center;
     border: 2px dashed var(--bg-clr-select_header);
 }
 #drop_zone.active {
