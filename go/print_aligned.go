@@ -14,3 +14,13 @@ package ascii_art_web
 //	}
 //}
 // commented this all so I could get mine to run
+
+func AlignJustified(align string, sep []string, s string) string {
+	line := "<pre class=\"justify\">"
+
+	//loop over the string line and add correct padding after each word
+	for _, word := range sep {
+		line = line + word + "</pre>"
+	}
+	return line
+}

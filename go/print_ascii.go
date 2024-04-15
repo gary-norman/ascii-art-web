@@ -9,7 +9,6 @@ import (
 func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour string, output string, align string) string {
 	var newString, outputString string
 
-	//spaces := 0
 	// Iterate over each line of the ASCII art
 	for i := 0; i < 8; i++ {
 		wordCount := 0
@@ -27,19 +26,22 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 
 					alignedString += asciiStr[i]
 					outputString += asciiStr[i]
-					if align == "default" || align == "left" {
+					if align != "justify" {
 						// fmt.Print("b")
 						fmt.Print(asciiStr[i])
 					} else {
-						//spaces = len(word) - 1
 						if letterNum == 0 {
-							sep = append(sep, asciiStr[i])
+							sep = append(sep, "<span>"+asciiStr[i])
+							fmt.Println("sep is:", sep)
 						} else {
 							if word[letterNum] == ' ' {
+								sep[wordCount] += "</span>"
 								wordCount++
-								sep = append(sep, asciiStr[i])
+								sep = append(sep, "<span>"+asciiStr[i])
+								fmt.Println("*sep is:", sep)
 							} else {
-								sep[wordCount] += asciiStr[i]
+								sep[wordCount] += (asciiStr[i] + "</span>")
+								fmt.Println("**sep is:", sep)
 							}
 						}
 					}
@@ -47,12 +49,15 @@ func PrintAscii(asciiMap map[int][]string, word string, colour string, toColour 
 			}
 		}
 		outputString += "\n"
-		if align == "default" || align == "left" {
-			fmt.Println()
+		if align != "justify" {
+			newString = outputString
 		} else {
-			//AlignWords(align, sep, spaces, alignedString)
+			fmt.Println("------------------------------------------------")
+			fmt.Println("Entering AlignJustified...")
+			newString = AlignJustified(align, sep, alignedString)
+			fmt.Println("Aligned newString is:", newString)
 		}
-		newString = outputString
+
 	}
 	return newString
 	////handle outputfile if present
