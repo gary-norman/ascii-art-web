@@ -1,5 +1,43 @@
-<svg class="thatguy" fill="none" version="1.1" viewBox="0 -150 1200 1700" xmlns="http://www.w3.org/2000/svg">
- <style>.eyeball-left {  }
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   class="thatguy"
+   fill="none"
+   version="1.1"
+   viewBox="0 -150 500 500"
+   id="svg4"
+   sodipodi:docname="pupill.svg"
+   width="500"
+   height="500"
+   inkscape:export-filename="pupill.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="0.13882353"
+     inkscape:cx="597.88136"
+     inkscape:cy="846.39831"
+     inkscape:window-width="1440"
+     inkscape:window-height="872"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4" />
+  <style
+     id="style1">.eyeball-left {  }
 .eyeballL {   }
 .eyeball-right {   }
 .eyeballR {   }
@@ -14,11 +52,38 @@
 .right-arm {   }
 .left-arm {   }
 .arms {   }</style>
- <g class="gopher-animation" clip-rule="evenodd" fill-rule="evenodd">
-  <g class="eyeballL">
-   <path class="eyeball-left" d="m252.62 704.33c0-84.975 66.734-153.86 149.05-153.86 82.321 0 149.06 68.886 149.06 153.86s-66.734 153.86-149.06 153.86c-82.32 0-149.05-68.886-149.05-153.86z" fill="#fff" fill-opacity="0" stroke="#675243" stroke-opacity="0" stroke-width="5"/>
-   <path class="eyeball-left" d="m327.62 763.96c0-17.973 14.598-32.543 32.606-32.543s32.607 14.57 32.607 32.543-14.599 32.543-32.607 32.543-32.606-14.57-32.606-32.543z" fill="#262626" opacity=".936" stroke="#262626" stroke-width="30"/>
-   <path class="eyeball-left" d="m353.62 736.64c0-4.325 6.153-7.831 13.744-7.831 7.59 0 13.743 3.506 13.743 7.831 0 4.324-6.153 7.83-13.743 7.83-7.591 0-13.744-3.506-13.744-7.83z" fill="#fff" opacity=".936"/>
+  <g
+     class="gopher-animation"
+     clip-rule="evenodd"
+     fill-rule="evenodd"
+     id="g4"
+     transform="matrix(1.6185244,0,0,1.529191,-392.5136,-974.20811)">
+    <g
+       class="eyeballL"
+       id="g3">
+      <path
+         class="eyeball-left"
+         d="m 252.62,704.33 c 0,-84.975 66.734,-153.86 149.05,-153.86 82.321,0 149.06,68.886 149.06,153.86 0,84.974 -66.734,153.86 -149.06,153.86 -82.32,0 -149.05,-68.886 -149.05,-153.86 z"
+         fill="#ffffff"
+         fill-opacity="0"
+         stroke="#675243"
+         stroke-opacity="0"
+         stroke-width="5"
+         id="path1" />
+      <path
+         class="eyeball-left"
+         d="m 327.62,763.96 c 0,-17.973 14.598,-32.543 32.606,-32.543 18.008,0 32.607,14.57 32.607,32.543 0,17.973 -14.599,32.543 -32.607,32.543 -18.008,0 -32.606,-14.57 -32.606,-32.543 z"
+         fill="#262626"
+         opacity="0.936"
+         stroke="#262626"
+         stroke-width="30"
+         id="path2" />
+      <path
+         class="eyeball-left"
+         d="m 353.62,736.64 c 0,-4.325 6.153,-7.831 13.744,-7.831 7.59,0 13.743,3.506 13.743,7.831 0,4.324 -6.153,7.83 -13.743,7.83 -7.591,0 -13.744,-3.506 -13.744,-7.83 z"
+         fill="#ffffff"
+         opacity="0.936"
+         id="path3" />
+    </g>
   </g>
- </g>
 </svg>

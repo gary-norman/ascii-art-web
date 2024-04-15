@@ -3,10 +3,56 @@
   --main-bg-clr: rgb(14, 6, 42);
   --card-bg: rgb(124, 124, 124);
   --accent: rgb(0, 128, 92);
-  --text-clr: rgb(231, 237, 241);
-  --text-clr-dark: rgb(0 0 0 / 0.8);
-  --bg-clr-select_header: rgb(0 0 0 / .4);
-  --bg-clr-select_main: #fff;
+  --text-clr-heading: rgb(231 237 241);
+  --text-clr-dark: rgb(94, 94, 94);
+  --bg-clr-dark: var(--text-clr-dark);
+  --text-clr-light: var(--text-clr-heading);
+  --bg-clr-light: var(--text-clr-heading);
+  --txt-clr-hover-light: color-mix(in lab, currentColor, rgb(255 255 255) 90%);
+  --txt-clr-hover-dark: color-mix(in lab, currentColor, rgb(0 0 0) 70%);
+    --svg-left-b: url("../icons/align-left.svg");
+    --svg-left-w: url("../icons/align-left-white.svg");
+    --svg-right-b: url("../icons/align-right.svg");
+    --svg-right-w: url("../icons/align-right-white.svg");
+    --svg-center-b: url("../icons/align-center.svg");
+    --svg-center-w: url("../icons/align-center-white.svg");
+    --svg-justify-b: url("../icons/align-justify.svg");
+    --svg-justify-w: url("../icons/align-justify-white.svg");
+    --svg-rotate-b: url("../icons/rotate-ccw-white.svg");
+    --svg-rotate-w: url("../icons/rotate-ccw.svg");
+    --svg-upload-b: url("../icons/upload.svg");
+    --svg-upload-w: url("../icons/upload-white.svg");
+
+
+/* dark mode */
+  --bg-clr: var(--bg-clr-light);
+  --txt-clr: var(--text-clr-dark);
+  --txt-clr-hover: var(--txt-clr-hover-dark);
+  --bg-clr-rev: var(--bg-clr-dark);
+  --txt-clr-rev: var(--text-clr-light);
+  --txt-clr-hover-rev: var(--txt-clr-hover-light);
+    --svg-left: var(--svg-left-b);
+    --svg-right: var(--svg-right-b);
+    --svg-center: var(--svg-center-b);
+    --svg-justify: var(--svg-justify-b);
+    --svg-rotate: var(--svg-rotate-w);
+    --svg-upload: var(--svg-upload-b);
+    @media (prefers-color-scheme: dark) {
+        --bg-clr: var(--bg-clr-dark);
+        --txt-clr: var(--text-clr-light);
+        --txt-clr-hover: var(--txt-clr-hover-light);
+        --bg-clr-rev: var(--bg-clr-light);
+        --txt-clr-rev: var(--text-clr-dark);
+        --txt-clr-rev-hover: var(--txt-clr-hover-dark);
+        --svg-left: var(--svg-left-w);
+        --svg-right: var(--svg-right-w);
+        --svg-center: var(--svg-center-w);
+        --svg-justify: var(--svg-justify-w);
+        --svg-rotate: var(--svg-rotate-b);
+        --svg-upload: var(--svg-upload-w);
+    }
+
+    --bg-clr-select_header: rgb(0 0 0 / .4);
   --border-rad: 0.4rem;
     /* box shadows */
     --box-shadow: 0 0.25 1rem rgb(0 0 0 / .5);
@@ -42,10 +88,10 @@
     --button-rad: 20%;
     --border-clr: rgba(0,0,0,.2);
     /* colours for colorized text */
-    --red: #e13939;
-    --green: rgba(39, 204, 39, 0.91);
-    --blue: rgb(53, 86, 193);
-    --yellow: #fbed34;
+    --red: rgb(225 57 57);
+    --green: rgb(74 213 74);
+    --blue: rgb(53 86 193);
+    --yellow: rgb(251 237 52);
 }
 
 html {
@@ -56,7 +102,7 @@ body {
   margin: 0 auto;
   background: var(--main-bg-grad);
   background-attachment: fixed;
-  color: var(--text-clr) ;
+  color: var(--text-clr-heading) ;
   font-family: var(--font-primary);
   font-size: var(--font-sz-main);
   -ms-overflow-style: none;  /* IE and Edge */
@@ -133,7 +179,7 @@ main > a {
 
 a {
   text-decoration: none!important;
-  color: var(--text-clr)
+  color: var(--txt-clr)
 }
 
 select {
@@ -145,7 +191,12 @@ select {
     display: flex;
     flex-direction: column;
     justify-items: center;
+    background: var(--bg-clr);
 }
+.banner {
+    padding: .4rem 1rem;
+}
+
 .submit {
     height: 3.3rem;
 }
@@ -153,6 +204,9 @@ select {
     font-size: var(--font-sz-cards);
     padding: .5rem 1rem;
     height: 5.6rem;
+}
+textarea {
+    color: var(--txt-clr);
 }
 .output {
     width: 95%;
@@ -165,8 +219,34 @@ select {
 
 /* ----------  form styling ----------*/
 select, label, input {
-    color: dimgray;
-    border: 0;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+}
+select, input {
+    color: var(--txt-clr);
+}
+.label {
+     padding: .4rem 1rem;
+     border-radius: var(--border-rad) var(--border-rad) 0 0;
+     background: var(--bg-clr-select_header);
+     color: var(--text-clr-heading);
+ }
+input::file-selector-button {
+    font-weight: bold;
+    background: var(--txt-clr-hover-light);
+    color: var(--txt-clr-rev);
+    padding: 0.3em;
+    border: thin solid grey;
+    border-radius: 5px;
 }
 .card {
     display: flex;
@@ -176,38 +256,34 @@ select, label, input {
 }
 .textarea {
     height: 3.5rem;
-    background: #fff;
+    background: var(--bg-clr);
     padding: 0.5rem 1rem;
-    color: dimgray;
+    color: var(--txt-clr);
 }
-.label {
-    padding: .4rem 1rem;
-    border-radius: var(--border-rad) var(--border-rad) 0 0;
-    background-color: var(--bg-clr-select_header);
-    color: #fff;
-}
+
 #browse {
     width: 75%;
+    margin: 5px 0 0 0;
 }
 #fileSubmit {
     width: 100%;
     height: 28px;
 }
 .labelwbtn {
-    padding: .5rem;
-    color: #fff;
+    padding: .4rem 1rem;
+    color: var(--text-clr-heading);
 }
 .whiteLabel {
     display: flex;
     justify-content: space-between;
     padding: .5rem .5rem .3rem;
-    background: #fff;
+    background: var(--bg-clr);
 }
 .whiteLabel * {
     margin: 0 .5rem;
 }
 .inWhiteLabelContent {
-    color: dimgray;
+    color: var(--txt-clr);
 }
 .whiteLabel:hover [class^="inWhiteLabel"]:nth-child(1) {
     color: #252525;
@@ -222,8 +298,8 @@ select, label, input {
     position: relative;
     width: 24px;
     height: 24px;
-    background: rgba(0 0 0 / .4);
-    box-shadow: inset 0 5px 15px rgba(0 0 0 / .4), inset 0 -1px 1px rgba(255 255 255 / .4);
+    background: rgba(0 0 0 / .1);
+    box-shadow: inset 0 1px 1px rgba(0 0 0 / .2), inset  0 -1px 2px rgba(225 225 225 / .3);
     border: 0;
     border-radius: 25px;
     cursor: pointer;
@@ -236,7 +312,7 @@ select, label, input {
     height: 24px;
     top: -0px;
     left: -0px;
-    background: rgba(0 0 0 / 0) url("../icons/rotate-ccw.svg") no-repeat 5px 5px;
+    background: rgba(0 0 0 / 0) var(--svg-rotate) no-repeat 5px 5px;
     background-size: 14px 14px;
     transition: .3s ease;
 }
@@ -252,28 +328,26 @@ select, label, input {
     justify-content: space-between;
     height: 3.5rem;
     border-radius: var(--border-rad) var(--border-rad) 0 0;
-    background-color: var(--bg-clr-select_header);
+    background: var(--bg-clr-select_header);
 }
 .buttonRow {
     display: flex;
     padding: 2px 0;
-    background: #fff;
+    background: var(--bg-clr);
     justify-content: space-evenly;
 }
 button {
     margin: .5rem 1rem;
 }
 .buttonRow input {
-    background: radial-gradient(ellipse farthest-side at center center, #ffffff 50%, #f1f1f1 160%);
+    /*background: radial-gradient(ellipse farthest-side at center center, #ffffff 50%, #f1f1f1 160%);*/
+    background: var(--bg-clr);
     height: 24px;
     width: 5rem;
     margin: 2px 0 0 0;
     border-radius: 1rem;
     box-shadow: var(--button-shadow);
     cursor: pointer;
-}
-label {
-    color: white;
 }
 .darkmode {
     width: 50px;
@@ -344,10 +418,21 @@ label {
     line-height: 1;
     width: auto;
     font-size: clamp(.8vw, .8rem + 1vw, 1.2vw);
-    color: dimgrey;
-    background: #fff;
+    color: var(--txt-clr);
+    background: var(--bg-clr);
     transition: .3s ease;
 }
+.asciiOutDark {
+     overflow: hidden;
+     margin: 0;
+     height: 100%;
+     padding: 1rem;
+     line-height: 1;
+     width: auto;
+     color: var(--txt-clr-rev);
+     background: var(--bg-clr-rev);
+     transition: .3s ease;
+ }
 .left {
     justify-content: flex-start;
 }.right {
@@ -357,20 +442,10 @@ label {
 }.justify {
     justify-content: space-between;
 }
-.asciiOutDark {
-    overflow: hidden;
-    margin: 0;
-    height: 20rem;
-    padding: 1rem;
-    line-height: 1;
-    width: auto;
-    color: #8c8c8c;
-    background: #272727;
-    transition: .3s ease;
-}
+
 .justifyBlock {
-    background: #fff;
-    color: dimgray;
+    background: var(--bg-clr);
+    color: var(--txt-clr);
     /*position: absolute;*/
     /*left: 25px;*/
 }
@@ -378,15 +453,16 @@ label {
     border-radius: 0 !important;
 }
 .toggle {
-    background-color: #fff;
+    background: var(--bg-clr);
     border: solid var(--bg-clr-select_header);
     border-width: 1px 0 1px 0;
     display: flex;
-    align-content: center;
-    justify-items: center;
     justify-content: space-evenly;
-    height: 4rem;
+    height: 4.3rem;
     padding: .5rem;
+}
+.toggle * {
+    border: 1px dashed hotpink;
 }
 .modifiers {
     width: 100%;
@@ -396,72 +472,68 @@ label {
 .radio {
     display: block;
     position: relative;
-    padding-left: 3rem;
+    /*padding-left: 3rem;*/
     cursor: pointer;
     font-size: 2rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: dimgray;
+    color: var(--txt-clr);
 }
 .radio input {
     position: absolute;
-    /*display: inline-flex;*/
     opacity: 0;
     cursor: pointer;
-    height: 3rem;
-    width: 3rem;
-    /*margin: 0;*/
 }
 /* colours for colorized text */
 .redSelect {
-    background-color: var(--red);
+    background: var(--red);
 }
 .red {
     color: var(--red);
 }
 .greenSelect {
-    background-color: var(--green);
+    background: var(--green);
 }
 .green {
     color: var(--green);
 }
 .blueSelect {
-    background-color: var(--blue);
+    background: var(--blue);
 }
 .blue {
     color: var(--blue);
 }
 .yellowSelect {
-    background-color: var(--yellow);
+    background: var(--yellow);
 }
 .yellow {
     color: var(--yellow);
 }
 .orangeSelect {
-    background-color: orange;
+    background: orange;
 }
 .orange {
     color: orange;
 }
 .iconLeft {
-    background-image: url("../icons/align-left.svg");
+    background-image: var(--svg-left);
     background-repeat: no-repeat;
     background-position: center;
 }
 .iconRight {
-    background-image: url("../icons/align-right.svg");
+    background-image: var(--svg-right);
     background-repeat: no-repeat;
     background-position: center;
 }
 .iconCenter {
-    background-image: url("../icons/align-center.svg");
+    background-image: var(--svg-center);
     background-repeat: no-repeat;
     background-position: center;
 }
 .iconJustify {
-    background-image: url("../icons/align-justify.svg");
+    background-image: var(--svg-justify);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -469,23 +541,19 @@ label {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: .7;
-    /*display: inline-flex;*/
+    opacity: .6;
     height: 3rem;
     width: 3rem;
     border-radius: var(--button-rad);
-    /*border: 1px solid var(--bg-clr-select_header) ;*/
 }
 .checkmark2 {
     position: absolute;
     top: 0;
     left: 0;
     opacity: .1;
-    /*display: inline-flex;*/
     height: 3rem;
     width: 3rem;
     border-radius: var(--button-rad);
-    /*border: 1px solid var(--bg-clr-select_header) ;*/
 }
 .checkmark2:hover {
     opacity: 1;
@@ -510,10 +578,10 @@ label {
 /*    opacity: 1;*/
 /*}*/
 .radio input:hover ~ .checkmark {
-    opacity: 1;
+    opacity: .8;
 }
 .radio input:checked ~ .checkmark {
-    opacity: 1;
+    opacity: .8;
     border: 1px solid rgb(0 0 0 / .04);
 }
 .checkmark::after {
@@ -546,7 +614,7 @@ label {
 
 /* submit button */
 #submit-reverse {
-    background-color: #fff;
+    background: #fff;
     margin: 1rem;
     border: 1px solid var(--border-clr);
     border-radius: var(--border-rad);
@@ -561,24 +629,21 @@ label {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 10rem;
+    height: 10.3rem;
     font-size: var(--font-sz-cards);
-    background-color: #fff;
-    background-image: url("../icons/upload.svg");
-    background-repeat: no-repeat;
-    background-position: center;
+    background: var(--bg-clr) var(--svg-upload) no-repeat center;
     border: 2px dashed var(--bg-clr-select_header);
 }
 #drop_zone.active {
     border: 0;
-    background-color: rgba(255, 127, 127, 0.51);
+    background: rgba(255, 127, 127, 0.51);
 }
 #drop_zone.dropped {
-    background-color: #fff;
+    background: #fff;
 }
 #drop_zone span {
     padding: 5rem 0;
-    color: dimgray;
+    color: var(--txt-clr);
 }
 #drop_zone .button {
     padding: 5rem 1rem;
@@ -586,7 +651,7 @@ label {
     cursor: pointer;
 }
 #drop_zone p a:hover {
-    color: black;
+    color: var(--txt-clr-hover);
 }
 #drop_zone input {
     cursor: pointer;
@@ -598,6 +663,7 @@ label {
 #color-txt {
     font-size: var(--font-sz-cards);
     padding: .5rem 1rem;
+    color: var(--txt-clr);
 }
 
 @media only screen and (max-width: 600px) {
@@ -738,15 +804,15 @@ label {
       #gopher div {
           display: flex;
           margin: 1rem 0;
-          height: 13.2rem;
+          height: 13.5rem;
           align-items: center;
           justify-content: space-around;
           width: 100%;
-          background: #fff;
+          background: var(--bg-clr);
           border: 2px dashed var(--bg-clr-select_header);
       }
       #gopher pre {
-          color: dimgray;
+          color: var(--txt-clr);
           justify-content: center;
           font-size: var(--font-sz-ascii);
       }
@@ -795,21 +861,21 @@ label {
           height: 2.8rem;
           justify-self: center;
           margin: 0 0 1rem 0;
-          color: dimgrey;
-          background: #fff;
+          color: var(--txt-clr);
+          background: var(--bg-clr);
           border-radius: 0;
           z-index: 999;
       }
       #do:hover, #rev:hover {
           cursor: pointer;
-          color: #fff;
+          color: var(--text-clr-heading);
           background: var(--mcr-cyan);
       }
       .genascii {
           height: 2.8rem;
       }
       .genascii:hover {
-          color: #fff;
+          color: var(--text-clr-heading);
           background: var(--mcr-cyan);
           cursor: pointer;
       }
@@ -827,9 +893,8 @@ label {
           align-self: end;
       }
       .rev {
-          box-shadow: var(--button-shadow);
       }
-      .revPressed {
+      .revPressed, .rev:active {
           box-shadow: var(--button-pressed-shadow);
       }
       #asciiout {
