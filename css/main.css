@@ -431,11 +431,12 @@ button {
     border: solid var(--bg-clr-select_header);
     border-width: 1px 0 1px 0;
     display: flex;
-    align-content: center;
-    justify-items: center;
     justify-content: space-evenly;
-    height: 4rem;
+    height: 4.3rem;
     padding: .5rem;
+}
+.toggle * {
+    border: 1px dashed hotpink;
 }
 .modifiers {
     width: 100%;
@@ -445,7 +446,7 @@ button {
 .radio {
     display: block;
     position: relative;
-    padding-left: 3rem;
+    /*padding-left: 3rem;*/
     cursor: pointer;
     font-size: 2rem;
     -webkit-user-select: none;
@@ -458,8 +459,6 @@ button {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 3rem;
-    width: 3rem;
 }
 /* colours for colorized text */
 .redSelect {
@@ -517,22 +516,18 @@ button {
     top: 0;
     left: 0;
     opacity: .7;
-    /*display: inline-flex;*/
     height: 3rem;
     width: 3rem;
     border-radius: var(--button-rad);
-    /*border: 1px solid var(--bg-clr-select_header) ;*/
 }
 .checkmark2 {
     position: absolute;
     top: 0;
     left: 0;
     opacity: .1;
-    /*display: inline-flex;*/
     height: 3rem;
     width: 3rem;
     border-radius: var(--button-rad);
-    /*border: 1px solid var(--bg-clr-select_header) ;*/
 }
 .checkmark2:hover {
     opacity: 1;
@@ -608,7 +603,7 @@ button {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 10rem;
+    height: 10.3rem;
     font-size: var(--font-sz-cards);
     background: var(--bg-clr) url("../icons/upload.svg") no-repeat center;
     border: 2px dashed var(--bg-clr-select_header);
@@ -783,7 +778,7 @@ button {
       #gopher div {
           display: flex;
           margin: 1rem 0;
-          height: 13.2rem;
+          height: 13.5rem;
           align-items: center;
           justify-content: space-around;
           width: 100%;
@@ -872,9 +867,8 @@ button {
           align-self: end;
       }
       .rev {
-          box-shadow: var(--button-shadow);
       }
-      .revPressed {
+      .revPressed, .rev:active {
           box-shadow: var(--button-pressed-shadow);
       }
       #asciiout {
