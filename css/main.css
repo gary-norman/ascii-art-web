@@ -30,7 +30,7 @@
   --txt-clr: var(--text-clr-dark);
   --txt-clr-hover: var(--txt-clr-hover-dark);
   --bg-clr-rev: var(--bg-clr-dark);
-  --txt-clr-rev: var(--text-clr-light);
+  --txt-clr-rev: var(--text-clr-dark);
   --txt-clr-hover-rev: var(--txt-clr-hover-light);
     --svg-align: var(--svg-stroke-b);
     --svg-rotate: var(--svg-rotate-b);
@@ -102,6 +102,7 @@
 }
 
 html {
+    color-scheme: dark light;
     font-size: 62.5%;
 }
 
@@ -236,7 +237,7 @@ select, label, input {
     appearance: none;
     background-color: transparent;
     border: none;
-    padding: 0 1rem 0 0;
+    padding: 0;
     margin: 0;
     width: 100%;
     font-family: inherit;
@@ -645,7 +646,7 @@ button {
     background: rgba(255, 127, 127, 0.51);
 }
 #drop_zone.dropped {
-    background: #fff;
+    background: var(--bg-clr);
 }
 #drop_zone span {
     padding: 5rem 0;
@@ -864,7 +865,7 @@ button {
       }
       .genascii:hover {
           color: var(--text-clr-heading);
-          background: var(--mcr-cyan);
+          background: color-mix(in lab, var(--mcr-red), var(--mcr-yellow) 15%) ;
           cursor: pointer;
       }
       #do {
@@ -880,10 +881,14 @@ button {
           grid-area: up;
           align-self: end;
       }
-      .rev {
+      .rev:after {
+          content: "enable reverse";
       }
       .revPressed, .rev:active {
           box-shadow: var(--button-pressed-shadow);
+      }
+      .revPressed:after {
+          content: "disable reverse";
       }
       #asciiout {
           grid-area: art;
