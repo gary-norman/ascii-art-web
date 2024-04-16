@@ -145,7 +145,10 @@ main {
     transform: translateY(-50%);
     margin: auto;
 }
-main > a {
+.header {
+    display: flex;
+}
+.header > a {
     font-size: var(--font-sz-title);
     font-weight: bolder;
 }
@@ -635,7 +638,7 @@ button {
     height: 10.3rem;
     font-size: var(--font-sz-cards);
     background: var(--bg-clr) var(--svg-upload) no-repeat center;
-    border: 2px dashed var(--bg-clr-select_header);
+    border: 2px dashed var(--txt-clr);
 }
 #drop_zone.active {
     border: 0;
@@ -781,24 +784,6 @@ button {
       .gopher div {
           height: 100%;
       }
-      /*.gopher:hover::before {*/
-      /*    height: 2.5rem;*/
-      /*    transition: .2s ease;*/
-      /*}*/
-      /*.gopher::before {*/
-      /*    content: "enable reverse";*/
-      /*    text-align: center;*/
-      /*    border-radius: 0 0 var(--border-rad) var(--border-rad);*/
-      /*    position: absolute;*/
-      /*    top: 1.2rem;*/
-      /*    left: .18rem;*/
-      /*    display: block;*/
-      /*    width: 99%;*/
-      /*    height: 0;*/
-      /*    background: var(--mcr-cyan);*/
-      /*    color: #fff;*/
-      /*    transition: .2s ease;*/
-      /*}*/
       .gopherFlip {
           /*z-index: 1;*/
           transform: rotate3d(0, 1, 0, 180deg);
@@ -812,7 +797,7 @@ button {
           justify-content: space-around;
           width: 100%;
           background: var(--bg-clr);
-          border: 2px dashed var(--bg-clr-select_header);
+          border: 2px dashed var(--txt-clr);
       }
       #gopher pre {
           color: var(--txt-clr);
