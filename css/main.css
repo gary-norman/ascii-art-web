@@ -534,7 +534,7 @@ button {
     width: 3rem;
     border-radius: var(--button-rad);
 }
-.checkmark svg {
+.checkmark svg, .checkmark2 svg {
     margin: 2px;
 }
 .checkmark svg.align {
@@ -550,6 +550,7 @@ button {
     opacity: .1;
     height: 3rem;
     width: 3rem;
+    cursor: help;
     border-radius: var(--button-rad);
 }
 .checkmark2:hover {
