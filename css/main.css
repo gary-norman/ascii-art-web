@@ -11,18 +11,14 @@
   --bg-clr-light: var(--text-clr-heading);
   --txt-clr-hover-light: color-mix(in lab, currentColor, rgb(255 255 255) 90%);
   --txt-clr-hover-dark: color-mix(in lab, currentColor, rgb(0 0 0) 70%);
-    --svg-left-b: url("../icons/align-left.svg");
-    --svg-left-w: url("../icons/align-left-white.svg");
-    --svg-right-b: url("../icons/align-right.svg");
-    --svg-right-w: url("../icons/align-right-white.svg");
-    --svg-center-b: url("../icons/align-center.svg");
-    --svg-center-w: url("../icons/align-center-white.svg");
-    --svg-justify-b: url("../icons/align-justify.svg");
-    --svg-justify-w: url("../icons/align-justify-white.svg");
-    --svg-rotate-b: url("../icons/rotate-ccw-white.svg");
-    --svg-rotate-w: url("../icons/rotate-ccw.svg");
-    --svg-upload-b: url("../icons/upload.svg");
-    --svg-upload-w: url("../icons/upload-white.svg");
+    --svg-rotate-b: url(../icons/rotate-ccw.svg);
+    --svg-rotate-w: url(../icons/rotate-ccw-white.svg);
+    --svg-upload-b: url(../icons/upload.svg);
+    --svg-upload-w: url(../icons/upload-white.svg);
+
+    --svg-stroke-b: var(--text-clr-dark);
+    --svg-stroke-w: var(--text-clr-light);
+
     --darkTogglePos-l: 28px;
     --darkTogglePos-r: 3px;
     --darkToggleStroke-b: var(--text-clr-darker);
@@ -36,11 +32,8 @@
   --bg-clr-rev: var(--bg-clr-dark);
   --txt-clr-rev: var(--text-clr-light);
   --txt-clr-hover-rev: var(--txt-clr-hover-light);
-    --svg-left: var(--svg-left-b);
-    --svg-right: var(--svg-right-b);
-    --svg-center: var(--svg-center-b);
-    --svg-justify: var(--svg-justify-b);
-    --svg-rotate: var(--svg-rotate-w);
+    --svg-align: var(--svg-stroke-b);
+    --svg-rotate: var(--svg-rotate-b);
     --svg-upload: var(--svg-upload-b);
     --darkTogglePos-sun: var(--darkTogglePos-r);
     --darkToggleStroke-sun: var(--darkToggleStroke-b);
@@ -55,11 +48,8 @@
         --bg-clr-rev: var(--bg-clr-light);
         --txt-clr-rev: var(--text-clr-dark);
         --txt-clr-rev-hover: var(--txt-clr-hover-dark);
-        --svg-left: var(--svg-left-w);
-        --svg-right: var(--svg-right-w);
-        --svg-center: var(--svg-center-w);
-        --svg-justify: var(--svg-justify-w);
-        --svg-rotate: var(--svg-rotate-b);
+        --svg-align: var(--svg-stroke-w);
+        --svg-rotate: var(--svg-rotate-w);
         --svg-upload: var(--svg-upload-w);
         --darkTogglePos-sun: var(--darkTogglePos-l);
         --darkToggleStroke-sun: var(--darkToggleStroke-w);
@@ -83,7 +73,7 @@
     37px 23px 126px rgba(0, 0, 0, 0.07);
     --button-shadow: 1px 1px 0px rgba(74, 74, 74, 0.5), inset -1px -1px 5px 2px rgba(0 0 0 / 0);
     --button-hover-shadow: 4px 4px 5px -1px rgba(0,0,0,0.45);
-    --button-pressed-shadow: inset 0 4px 3px -2px rgba(0 0 0 / .4), inset 0 -1px 1px -1px rgba(0 0 0  / .3);
+    --button-pressed-shadow: inset 0 3px 5px -1px rgba(0 0 0 / .3), inset 0 -1px 2px -1px rgba(200 200 200   / .6);
   /* fonts */
   --font-sz-title: clamp(1.8rem, 2rem + 0.65vw, 2.2rem);
   --font-sz-main: clamp(1rem, 1.2rem + 0.65vw, 1.6rem);
@@ -307,7 +297,7 @@ input::file-selector-button {
     color: var(--txt-clr);
 }
 .whiteLabel:hover [class^="inWhiteLabel"]:nth-child(1) {
-    color: #252525;
+    color: var(--txt-clr-hover);
     cursor: pointer;
 }
 .whiteLabel:hover [class^="inWhiteLabel"]:nth-child(2):before {
@@ -320,7 +310,7 @@ input::file-selector-button {
     width: 24px;
     height: 24px;
     background: rgba(0 0 0 / 0);
-    box-shadow: inset 0 1px 1px rgba(0 0 0 / .2), inset 0px 3px 5px rgba(0 0 0 / .1), inset 0 -1px 1px rgba(225 225 225 / .3);
+    box-shadow: inset 0 1px 1px rgba(0 0 0 / .2), inset 0 3px 5px rgba(0 0 0 / .1), inset 0 -1px 1px rgba(225 225 225 / .3);
     border: 0;
     border-radius: 25px;
     cursor: pointer;
@@ -535,34 +525,23 @@ button {
 .orange {
     color: orange;
 }
-.iconLeft {
-    background-image: var(--svg-left);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.iconRight {
-    background-image: var(--svg-right);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.iconCenter {
-    background-image: var(--svg-center);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.iconJustify {
-    background-image: var(--svg-justify);
-    background-repeat: no-repeat;
-    background-position: center;
-}
 .checkmark {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: .6;
+    /*opacity: .6;*/
     height: 3rem;
     width: 3rem;
     border-radius: var(--button-rad);
+}
+.checkmark svg {
+    margin: 2px;
+}
+.checkmark svg.align {
+    stroke: var(--svg-align);
+}
+.checkmark:hover svg.align {
+    stroke: var(--txt-clr-hover);
 }
 .checkmark2 {
     position: absolute;
@@ -574,7 +553,8 @@ button {
     border-radius: var(--button-rad);
 }
 .checkmark2:hover {
-    opacity: 1;
+    /*opacity: 1;*/
+
 }
 .checkmark2:hover:after {
     position: absolute;
@@ -596,11 +576,15 @@ button {
 /*    opacity: 1;*/
 /*}*/
 .radio input:hover ~ .checkmark {
-    opacity: .8;
+    /*opacity: .8;*/
+
 }
 .radio input:checked ~ .checkmark {
-    opacity: .8;
+    /*opacity: .8;*/
     border: 1px solid rgb(0 0 0 / .04);
+}
+.radio input:checked ~ .checkmark svg.align {
+    stroke: var(--txt-clr-hover);
 }
 .checkmark::after {
     content: "";
