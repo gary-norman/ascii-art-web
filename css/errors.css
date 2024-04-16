@@ -53,11 +53,13 @@
 .ohDear {
     display: flex;
     align-self: start;
+    justify-content: center;
     margin: calc((50vh - 19.5rem)/2) 0;
     width: calc(100vw - 344px);
 }
 .lost {
     display: grid;
+    width: 65%;
 }
 .thisguy {
     position: relative;
