@@ -14,7 +14,7 @@
 
 }
 :root {
-    --font-sz-errors: clamp(.6rem, 8rem + 0.65vw, 1rem);
+    --font-sz-errors: clamp(.5rem, .7rem + 0.65vw, 1.5rem);
 }
 /** {*/
 /*    border: 1px dashed hotpink;*/
@@ -22,17 +22,25 @@
 /* error messages */
 .error {
     display: flex;
+    align-self: center;
     flex-direction: column;
     align-items: center;
+    text-shadow: rgba(37, 37, 37, 0.37) 1px 1px 1px;
 }
-.errorText {
+.errorNum {
     font-size: var(--font-sz-errors);
 }
+.errorText {
+    font-size: calc(var(--font-sz-errors)/1.5) ;
+    text-shadow: rgba(37, 37, 37, 0.37) 1px 1px 1px;
+}
 .errorh1 {
-    align-self: start;
     justify-self: center;
-    margin: 1rem;
-    font-family: bite_chocolateregular, cursive ;
+    align-self: center;
+    margin: 3rem;
+    text-align: center;
+    font-family: bite_chocolateregular, cursive;
+    color: var(--text-clr-heading);
     font-size: 2.5rem;
     line-height: 1.5;
     text-shadow: rgba(37, 37, 37, 0.37) 1px 1px 3px;
@@ -44,13 +52,12 @@
 /* gopher  adapted from https://codepen.io/stivaliserna/pen/BaNROrw */
 .ohDear {
     display: flex;
-    align-self: end;
+    align-self: start;
+    margin: calc((50vh - 19.5rem)/2) 0;
+    width: calc(100vw - 344px);
 }
 .lost {
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-    align-self: center;
+    display: grid;
 }
 .thisguy {
     position: relative;
@@ -60,6 +67,8 @@
 .gopherHolder {
     position: absolute;
     right: 0;
+    bottom: 1rem;
+    z-index: 999;
 }
 .gopher {
     height: 34rem;
@@ -84,6 +93,14 @@
     right: 5rem;
     bottom: 10.7rem;
 }
+#shadow {
+    position: absolute;
+    height: 34rem;
+    width: 34rem;
+    right: 0;
+    bottom: 15rem;
+}
+
 .gopherHolder,
 .left-arm,
 .right-arm,
