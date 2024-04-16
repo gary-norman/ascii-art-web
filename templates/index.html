@@ -48,7 +48,7 @@
                                 <label for="function">What would you like to do?</label>
                             </div>
                             <div class="select">
-                                <select name="banner" id="function">
+                                <select name="banner" class="banner" id="function">
                                     <option class="item" value="standard" id="standardise" selected>Convert text to ASCII art</option>
                                     <option class="item" value="color" id="colorize">Colourise the output</option>
                                     <option class="item" value="output" id="output">Export to file</option>
@@ -136,7 +136,7 @@
                                     <div class="label">Choose your colour</div>
                                     <!--                                        <button type="button" class="reset"></button>-->
                                     <div class="whiteLabel">
-                                        <span class="inWhiteLabelContent">Reset colour selection</span>
+                                        <span class="inWhiteLabelContent">Reset colour</span>
                                         <button type="button" class="inWhiteLabelReset"></button>
                                     </div>
                                     <div class="toggle colorToggle">
@@ -175,10 +175,10 @@
                                         <label class="" for="browse">Upload your file</label>
                                     </div>
                                     <div id="drop_zone">
-                                        <!--                                <span class="dragText">drag and drop your file, or</span>-->
-                                        <!--                                <span class="button">browse</span>-->
-                                        <input type="file" id="browse" name="file-drop" />
-                                        <!--                                <input type="file" id="browse" name="file-drop" />-->
+                                                                        <span class="dragText">drag and drop your file, or</span>
+                                                                        <span class="button">browse</span>
+<!--                                        <input type="file" id="browse" name="file-drop" accept=".txt" />-->
+                                                                        <input type="file" id="browse" name="file-drop" />
                                     </div>
                                     <!--                                    <div class="label artsays">Your art says:</div>-->
                                     <!--                                    <div class="select textarea" id="reverse-output">{{.ArtToText}}</div>-->
@@ -259,7 +259,7 @@
                             </div> <!-- gopher -->
                         </div>
                     </form>
-                    <div class="card output" id="asciiout">
+                    <div class="card output" id="asciiout" style="height: 25rem">
                         <div class="buttonedLabel">
                             <div class="labelwbtn">{{.ArtToText}}</div>
                             <input type="checkbox" id="darkmode-toggle">

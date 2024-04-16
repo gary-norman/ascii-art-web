@@ -5,7 +5,7 @@ const colorize = document.getElementById("colorize");
 const output = document.getElementById("output");
 const align = document.getElementById("align");
 const reverse = document.getElementById("reverse");
-const darkmode = document.querySelector(".darkmode");
+const darkmode = document.querySelector(".darkToggle");
 const colorReset = document.querySelector(".whiteLabel");
 // selectors
 const red = document.getElementById("red");
@@ -76,7 +76,7 @@ function hideUI() {
             upload.style.display = "flex"
             alignment.style.display = "none"
             generator.style.display = "none"
-            asciiout.style.display = "none"
+            asciiout.style.display = "flex"
         }
     }
     else {
