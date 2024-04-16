@@ -573,16 +573,15 @@ button {
     box-shadow: var(--button-hover-shadow);
     z-index: 100;
 }
-/*.checkmark2:after {*/
-/*    opacity: 1;*/
-/*}*/
-.radio input:hover ~ .checkmark {
-    /*opacity: .8;*/
-
+.colorToggle .radio input ~ .checkmark {
+    opacity: .7;
+}
+.colorToggle .radio input:hover ~ .checkmark {
+    opacity: 1;
 }
 .radio input:checked ~ .checkmark {
-    /*opacity: .8;*/
     border: 1px solid rgb(0 0 0 / .04);
+    opacity: 1;
 }
 .radio input:checked ~ .checkmark svg.align {
     stroke: var(--txt-clr-hover);
