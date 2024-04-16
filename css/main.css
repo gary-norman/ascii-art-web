@@ -7,9 +7,9 @@
   --text-clr-dark: rgb(94, 94, 94);
   --text-clr-darker: rgb(48, 48, 48);
   --bg-clr-dark: var(--text-clr-dark);
-  --text-clr-light: var(--text-clr-heading);
+  --text-clr-light: rgb(181, 181, 181);
   --bg-clr-light: var(--text-clr-heading);
-  --txt-clr-hover-light: color-mix(in lab, currentColor, rgb(255 255 255) 90%);
+  --txt-clr-hover-light: color-mix(in lab, var(--text-clr-light), rgb(255 255 255) 60%);
   --txt-clr-hover-dark: color-mix(in lab, currentColor, rgb(0 0 0) 70%);
     --svg-rotate-b: url(../icons/rotate-ccw.svg);
     --svg-rotate-w: url(../icons/rotate-ccw-white.svg);
@@ -233,7 +233,7 @@ select, label, input {
     appearance: none;
     background-color: transparent;
     border: none;
-    padding: 0 1em 0 0;
+    padding: 0 1rem 0 0;
     margin: 0;
     width: 100%;
     font-family: inherit;
@@ -472,9 +472,9 @@ button {
     height: 4.3rem;
     padding: .5rem;
 }
-.toggle * {
-    border: 1px dashed hotpink;
-}
+/*.toggle * {*/
+/*    border: 1px dashed hotpink;*/
+/*}*/
 .modifiers {
     width: 100%;
     flex-direction: column;
@@ -483,6 +483,7 @@ button {
 .radio {
     display: block;
     position: relative;
+    width: 31px;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
