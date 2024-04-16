@@ -530,7 +530,6 @@ button {
     position: absolute;
     top: 0;
     left: 0;
-    /*opacity: .6;*/
     height: 3rem;
     width: 3rem;
     border-radius: var(--button-rad);
@@ -554,7 +553,7 @@ button {
     border-radius: var(--button-rad);
 }
 .checkmark2:hover {
-    /*opacity: 1;*/
+    opacity: 1;
 
 }
 .checkmark2:hover:after {
@@ -563,9 +562,10 @@ button {
     left: -5rem;
     content: "Content must be left justified when using the colour option";
     text-align: justify;
-    background: white;
+    background: var(--bg-clr-rev);
+    color: var(--txt-clr-rev);
     font-size: small;
-    height: 4rem;
+    height: 5rem;
     width: 20rem;
     padding: .5rem;
     border-radius: var(--border-rad);
