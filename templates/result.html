@@ -66,8 +66,8 @@
                                     </div>
                                     <div class="select ">
                                         <label class="" for="generate"></label>
-                                        <input id="generate" name="generate"
-                                               placeholder="Enter your text" value="">
+                                        <textarea id="generate" name="generate"
+                                                  rows="2">{{.InputText}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -115,6 +115,7 @@
                                         <label class="" for="browse">Upload your file</label>
                                     </div>
                                     <div id="drop_zone">
+                                        <div id="uploadedFile"></div>
                                         <!--                                <span class="dragText">drag and drop your file, or</span>-->
                                         <!--                                <span class="button">browse</span>-->
                                         <input type="file" id="browse" name="file-drop" />

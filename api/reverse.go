@@ -1,6 +1,7 @@
 package api
 
 import (
+	ascii_art_web "ascii_art_web/go"
 	"fmt"
 	"io"
 	"mime/multipart"
@@ -9,12 +10,17 @@ import (
 )
 
 func Reverse(w http.ResponseWriter, r *http.Request) string {
+
+	if !ascii_art_web.IsFilePresent(w, r) {
+		return ""
+	}
 	// Limit the size of the incoming file to prevent memory issues
 	err := r.ParseMultipartForm(10 << 20)
 	if err != nil {
 		return ""
 	} // Limit upload size to 10MB
 	// Retrieve the file from form data
+
 	file, handler, err := r.FormFile("file-drop")
 	if err != nil {
 		fmt.Println("Error Retrieving the File")
