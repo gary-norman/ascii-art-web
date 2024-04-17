@@ -119,18 +119,6 @@ body {
 h1 {
     margin: 1rem 0;
 }
-
-.wrapper {
-    height: 100dvh;
-    overflow-y: scroll;
-    overscroll-behavior-y: contain;
-    scroll-snap-type: y mandatory;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
-.wrapper::-webkit-scrollbar {
-    display: none;
-}
 main {
     height: 100%;
     width: 100%;
@@ -145,6 +133,23 @@ main {
     top: 50%;
     transform: translateY(-50%);
     margin: auto;
+}
+textarea {
+    color: var(--txt-clr);
+    background: var(--bg-clr);
+    outline: none;
+    border: none;
+}
+.wrapper {
+    height: 100dvh;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.wrapper::-webkit-scrollbar {
+    display: none;
 }
 .header {
     display: flex;
