@@ -1,7 +1,6 @@
 package api
 
 import (
-	ascii_art_web "ascii_art_web/go"
 	"fmt"
 	"io"
 	"mime/multipart"
@@ -9,11 +8,8 @@ import (
 	"os"
 )
 
-func Reverse(w http.ResponseWriter, r *http.Request) string {
+func GetFileName(w http.ResponseWriter, r *http.Request) string {
 
-	if !ascii_art_web.IsFilePresent(w, r) {
-		return ""
-	}
 	// Limit the size of the incoming file to prevent memory issues
 	err := r.ParseMultipartForm(10 << 20)
 	if err != nil {
