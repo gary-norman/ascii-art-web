@@ -70,14 +70,15 @@ func ArtFromFile(w http.ResponseWriter, r *http.Request) string {
 }
 
 func ArtFromFileLines(w http.ResponseWriter, r *http.Request) []string {
-	fmt.Println("entering ArtFromFileLine")
+	fmt.Println("entering ArtFromFileLines")
 	fmt.Println("------------------------------------------------")
 	// Limit the size of the incoming file to prevent memory issues
-	err := r.ParseMultipartForm(10 << 20) // Limit upload size to 10MB
+	err := r.ParseForm() // Limit upload size to 10MB
 	if err != nil {
 		fmt.Println("Error parsing form data:", err)
 	}
 
+	fmt.Println("no err")
 	// Retrieve the file from form data
 	file, handler, err := r.FormFile("file-drop")
 	if err != nil {
