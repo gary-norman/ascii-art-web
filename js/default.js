@@ -37,9 +37,10 @@ const gopher = document.getElementById("gopher")
 const formMain = document.forms['mainForm'];
 const textRadios = formMain.elements['text-align'];
 const colorRadios = formMain.elements['colors'];
+const getText = document.getElementById("getText");
+const getText2 = document.getElementById("getText2");
 // buttons
-const make = document.getElementById("do")
-const rev = document.getElementById("rev")
+const rev = document.getElementById("rev");
 // text areas
 const asciiOutput = document.getElementById("ascii-output");
 // misc
@@ -135,6 +136,17 @@ function toggleReverse() {
     upload.classList.toggle("uploadFlip");
     rev.classList.toggle("revPressed")
 }
+function getTextFunc() {
+    const viewport = window.innerWidth
+    if (viewport <= 768) {
+        getText2.classList.add("getText2Appear");
+        getText2.classList.remove("getText2");
+    }
+    else {
+        getText.classList.add("getTextAppear");
+        getText.classList.remove("getText");
+    }
+}
 // function adjustTextSize(containerId) {
 //     let fontSize = 1; // Starting font size
 //     const step = 0.1; // Decrease step
@@ -224,6 +236,8 @@ function displayFile() {
     let fileReader = new FileReader();
     fileReader.onload = () => {
         dropArea.innerHTML = `<span class="dragText">uploaded ${file.name}</span>`;
+        dropArea.classList.add("dropped");
+        getTextFunc();
     };
     fileReader.readAsDataURL(file);
 } else {

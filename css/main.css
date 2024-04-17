@@ -643,6 +643,7 @@ button {
     font-size: var(--font-sz-cards);
     background: var(--bg-clr) var(--svg-upload) no-repeat center;
     border: 2px dashed var(--txt-clr);
+    z-index: 999;
 }
 #drop_zone.active {
     border: 0;
@@ -683,27 +684,95 @@ button {
     background: color-mix(in lab, var(--mcr-red), var(--mcr-yellow) 15%) ;
     cursor: pointer;
 }
+.getText, .getText2 {
+    display: none;
+    background: var(--bg-clr);
+    color: var(--txt-clr);
+    z-index: -999;
+}
+.getText {
+    position: absolute;
+    bottom: -18px;
+}
+.getTextAppear {
+    display: block;
+    position: absolute;
+    bottom: -18px;
+    background: var(--mcr-cyan);
+    color: var(--txt-clr);
+    z-index: 999;
+    animation: slide-in 500ms ease;
+}
+.getText2Appear {
+    display: block;
+    background: var(--mcr-cyan);
+    color: var(--txt-clr);
+    z-index: 999;
+    animation: slide-in2 500ms ease;
+}
+@keyframes slide-in {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 @media only screen and (max-width: 600px) {
     .frontpage {
         height: 100%;
         scroll-snap-align: start;
     }
+
     .frosted {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-items: center;
     }
+
     form, .form {
         width: 95%;
         display: grid;
     }
+
     #gopher {
         display: none;
     }
+
     #generator, #colorPicker, #upload {
+        animation: grow, fade-in 700ms ease;
         width: 100%;
+    }
+
+    .getText {
+        position: relative;
+    }
+
+    @keyframes slide-in2 {
+        0% {
+            transform: translateY(-38px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+    @keyframes grow {
+        0% {
+            transform: translateY(-100px);
+        }
+        100% {
+            transform: translateY(0);
+        }
     }
 }
 @media only screen and (min-width: 601px) {
@@ -757,7 +826,7 @@ button {
           display: grid;
           height: 100%;
           grid-template-columns: 4fr 4fr 4fr;
-          gap: .5rem 2rem;
+          gap: 2rem;
           grid-template-areas:
           "gen col up";
           justify-content: space-between;
@@ -773,7 +842,7 @@ button {
       }
       #upload {
           grid-area: up;
-          z-index: 0;
+          /*z-index: 0;*/
           /*width: 100%*/
       }
       .upload {
@@ -870,7 +939,6 @@ button {
           color: var(--txt-clr);
           background: var(--bg-clr);
           border-radius: 0;
-          z-index: 999;
       }
       #do:hover, #rev:hover {
           cursor: pointer;
