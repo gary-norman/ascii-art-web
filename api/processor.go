@@ -21,7 +21,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	}{}
 
 	if r.Method != "POST" {
-		ErrorHandler(w, r, http.StatusBadGateway)
+		ErrorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
 
@@ -34,8 +34,8 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	artOutput := ""
 	outputResult := "<pre>" + pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
 	artToText := "Your Art:"
-	fmt.Println("r.URL.Path", r.URL.Path)
 	if ascii_art_web.IsFilePresent(w, r) {
+		fmt.Println("testing - file present")
 		artOutput = pkg.Reverse("filetoart/" + Reverse(w, r))
 		artToText = "Your art says: " + artOutput
 		outputResult = "<pre>" + pkg.MakeArt(artOutput, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
@@ -49,8 +49,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	if inputText == "" {
-		//http.Error(w, "400 - Bad Request: Missing form fields", http.StatusBadRequest)
+	if inputText == "" && !ascii_art_web.IsFilePresent(w, r) {
 		fmt.Println("Error1 in Processor")
 		ErrorHandler(w, r, http.StatusBadRequest)
 	} else if inputText != "" && colorWord != "" && chosenColor == "" {
@@ -69,11 +68,10 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	//if all good, status 200, writing it to head would make it redundant, as per  " http: superfluous response.WriteHeader call from ascii_art_web/api.Processor (processor.go:87)"
 	err := tpl.ExecuteTemplate(w, "result.html", d)
 	if err != nil {
-		fmt.Println("err is:", err)
+		fmt.Println("Error is:", err)
 		var e Error
 		switch {
 		case errors.As(err, &e):
-			//http.Error(w, e.Error(), e.Status())
 			fmt.Println("Error3 in Processor")
 			ErrorHandler(w, r, e.Status())
 		default:
@@ -82,6 +80,10 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
+}
+
+func newFunc(w http.ResponseWriter, tmpl string, data interface{}) {
+
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
@@ -98,15 +100,4 @@ func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 		http.Error(w, "Error executing template", http.StatusInternalServerError)
 		return
 	}
-}
-
-func open500(w http.ResponseWriter) {
-	w.WriteHeader(500)
-	t, err := template.ParseFiles("templates/500.html")
-	if err != nil {
-		fmt.Println("Error parsing files:", err.Error())
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	err = t.Execute(w, nil)
 }

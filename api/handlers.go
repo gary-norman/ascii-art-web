@@ -43,19 +43,26 @@ func HandleRequestsGary() {
 }
 
 func ErrorHandler(w http.ResponseWriter, r *http.Request, status int) {
-	fmt.Println("handling problem :)")
-	w.WriteHeader(status)
-	//w.Write([]byte(status))
-	//http.Error(w, s, status)
-	//http.Redirect(w, r, "templates/"+strconv.Itoa(status)+".html", status)
+	fmt.Println("Handling problem...")
 	fmt.Println("redirecting to", strconv.Itoa(status)+".html")
 	t, err := template.ParseFiles("templates/" + strconv.Itoa(status) + ".html")
+	w.WriteHeader(status)
 	if err != nil {
 		fmt.Println("Error parsing files:", err.Error())
 		open500(w)
-		//http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	err = t.Execute(w, nil)
 	return
+}
+
+func open500(w http.ResponseWriter) {
+	w.WriteHeader(500)
+	t, err := template.ParseFiles("templates/500.html")
+	if err != nil {
+		fmt.Println("Error parsing files:", err.Error())
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	err = t.Execute(w, nil)
 }

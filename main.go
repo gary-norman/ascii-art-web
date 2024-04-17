@@ -72,7 +72,7 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("charMap:", charMap)
 
 		inputArt = ascii_art_web.ArtFromFile(w, r)
-		fmt.Println("conditi n: inputArt is:		", inputArt)
+		fmt.Println("condition: inputArt is:		", inputArt)
 		artToText = ascii_art_web.CheckReverse(w, r)
 		yourArt += artToText
 		fmt.Println("condition: artToText is:		", artToText)
