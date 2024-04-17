@@ -35,10 +35,10 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	outputResult := "<pre>" + pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
 	artToText := "Your Art:"
 	if ascii_art_web.IsFilePresent(w, r) {
-		fmt.Println("testing - file present")
-		artOutput = pkg.Reverse("filetoart/" + Reverse(w, r))
+		fmt.Println("testing - file present: ", GetFileName(w, r))
+		artOutput = pkg.Reverse("filetoart/" + GetFileName(w, r))
 		artToText = "Your art says: " + artOutput
-		outputResult = "<pre>" + pkg.MakeArt(artOutput, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
+		outputResult = "<pre>" + ascii_art_web.ArtFromFile(w, r) + "</pre>"
 	}
 	if chosenColor != "" {
 		if colorWord != "" {
@@ -52,6 +52,8 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	if inputText == "" && !ascii_art_web.IsFilePresent(w, r) {
 		fmt.Println("Error1 in Processor")
 		ErrorHandler(w, r, http.StatusBadRequest)
+	} else if inputText == "" && ascii_art_web.IsFilePresent(w, r) {
+
 	} else if inputText != "" && colorWord != "" && chosenColor == "" {
 		fmt.Println("Error2 in Processor")
 		ErrorHandler(w, r, http.StatusBadRequest)
@@ -80,10 +82,6 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-}
-
-func newFunc(w http.ResponseWriter, tmpl string, data interface{}) {
-
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
