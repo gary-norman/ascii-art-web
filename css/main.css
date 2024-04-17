@@ -71,7 +71,7 @@
     7.4px 4.6px 33.3px rgba(0, 0, 0, 0.041),
     14px 8.7px 59px rgba(0, 0, 0, 0.05),
     37px 23px 126px rgba(0, 0, 0, 0.07);
-    --button-shadow: 1px 1px 0px rgba(74, 74, 74, 0.5), inset -1px -1px 5px 2px rgba(0 0 0 / 0);
+    --button-shadow: 1px 1px 1px rgba(74, 74, 74, 0.3), -1px -1px 1px 0 rgba(255 2552 255 / .18);
     --button-hover-shadow: 4px 4px 5px -1px rgba(0,0,0,0.45);
     --button-pressed-shadow: inset 0 3px 5px -1px rgba(0 0 0 / .3), inset 0 -1px 2px -1px rgba(200 200 200   / .6);
   /* fonts */
@@ -491,6 +491,7 @@ button {
 .radio {
     display: block;
     position: relative;
+    flex-shrink: 0;
     width: 31px;
     cursor: pointer;
     -webkit-user-select: none;
@@ -726,7 +727,33 @@ button {
         opacity: 1;
     }
 }
-
+.fileOutputForm {
+    width: 100%;
+}
+.fileOutput {
+    display: flex;
+    gap: 1rem;
+    background: var(--mcr-cyan);
+    height: 3.9rem;
+    padding: .5rem;
+}
+.fileOutputCheck {
+}
+.fileOutputLabel {
+    width: auto;
+    flex-shrink: 0;
+    padding: .5rem 0 0 1rem;
+}
+.fileOutputButton {
+    width: 8rem;
+    color: var(--txt-clr-hover-light);
+    /*border: 1px solid var(--txt-clr);*/
+    box-shadow: var(--button-shadow);
+    border-radius: 1rem;
+}
+.fileOutputButton:active {
+    box-shadow: var(--button-pressed-shadow);
+}
 @media only screen and (max-width: 600px) {
     .frontpage {
         height: 100%;
