@@ -14,24 +14,31 @@
 
 }
 :root {
-    --font-sz-errors: clamp(.5rem, .7rem + 0.65vw, 1.5rem);
+    --font-sz-errors-lrg: clamp(.3rem, .45rem + 0.65vw, 1rem);
+    --font-sz-errors-sml: clamp(.3rem, .35rem + 0.65vw, .9rem);
+    --font-sz-errorh1-lrg: clamp(1rem, 1.9rem + 0.65vw, 2.7rem);
+    --font-sz-errorh1-sml: clamp(1rem, 1.5rem + 0.65vw, 2rem);
 }
 /** {*/
 /*    border: 1px dashed hotpink;*/
 /*}*/
 /* error messages */
+.frosted {
+    height: 50vh;
+}
 .error {
     display: flex;
     align-self: center;
     flex-direction: column;
     align-items: center;
+    margin: auto 0;
     text-shadow: rgba(37, 37, 37, 0.37) 1px 1px 1px;
 }
 .errorNum {
-    font-size: var(--font-sz-errors);
+    font-size: var(--font-sz-errors-lrg);
 }
 .errorText {
-    font-size: calc(var(--font-sz-errors)/1.5) ;
+    font-size: calc(var(--font-sz-errors-lrg)/1.5) ;
     text-shadow: rgba(37, 37, 37, 0.37) 1px 1px 1px;
 }
 .errorh1 {
@@ -41,7 +48,7 @@
     text-align: center;
     font-family: bite_chocolateregular, cursive;
     color: var(--text-clr-heading);
-    font-size: 2.5rem;
+    font-size: var(--font-sz-errorh1-lrg);
     line-height: 1.5;
     text-shadow: rgba(37, 37, 37, 0.37) 1px 1px 3px;
 }
@@ -53,11 +60,13 @@
 .ohDear {
     display: flex;
     align-self: start;
-    margin: calc((50vh - 19.5rem)/2) 0;
-    width: calc(100vw - 344px);
+    justify-content: center;
+    margin: auto 0;
+    width: calc(100vw - 260px);
 }
 .lost {
     display: grid;
+    width: 65%;
 }
 .thisguy {
     position: relative;
@@ -99,6 +108,31 @@
     width: 34rem;
     right: 0;
     bottom: 15rem;
+}
+@media only screen and (max-width: 768px) {
+    .frosted {
+        height: 33vh;
+    }
+    .errorNum {
+        font-size: var(--font-sz-errors-sml);
+    }
+    .errorText {
+        font-size: calc(var(--font-sz-errors-sml)/1.5);
+    }
+    .errorh1 {
+        font-size: var(--font-sz-errorh1-sml);
+        margin: 1rem;
+        line-height: 2;
+    }
+    .ohDear {
+        /*width: calc(100vw - 60px);*/
+        justify-content: start;
+        width: 100%;
+        margin: 0 0 2rem 0;
+    }
+    .lost {
+        width: 95%;
+    }
 }
 
 .gopherHolder,
