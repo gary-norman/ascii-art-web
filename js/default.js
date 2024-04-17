@@ -33,6 +33,7 @@ const alignment = document.getElementById("alignment");
 const generator = document.getElementById("generator");
 const asciiout = document.getElementById("asciiout");
 const gopher = document.getElementById("gopher")
+const uploadedFile = document.getElementById("uploadedFile")
 // forms
 const formMain = document.forms['mainForm'];
 const textRadios = formMain.elements['text-align'];
@@ -232,10 +233,9 @@ function displayFile() {
     // console.log(fileType);
     let validExtensions = ["text/plain"];
     if (validExtensions.includes(fileType)) {
-    // console.log('This is an image file');
     let fileReader = new FileReader();
     fileReader.onload = () => {
-        dropArea.innerHTML = `<span class="dragText">uploaded ${file.name}</span>`;
+        uploadedFile.innerHTML = `<div class="dragText">uploaded</div><div class="uploadedFile">${file.name}</div>`;
         dropArea.classList.add("dropped");
         getTextFunc();
     };

@@ -638,8 +638,9 @@ button {
 }
 #drop_zone {
     display: flex;
-    justify-content: center;
-    align-items: end;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     height: 10.3rem;
     font-size: var(--font-sz-cards);
     background: var(--bg-clr) var(--svg-upload) no-repeat center;
@@ -667,6 +668,16 @@ button {
 }
 #drop_zone input {
     cursor: pointer;
+}
+#uploadedFile {
+    color: var(--txt-clr);
+}
+.uploadedFile {
+    font-size: var(--font-sz-main);
+    padding: .5rem 2rem;
+    color: var(--mcr-red);
+    background: var(--mcr-yellow);
+    border: 1px dashed var(--mcr-red);
 }
 #text_input {
     width: 100%;
