@@ -44,6 +44,7 @@ const getText2 = document.getElementById("getText2");
 // buttons
 const rev = document.getElementById("rev");
 const genascii = document.getElementById("genascii")
+const genasciiMob = document.getElementById("genasciiMob")
 // text areas
 const asciiOutput = document.getElementById("ascii-output");
 // misc
@@ -59,6 +60,7 @@ function hideUI() {
             upload.style.display = "none"
             alignment.style.display = "flex"
             generator.style.display = "flex"
+            genasciiMob.style.display = "block"
             asciiout.style.display = "flex"
         }
         else if (value === "color") {
@@ -66,6 +68,7 @@ function hideUI() {
             upload.style.display = "none"
             alignment.style.display = "none"
             generator.style.display = "flex"
+            genasciiMob.style.display = "none"
             asciiout.style.display = "flex"
         }
         else if (value === "output") {
@@ -73,6 +76,7 @@ function hideUI() {
             upload.style.display = "none"
             alignment.style.display = "flex"
             generator.style.display = "flex"
+            genasciiMob.style.display = "block"
             asciiout.style.display = "flex"
         }
         else {

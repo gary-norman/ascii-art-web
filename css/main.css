@@ -679,7 +679,11 @@ button {
 #drop_zone input {
     cursor: pointer;
 }
+.dragText {
+    justify-self: center;
+}
 #uploadedFile {
+    display: grid;
     color: var(--txt-clr);
 }
 .uploadedFile {
@@ -793,7 +797,7 @@ button {
     }
     .frosted {
         display: flex;
-        flex-direction: column;
+        /*flex-direction: column;*/
         /*align-items: stretch;*/
         justify-items: center;
     }
@@ -889,6 +893,9 @@ button {
       #generator {
           grid-area: gen;
           /*width: 100%*/
+      }
+      #genasciiMob {
+            display: none;
       }
       #colorPicker {
           grid-area: col;

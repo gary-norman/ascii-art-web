@@ -130,6 +130,7 @@
                                         <textarea id="generate" name="generate"
                                                   placeholder="Enter your text" rows="2">{{.InputText}}</textarea>
                                     </div>
+                                    <input type="submit" class="genasciiClickable " id="genasciiMob" value="generate ascii"/>
                                 </div>
                             </div>
                             <div id="colorPicker">
@@ -165,7 +166,7 @@
                                         <label class="" for="color-txt"></label>
                                         <input id="color-txt" name="colour-text"
                                                placeholder="Enter specific letters  (optional)" value="">
-                                        <input type="submit" class="genascii " id="genascii" value="generate ascii" disabled/>
+                                        <input type="submit" class="genasciiClickable " id="genascii" value="generate ascii" disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +188,7 @@
                                 </div>
                             </div>
                             <div id="rev" class="rev"></div>
-                            <div id="gopher" class="gopher">
+                            <div class="gopher" id="gopher">
                                 <div>
                                     <pre>             _____    _____   _____   _____                       _____    _______
     /\      / ____|  / ____| |_   _| |_   _|              /\     |  __ \  |__   __|
