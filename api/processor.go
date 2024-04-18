@@ -35,18 +35,10 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	artOutput := ""
 	outputResult := "<pre>" + pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
 	artToText := "Your Art:"
-	// write art to file for download
-	err := os.WriteFile("arttofile/yourart.txt", []byte(pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))+"\n"), 0644)
-	if err != nil {
-		fmt.Println("Error writing to the file:", err)
-		return // Exit the program on error
-	}
-	// reverse lookup
-	if ascii_art_web.IsFilePresent(w, r) {
-		fmt.Println("testing - file present: ", GetFileName(w, r))
-		artOutput = pkg.Reverse("filetoart/" + GetFileName(w, r))
-		artToText = "Your art says: " + artOutput
-		outputResult = "<pre>" + ascii_art_web.ArtFromFile(w, r) + "</pre>"
+	// justify alignment
+	if chosenAlign == "justify" {
+		outputResult = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
+
 	}
 	//colourise art
 	if chosenColor != "" {
@@ -56,6 +48,19 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 		} else {
 			outputResult = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, true)
 		}
+	}
+	// reverse lookup
+	if ascii_art_web.IsFilePresent(w, r) {
+		fmt.Println("testing - file present: ", GetFileName(w, r))
+		artOutput = pkg.Reverse("filetoart/" + GetFileName(w, r))
+		artToText = "Your art says: " + artOutput
+		outputResult = "<pre>" + ascii_art_web.ArtFromFile(w, r) + "</pre>"
+	}
+	// write art to file for download
+	err := os.WriteFile("arttofile/yourart.txt", []byte(pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))+"\n"), 0644)
+	if err != nil {
+		fmt.Println("Error writing to the file:", err)
+		return // Exit the program on error
 	}
 	// force 400 error
 	if inputText == "" && !ascii_art_web.IsFilePresent(w, r) {

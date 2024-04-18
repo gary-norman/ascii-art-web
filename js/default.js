@@ -164,7 +164,7 @@ function genasciiClick() {
 }
 // ****** events ******
 // make genascii clickable and highlighted
-generate.addEventListener("input", genasciiClick);
+// generate.addEventListener("input", genasciiClick);
 // show/hide upload
 rev.addEventListener("click", toggleReverse);
 gopher.addEventListener("click", toggleReverse);

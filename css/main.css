@@ -177,11 +177,12 @@ textarea {
     box-shadow: var(--main-shadow);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    padding: 1rem;
+    padding: 0;
     border-radius: var(--border-rad);
 }
 .elements {
     width: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -441,12 +442,12 @@ button {
 }
 .asciiOut {
     display: flex;
-    overflow: hidden;
+    overflow: auto;
     margin: 0;
     height: 100%;
     padding: 1rem;
     line-height: 1;
-    width: auto;
+    max-width: 91vw;
     font-size: clamp(.8vw, .8rem + 1vw, 1.2vw);
     color: var(--txt-clr);
     background: var(--bg-clr);
@@ -864,7 +865,6 @@ button {
 @media only screen and (min-width: 768px) {
       .elements {
           display: grid;
-          /*grid-template-columns: 4fr 4fr 4fr;*/
           grid-template-rows: 4fr 6fr 1fr;
           gap: 2rem 0;
           grid-template-areas:
