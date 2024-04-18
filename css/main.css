@@ -8,7 +8,7 @@
   --text-clr-darker: rgb(48, 48, 48);
   --bg-clr-dark: var(--text-clr-dark);
   --text-clr-light: rgb(181, 181, 181);
-  --bg-clr-light: var(--text-clr-heading);
+  --bg-clr-light: rgb(241, 241, 241);
   --txt-clr-hover-light: color-mix(in lab, var(--text-clr-light), rgb(255 255 255) 60%);
   --txt-clr-hover-dark: color-mix(in lab, currentColor, rgb(0 0 0) 70%);
     --svg-rotate-b: url(../icons/rotate-ccw.svg);
@@ -26,21 +26,23 @@
 
 
 /* dark mode */
-  --bg-clr: var(--bg-clr-light);
-  --txt-clr: var(--text-clr-dark);
-  --txt-clr-hover: var(--txt-clr-hover-dark);
-  --bg-clr-rev: var(--bg-clr-dark);
-  --txt-clr-rev: var(--text-clr-dark);
-  --txt-clr-hover-rev: var(--txt-clr-hover-light);
-    --svg-align: var(--svg-stroke-b);
-    --svg-rotate: var(--svg-rotate-b);
-    --svg-upload: var(--svg-upload-b);
-    --darkTogglePos-sun: var(--darkTogglePos-r);
-    --darkToggleStroke-sun: var(--darkToggleStroke-b);
-    --darkToggleStroke-sunChecked: var(--darkToggleStroke-w);
-    --darkTogglePos-moon: var(--darkTogglePos-l);
-    --darkToggleStroke-moon: var(--darkToggleStroke-w);
-    --darkToggleStroke-moonChecked: var(--darkToggleStroke-b);
+    /* light */
+        --bg-clr: var(--bg-clr-light);
+        --txt-clr: var(--text-clr-dark);
+        --txt-clr-hover: var(--txt-clr-hover-dark);
+        --bg-clr-rev: var(--bg-clr-dark);
+        --txt-clr-rev: var(--text-clr-dark);
+        --txt-clr-hover-rev: var(--txt-clr-hover-light);
+        --txt-clr-gopher: var(--text-clr-darker);
+        --svg-align: var(--svg-stroke-b);
+        --svg-rotate: var(--svg-rotate-b);
+        --svg-upload: var(--svg-upload-b);
+        --darkTogglePos-sun: var(--darkTogglePos-r);
+        --darkToggleStroke-sun: var(--darkToggleStroke-b);
+        --darkToggleStroke-sunChecked: var(--darkToggleStroke-w);
+        --darkTogglePos-moon: var(--darkTogglePos-l);
+        --darkToggleStroke-moon: var(--darkToggleStroke-w);
+        --darkToggleStroke-moonChecked: var(--darkToggleStroke-b);
     @media (prefers-color-scheme: dark) {
         --bg-clr: var(--bg-clr-dark);
         --txt-clr: var(--text-clr-light);
@@ -48,6 +50,7 @@
         --bg-clr-rev: var(--bg-clr-light);
         --txt-clr-rev: var(--text-clr-dark);
         --txt-clr-rev-hover: var(--txt-clr-hover-dark);
+        --txt-clr-gopher: var(--text-clr-heading);
         --svg-align: var(--svg-stroke-w);
         --svg-rotate: var(--svg-rotate-w);
         --svg-upload: var(--svg-upload-w);
@@ -937,7 +940,7 @@ button {
           border: 2px dashed var(--txt-clr);
       }
       #gopher pre {
-          color: var(--txt-clr);
+          color: var(--txt-clr-gopher);
           justify-content: center;
           font-size: var(--font-sz-ascii);
       }
