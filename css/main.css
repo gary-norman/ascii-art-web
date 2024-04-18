@@ -132,7 +132,7 @@ main {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    margin: auto;
+    /*margin: auto;*/
 }
 textarea {
     color: var(--txt-clr);
@@ -695,8 +695,17 @@ button {
 }
 .genascii {
     height: 2.8rem;
+    color: var(--bg-clr);
+    background: var(--bg-clr);
+    cursor: default;
 }
-.genascii:hover {
+.genasciiClickable {
+    height: 2.8rem;
+    color: var(--text-clr-heading);
+    background: var(--mcr-cyan);
+    cursor: pointer;
+}
+.genasciiClickable:hover {
     color: var(--text-clr-heading);
     background: color-mix(in lab, var(--mcr-red), var(--mcr-yellow) 15%) ;
     cursor: pointer;
@@ -716,14 +725,14 @@ button {
     position: absolute;
     bottom: -18px;
     background: var(--mcr-cyan);
-    color: var(--txt-clr);
+    color: var(--txt-clr-hover-light);
     z-index: 999;
     animation: slide-in 500ms ease;
 }
 .getText2Appear {
     display: block;
     background: var(--mcr-cyan);
-    color: var(--txt-clr);
+    color: var(--txt-clr-hover-light);
     z-index: 999;
     animation: slide-in2 500ms ease;
 }
@@ -761,7 +770,7 @@ button {
     padding: .5rem 0 0 1rem;
 }
 .fileOutputButton {
-    width: 8rem;
+    width: 11rem;
     color: var(--txt-clr-hover-light);
     /*border: 1px solid var(--txt-clr);*/
     box-shadow: var(--button-shadow);
@@ -833,8 +842,8 @@ button {
     }
     .frosted {
         display: flex;
-        align-items: start;
-        justify-content: center;
+        /*align-items: start;*/
+        /*justify-content: center;*/
     }
     form, .form {
         width: 95%;
@@ -865,6 +874,7 @@ button {
       }
       .modifiers {
           width: 100%;
+          max-height: 183px;
           grid-area: mod;
           display: grid;
           height: 100%;
@@ -906,7 +916,7 @@ button {
       .gopher {
           position: relative;
           width: 100%;
-          height: 100%;
+          height: 85%;
           backface-visibility: hidden;
           transition: .5s ease;
           cursor: pointer;
@@ -982,6 +992,7 @@ button {
           color: var(--txt-clr);
           background: var(--bg-clr);
           border-radius: 0;
+          /*z-index: 500;*/
       }
       #do:hover, #rev:hover {
           cursor: pointer;
