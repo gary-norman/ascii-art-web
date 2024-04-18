@@ -1,30 +1,75 @@
 :root {
-  --main-bg-grad: linear-gradient(155deg, rgb(14 6 42), rgb(1, 52, 37));
-  --main-bg-clr: rgb(14, 6, 42);
-  --card-bg: rgb(124, 124, 124);
-  --accent: rgb(0, 128, 92);
-  --text-clr-heading: rgb(231 237 241);
-  --text-clr-dark: rgb(94, 94, 94);
-  --text-clr-darker: rgb(48, 48, 48);
-  --bg-clr-dark: var(--text-clr-dark);
-  --text-clr-light: rgb(181, 181, 181);
-  --bg-clr-light: rgb(241, 241, 241);
-  --txt-clr-hover-light: color-mix(in lab, var(--text-clr-light), rgb(255 255 255) 60%);
-  --txt-clr-hover-dark: color-mix(in lab, currentColor, rgb(0 0 0) 70%);
+    /* fonts */
+    --font-sz-title: clamp(1.8rem, 2rem + 0.65vw, 2.2rem);
+    --font-sz-main: clamp(1rem, 1.2rem + 0.65vw, 1.6rem);
+    --font-sz-cards: clamp(.8rem, 1rem + 0.65vw, 1.2rem);
+    --font-sz-ascii: clamp(.1rem, .3rem + 0.65vw, .4rem);
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --font-accent: 'Kdam Thmor Pro', sans-serif;
+    /*colours*/
+    --main-bg-grad: linear-gradient(155deg, rgb(14 6 42), rgb(1, 52, 37));
+    --main-bg-clr: rgb(14, 6, 42);
+    --card-bg: rgb(124, 124, 124);
+    --accent: rgb(0, 128, 92);
+    /* motion color racing */
+    --mcr-yellow: rgb(226, 192, 68);
+    --mcr-blue: rgb(31, 32, 65);
+    --mcr-cyan: rgb(81, 163, 163);
+    --mcr-red: rgb(159, 52, 45);
+    --mcr-grad: linear-gradient(50deg, var(--mcr-red), var(--mcr-yellow), var(--mcr-cyan), var(--mcr-blue));
+    /* select */
+    --select-border: var(--mcr-cyan);
+    --select-focus: var(--select-border);
+    --select-arrow: var(--select-border);
+    --border-clr: rgba(0,0,0,.2);
+    /* colours for colorized text */
+    --red: rgb(225 57 57);
+    --green: rgb(74 213 74);
+    --blue: rgb(53 86 193);
+    --yellow: rgb(251 237 52);
+    --orange: rgb(255 145 0);
+    /*font colours*/
+    --text-clr-heading: rgb(231 237 241);
+    --text-clr-dark: rgb(94, 94, 94);
+    --text-clr-darker: rgb(48, 48, 48);
+    --text-clr-light: rgb(181, 181, 181);
+    --txt-clr-hover-light: color-mix(in lab, var(--text-clr-light), rgb(255 255 255) 60%);
+    --txt-clr-hover-dark: color-mix(in lab, currentColor, rgb(0 0 0) 70%);
+    /*background colours*/
+    --bg-clr-dark: var(--text-clr-dark);
+    --bg-clr-select_header: rgb(0 0 0 / .4);
+    --bg-clr-light: rgb(241, 241, 241);
+    /*icons*/
     --svg-rotate-b: url(../icons/rotate-ccw.svg);
     --svg-rotate-w: url(../icons/rotate-ccw-white.svg);
     --svg-upload-b: url(../icons/upload.svg);
     --svg-upload-w: url(../icons/upload-white.svg);
-
     --svg-stroke-b: var(--text-clr-dark);
     --svg-stroke-w: var(--text-clr-light);
-
     --darkTogglePos-l: 28px;
     --darkTogglePos-r: 3px;
     --darkToggleStroke-b: var(--text-clr-darker);
     --darkToggleStroke-w: var(--text-clr-light);
-
-
+    /*borders, shadows etc*/
+    --button-rad: 20%;
+    --border-rad: 0.4rem;
+    /* box shadows */
+    --box-shadow: 0 0.25 1rem rgb(0 0 0 / .5);
+    --main-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    --card-shadow:
+            1px 0.6px 4.1px rgba(0, 0, 0, 0.018),
+            2.4px 1.5px 10px rgba(0, 0, 0, 0.027),
+            4.3px 2.7px 19px rgba(0, 0, 0, 0.034),
+            7.4px 4.6px 33.3px rgba(0, 0, 0, 0.041),
+            14px 8.7px 59px rgba(0, 0, 0, 0.05),
+            37px 23px 126px rgba(0, 0, 0, 0.07);
+    --icon-shadow: inset 0 1px 1px rgba(0 0 0 / .2), inset 0 3px 5px rgba(0 0 0 / .1), inset 0 -1px 1px rgba(225 225 225 / .3);
+    --toggle-shadow: inset 0 5px 15px rgba(0 0 0 / .4), inset 0 -1px 1px rgba(255 255 255 / .4);
+    --button-shadow: 1px 1px 1px rgba(74, 74, 74, 0.3), -1px -1px 1px 0 rgba(255 2552 255 / .18);
+    --button-hover-shadow: 4px 4px 5px -1px rgba(0,0,0,0.45);
+    --button-pressed-shadow: inset 0 3px 5px -1px rgba(0 0 0 / .3), inset 0 -1px 2px -1px rgba(200 200 200   / .6);
+    --button-pressed-shadow2: inset 0 1px 2px rgba(0 0 0 / .7), inset 0 3px 5px rgba(0 0 0 / .3), inset 0 -1px 2px rgba(225 225 225 / .5);
 /* dark mode */
     /* light */
         --bg-clr: var(--bg-clr-light);
@@ -61,50 +106,6 @@
         --darkToggleStroke-moon: var(--darkToggleStroke-b);
         --darkToggleStroke-moonChecked: var(--darkToggleStroke-w);
     }
-
-    --bg-clr-select_header: rgb(0 0 0 / .4);
-  --border-rad: 0.4rem;
-    /* box shadows */
-    --box-shadow: 0 0.25 1rem rgb(0 0 0 / .5);
-    --main-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-    --card-shadow:
-    1px 0.6px 4.1px rgba(0, 0, 0, 0.018),
-    2.4px 1.5px 10px rgba(0, 0, 0, 0.027),
-    4.3px 2.7px 19px rgba(0, 0, 0, 0.034),
-    7.4px 4.6px 33.3px rgba(0, 0, 0, 0.041),
-    14px 8.7px 59px rgba(0, 0, 0, 0.05),
-    37px 23px 126px rgba(0, 0, 0, 0.07);
-    --icon-shadow: inset 0 1px 1px rgba(0 0 0 / .2), inset 0 3px 5px rgba(0 0 0 / .1), inset 0 -1px 1px rgba(225 225 225 / .3);
-    --toggle-shadow: inset 0 5px 15px rgba(0 0 0 / .4), inset 0 -1px 1px rgba(255 255 255 / .4);
-    --button-shadow: 1px 1px 1px rgba(74, 74, 74, 0.3), -1px -1px 1px 0 rgba(255 2552 255 / .18);
-    --button-hover-shadow: 4px 4px 5px -1px rgba(0,0,0,0.45);
-    --button-pressed-shadow: inset 0 3px 5px -1px rgba(0 0 0 / .3), inset 0 -1px 2px -1px rgba(200 200 200   / .6);
-    --button-pressed-shadow2: inset 0 1px 2px rgba(0 0 0 / .7), inset 0 3px 5px rgba(0 0 0 / .3), inset 0 -1px 2px rgba(225 225 225 / .5);
-  /* fonts */
-  --font-sz-title: clamp(1.8rem, 2rem + 0.65vw, 2.2rem);
-  --font-sz-main: clamp(1rem, 1.2rem + 0.65vw, 1.6rem);
-  --font-sz-cards: clamp(.8rem, 1rem + 0.65vw, 1.2rem);
-    --font-sz-ascii: clamp(.1rem, .3rem + 0.65vw, .4rem);
-  --font-primary: 'Roboto', sans-serif;
-  --font-secondary: 'Roboto', sans-serif;
-  --font-accent: 'Kdam Thmor Pro', sans-serif;
-  /* motion color racing */
-  --mcr-yellow: rgb(226, 192, 68);
-  --mcr-blue: rgb(31, 32, 65);
-  --mcr-cyan: rgb(81, 163, 163);
-  --mcr-red: rgb(159, 52, 45);
-  --mcr-grad: linear-gradient(50deg, var(--mcr-red), var(--mcr-yellow), var(--mcr-cyan), var(--mcr-blue));
-    /* select */
-    --select-border: var(--mcr-cyan);
-    --select-focus: var(--select-border);
-    --select-arrow: var(--select-border);
-    --button-rad: 20%;
-    --border-clr: rgba(0,0,0,.2);
-    /* colours for colorized text */
-    --red: rgb(225 57 57);
-    --green: rgb(74 213 74);
-    --blue: rgb(53 86 193);
-    --yellow: rgb(251 237 52);
 }
 
 html {
@@ -138,7 +139,6 @@ main {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    /*margin: auto;*/
 }
 textarea {
     color: var(--txt-clr);
@@ -192,14 +192,6 @@ textarea {
     display: flex;
     justify-content: space-evenly;
 }
-
-/*.elements {*/
-/*    width: 100%;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*}*/
-
 a {
   text-decoration: none!important;
   color: var(--txt-clr)
@@ -287,9 +279,6 @@ input::file-selector-button {
     padding: 0.5rem 1rem;
     color: var(--txt-clr);
 }
-/*input[type=file] {*/
-/*    margin: 10px auto;*/
-/*}*/
 #browse {
     width: 75%;
     margin: 5px 0 0 0;
@@ -347,13 +336,6 @@ input::file-selector-button {
     background-size: 14px 14px;
     transition: .3s ease;
 }
-/*.reset:hover:before {*/
-/*    !*top: -1px;*!*/
-/*    !*left: -1px;*!*/
-/*    background-size: 16px 16px;*/
-/*    transform: rotate(-180deg);*/
-/*    transition: .3s ease;*/
-/*}*/
 .buttonedLabel {
     display: flex;
     justify-content: space-between;
@@ -371,7 +353,6 @@ button {
     margin: .5rem 1rem;
 }
 .buttonRow input {
-    /*background: radial-gradient(ellipse farthest-side at center center, #ffffff 50%, #f1f1f1 160%);*/
     background: var(--bg-clr);
     height: 24px;
     width: 5rem;
@@ -473,7 +454,13 @@ button {
 }.justify {
     justify-content: space-between;
 }
-
+.justifyMultiline {
+    flex-direction: column;
+}
+.justifiedOutput {
+    display: flex;
+    justify-content: space-between;
+}
 .justifyBlock {
     background: var(--bg-clr);
     color: var(--txt-clr);
@@ -492,9 +479,6 @@ button {
     height: 4.3rem;
     padding: .5rem;
 }
-/*.toggle * {*/
-/*    border: 1px dashed hotpink;*/
-/*}*/
 .modifiers {
     width: 100%;
     flex-direction: column;
@@ -541,10 +525,10 @@ button {
     color: var(--yellow);
 }
 .orangeSelect {
-    background: orange;
+    background: var(--orange);
 }
 .orange {
-    color: orange;
+    color: var(--orange);
 }
 .checkmark {
     position: absolute;
@@ -634,7 +618,6 @@ button {
 #upload {
     flex-direction: column;
 }
-
 /* submit button */
 #submit-reverse {
     background: #fff;
@@ -645,7 +628,6 @@ button {
 #submit-reverse:hover {
     cursor: pointer;
     box-shadow: var(--button-hover-shadow);
-
 }
 #drop_zone {
     display: flex;
@@ -784,7 +766,6 @@ button {
 .fileOutputButton {
     width: 11rem;
     color: var(--txt-clr-hover-light);
-    /*border: 1px solid var(--txt-clr);*/
     box-shadow: var(--button-shadow);
     border-radius: 1rem;
 }
@@ -798,8 +779,6 @@ button {
     }
     .frosted {
         display: flex;
-        /*flex-direction: column;*/
-        /*align-items: stretch;*/
         justify-items: center;
     }
     form, .form {
@@ -815,7 +794,6 @@ button {
     .getText {
         position: relative;
     }
-
     @keyframes slide-in2 {
         0% {
             transform: translateY(-38px);
@@ -848,8 +826,6 @@ button {
     }
     .frosted {
         display: flex;
-        /*align-items: stretch;*/
-        /*justify-content: center;*/
     }
     form, .form {
         width: 95%;
@@ -892,19 +868,15 @@ button {
       }
       #generator {
           grid-area: gen;
-          /*width: 100%*/
       }
       #genasciiMob {
             display: none;
       }
       #colorPicker {
           grid-area: col;
-          /*width: 100%*/
       }
       #upload {
           grid-area: up;
-          /*z-index: 0;*/
-          /*width: 100%*/
       }
       .upload {
           backface-visibility: hidden;
@@ -912,7 +884,6 @@ button {
           transition: .5s ease;
       }
     .uploadFlip {
-        /*z-index: 1;*/
         transform: rotate3d(0, 1, 0, 0deg);
         transition: .5s ease;
     }
@@ -933,7 +904,6 @@ button {
           height: 100%;
       }
       .gopherFlip {
-          /*z-index: 1;*/
           transform: rotate3d(0, 1, 0, 180deg);
           transition: .5s ease;
       }
@@ -977,7 +947,6 @@ button {
     .right-eye {
         animation-name: blink;
     }
-
     @keyframes blink {
         0%,
         6%,
@@ -999,7 +968,6 @@ button {
           color: var(--txt-clr);
           background: var(--bg-clr);
           border-radius: 0;
-          /*z-index: 500;*/
       }
       #do:hover, #rev:hover, #rev:has(+ .gopher:hover) {
           cursor: pointer;
@@ -1030,7 +998,6 @@ button {
       }
       #asciiout {
           grid-area: art;
-          /*height: 100%;*/
       }
 }
 

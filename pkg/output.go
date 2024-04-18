@@ -45,18 +45,8 @@ func MakeArtAligned(origString string, y map[int][]string, ds []int, ws Winsize,
 	return art
 }
 
-// MakeArtJustified Transform the input text origString to the output art, line by line, with justified content
-func MakeArtJustified(origString string, y map[int][]string) string {
+func wordsToPre(words []string, y map[int][]string, wordSlice []string) string {
 	var art string
-	replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
-	wordSlice := strings.Split(replaceNewline, "\\n")
-	var words []string
-	for i := 0; i < len(wordSlice); i++ {
-		words = append(words, strings.Split(wordSlice[i], " ")...)
-	}
-	//fmt.Printf("Words = %v\n", words)
-	//fmt.Printf("Wordslength = %v\n", len(words))
-
 	if len(words) > 1 {
 		var line string
 		for _, word := range words {
@@ -90,6 +80,41 @@ func MakeArtJustified(origString string, y map[int][]string) string {
 		line = "<pre>"
 	}
 	return art
+}
+
+// MakeArtJustified Transform the input text origString to the output art, line by line, with justified content
+func MakeArtJustified(origString string, y map[int][]string) (string, string) {
+	var art string
+	var justification string
+	replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
+	wordSlice := strings.Split(replaceNewline, "\\n")
+	var lines [][]string
+	for _, str := range wordSlice {
+		splitStr := strings.Split(str, "\n")
+		lines = append(lines, splitStr)
+	}
+	if len(lines) > 1 {
+		for _, newLine := range lines {
+			var newWords []string
+			for _, word := range newLine {
+				newWords = append(newWords, strings.Split(word, " ")...)
+			}
+			art += "<div class=\"justifiedOutput\">"
+			art += wordsToPre(newWords, y, newLine)
+			art += "</div>"
+			justification = "justifyMultiline"
+		}
+	} else {
+		for _, newLine := range lines {
+			var newWords []string
+			for _, word := range newLine {
+				newWords = append(newWords, strings.Split(word, " ")...)
+			}
+			art += wordsToPre(newWords, y, newLine)
+			justification = "justify"
+		}
+	}
+	return art, justification
 }
 
 // MakeArtColorized Transform the input text origString to the output art, line by line, colorizing specified text

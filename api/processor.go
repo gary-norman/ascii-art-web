@@ -37,7 +37,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	artToText := "Your Art:"
 	// justify alignment
 	if chosenAlign == "justify" {
-		outputResult = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
+		outputResult, chosenAlign = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
 
 	}
 	//colourise art
