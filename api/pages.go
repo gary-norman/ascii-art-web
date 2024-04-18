@@ -1,11 +1,12 @@
 package api
 
 import (
+	"errors"
 	"html/template"
 	"net/http"
 )
 
-func HomePageGary(w http.ResponseWriter, r *http.Request) {
+func HomePage(w http.ResponseWriter, r *http.Request) {
 
 	if r.URL.Path != "/" {
 		ErrorHandler(w, r, http.StatusNotFound)
@@ -14,8 +15,9 @@ func HomePageGary(w http.ResponseWriter, r *http.Request) {
 	}
 	t, err := template.ParseFiles("templates/index.html")
 	if err != nil {
-		switch e := err.(type) {
-		case Error:
+		var e Error
+		switch {
+		case errors.As(err, &e):
 			//http.Error(w, e.Error(), e.Status())
 			//fmt.Println("Error1 in HomePageGary")
 			ErrorHandler(w, r, e.Status())
@@ -28,8 +30,9 @@ func HomePageGary(w http.ResponseWriter, r *http.Request) {
 
 	err = t.Execute(w, nil)
 	if err != nil {
-		switch e := err.(type) {
-		case Error:
+		var e Error
+		switch {
+		case errors.As(err, &e):
 			//fmt.Println("Error3 in HomePageGary")
 			ErrorHandler(w, r, e.Status())
 		default:

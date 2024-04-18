@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// Compares getChar and getInputChar and prints the string to the terminal
+// AsciiToChars Compares getChar and getInputChar and prints the string to the terminal
 func AsciiToChars(input, standard, shadow, thinkertoy map[int][]string) {
 	fmt.Println("entering AsciiToChars")
 	fmt.Println("------------------------------------------------")

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"os"
 )
 
 func Processor(w http.ResponseWriter, r *http.Request) {
@@ -34,12 +35,20 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	artOutput := ""
 	outputResult := "<pre>" + pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
 	artToText := "Your Art:"
+	// write art to file for download
+	err := os.WriteFile("arttofile/yourart.txt", []byte(pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))+"\n"), 0644)
+	if err != nil {
+		fmt.Println("Error writing to the file:", err)
+		return // Exit the program on error
+	}
+	// reverse lookup
 	if ascii_art_web.IsFilePresent(w, r) {
 		fmt.Println("testing - file present: ", GetFileName(w, r))
 		artOutput = pkg.Reverse("filetoart/" + GetFileName(w, r))
 		artToText = "Your art says: " + artOutput
 		outputResult = "<pre>" + ascii_art_web.ArtFromFile(w, r) + "</pre>"
 	}
+	//colourise art
 	if chosenColor != "" {
 		if colorWord != "" {
 			colSlice := []rune(colorWord)
@@ -48,7 +57,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 			outputResult = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, true)
 		}
 	}
-
+	// force 400 error
 	if inputText == "" && !ascii_art_web.IsFilePresent(w, r) {
 		fmt.Println("Error1 in Processor")
 		ErrorHandler(w, r, http.StatusBadRequest)
@@ -68,7 +77,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	d.TextToArt = template.HTML(outputResult)
 
 	//if all good, status 200, writing it to head would make it redundant, as per  " http: superfluous response.WriteHeader call from ascii_art_web/api.Processor (processor.go:87)"
-	err := tpl.ExecuteTemplate(w, "result.html", d)
+	err = tpl.ExecuteTemplate(w, "result.html", d)
 	if err != nil {
 		fmt.Println("Error is:", err)
 		var e Error
@@ -84,6 +93,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// force 500 error
 func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 	// Parse the template file
 	t, err := template.ParseFiles(tmpl)
