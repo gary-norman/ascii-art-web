@@ -651,7 +651,7 @@ button {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 10.3rem;
+    height: 10.5rem;
     font-size: var(--font-sz-cards);
     background: var(--bg-clr) var(--svg-upload) no-repeat center;
     border: 2px dashed var(--txt-clr);
@@ -994,7 +994,7 @@ button {
           border-radius: 0;
           /*z-index: 500;*/
       }
-      #do:hover, #rev:hover {
+      #do:hover, #rev:hover, #rev:has(+ .gopher:hover) {
           cursor: pointer;
           color: var(--text-clr-heading);
           background: var(--mcr-cyan);
