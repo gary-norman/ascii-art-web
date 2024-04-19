@@ -454,10 +454,22 @@ button {
 }.justify {
     justify-content: space-between;
 }
-.justifyMultiline {
+.Multiline {
     flex-direction: column;
 }
-.justifiedOutput {
+.justifiedOutputleft {
+    display: flex;
+    justify-content: start;
+}
+.justifiedOutputright {
+    display: flex;
+    justify-content: end;
+}
+.justifiedOutputcenter {
+    display: flex;
+    justify-content: center;
+}
+.justifiedOutputjustify {
     display: flex;
     justify-content: space-between;
 }

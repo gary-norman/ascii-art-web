@@ -33,13 +33,15 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	colorWord := r.FormValue("colour-text")
 	var colSlice []rune
 	artOutput := ""
-	outputResult := "<pre>" + pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
+	outputResult := ""
+	//outputResult := "<pre>" + pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
+	outputResult, chosenAlign = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), chosenAlign)
 	artToText := "Your Art:"
 	// justify alignment
-	if chosenAlign == "justify" {
-		outputResult, chosenAlign = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))
-
-	}
+	//if chosenAlign == "justify" {
+	//	outputResult, chosenAlign = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), chosenAlign)
+	//
+	//}
 	//colourise art
 	if chosenColor != "" {
 		if colorWord != "" {

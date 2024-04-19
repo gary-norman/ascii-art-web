@@ -83,7 +83,7 @@ func wordsToPre(words []string, y map[int][]string, wordSlice []string) string {
 }
 
 // MakeArtJustified Transform the input text origString to the output art, line by line, with justified content
-func MakeArtJustified(origString string, y map[int][]string) (string, string) {
+func MakeArtJustified(origString string, y map[int][]string, align string) (string, string) {
 	var art string
 	var justification string
 	replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
@@ -99,10 +99,10 @@ func MakeArtJustified(origString string, y map[int][]string) (string, string) {
 			for _, word := range newLine {
 				newWords = append(newWords, strings.Split(word, " ")...)
 			}
-			art += "<div class=\"justifiedOutput\">"
+			art += "<div class=\"justifiedOutput" + align + "\">"
 			art += wordsToPre(newWords, y, newLine)
 			art += "</div>"
-			justification = "justifyMultiline"
+			justification = "Multiline"
 		}
 	} else {
 		for _, newLine := range lines {
@@ -111,7 +111,7 @@ func MakeArtJustified(origString string, y map[int][]string) (string, string) {
 				newWords = append(newWords, strings.Split(word, " ")...)
 			}
 			art += wordsToPre(newWords, y, newLine)
-			justification = "justify"
+			justification = align
 		}
 	}
 	return art, justification
