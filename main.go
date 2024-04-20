@@ -1,6 +1,6 @@
 package main
 
-import "ascii_art_web/api"
+import "asciiartweb/api"
 
 func main() {
 	api.HandleRequestsGary()

@@ -1,4 +1,4 @@
-package ascii_art_web
+package asciiartweb
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 func RunAscii(input, colour, toColour, output, align, reverse string) string {
 	var word = input
 	var words, source []string
-	var asciiMap, standardMap, shadowMap, thinkertoyMap map[int][]string
+	var standardMap, shadowMap, thinkertoyMap map[int][]string
 	var placeholderVar string
 
 	////initialise flags
@@ -27,22 +27,22 @@ func RunAscii(input, colour, toColour, output, align, reverse string) string {
 	}
 	//
 	//prepare correct ascii map(s)
-	if reverse != "default" {
-		//standardMap = AsciiMap(PrepareBanner("standard"))
-		//shadowMap = AsciiMap(PrepareBanner("shadow"))
-		//thinkertoyMap = AsciiMap(PrepareBanner("thinkertoy"))
-		source = ArtFromFile(reverse)
-	} else {
-		//prepare the text file for the characters
-		source = PrepareBanner("")
-		//if file is non-existent, return
-		if source == nil {
-			return ""
-		}
-
-		//prepare ascii map
-		asciiMap = AsciiMap(source)
-	}
+	//if reverse != "default" {
+	//	//standardMap = AsciiMap(PrepareBanner("standard"))
+	//	//shadowMap = AsciiMap(PrepareBanner("shadow"))
+	//	//thinkertoyMap = AsciiMap(PrepareBanner("thinkertoy"))
+	//	source = ArtFromFile(reverse)
+	//} else {
+	//	//prepare the text file for the characters
+	//	source = PrepareBanner("")
+	//	//if file is non-existent, return
+	//	if source == nil {
+	//		return ""
+	//	}
+	//
+	//	//prepare ascii map
+	//	asciiMap = AsciiMap(source)
+	//}
 
 	//handle all flags and prepare arguments and variables
 	if colour != "default" {
@@ -73,6 +73,7 @@ func RunAscii(input, colour, toColour, output, align, reverse string) string {
 
 	//print words
 	fmt.Println("testing 1")
-	return PrintAsciiWords(words, asciiMap, colour, toColour, output, align)
+	return ""
+	//return AsciiWords(words, asciiMap, colour, toColour, output, align)
 
 }

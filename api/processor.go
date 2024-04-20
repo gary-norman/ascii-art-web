@@ -1,8 +1,8 @@
 package api
 
 import (
-	ascii_art_web "ascii_art_web/go"
-	"ascii_art_web/pkg"
+	asciiartweb "asciiartweb/golang_files"
+	"asciiartweb/pkg"
 	"errors"
 	"fmt"
 	"html/template"
@@ -52,12 +52,13 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	// reverse lookup
-	if ascii_art_web.IsFilePresent(w, r) {
+	if asciiartweb.IsFilePresent(w, r) {
 		fmt.Println("testing - file present: ", GetFileName(w, r))
 		artOutput = pkg.Reverse("filetoart/" + GetFileName(w, r))
 		artToText = "Your art says: " + artOutput
-		outputResult = "<pre>" + ascii_art_web.ArtFromFile(w, r) + "</pre>"
+		outputResult = "<pre>" + asciiartweb.ArtFromFile(w, r) + "</pre>"
 	}
+
 	// write art to file for download
 	err := os.WriteFile("arttofile/yourart.txt", []byte(pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)))+"\n"), 0644)
 	if err != nil {
@@ -65,10 +66,10 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 		return // Exit the program on error
 	}
 	// force 400 error
-	if inputText == "" && !ascii_art_web.IsFilePresent(w, r) {
+	if inputText == "" && !asciiartweb.IsFilePresent(w, r) {
 		fmt.Println("Error1 in Processor")
 		ErrorHandler(w, r, http.StatusBadRequest)
-	} else if inputText == "" && ascii_art_web.IsFilePresent(w, r) {
+	} else if inputText == "" && asciiartweb.IsFilePresent(w, r) {
 
 	} else if inputText != "" && colorWord != "" && chosenColor == "" {
 		fmt.Println("Error2 in Processor")
@@ -83,7 +84,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	d.ArtToText = artToText
 	d.TextToArt = template.HTML(outputResult)
 
-	//if all good, status 200, writing it to head would make it redundant, as per  " http: superfluous response.WriteHeader call from ascii_art_web/api.Processor (processor.go:87)"
+	//if all good, status 200, writing it to head would make it redundant, as per  " http: superfluous response.WriteHeader call from ascii_art_web/api.Processor (processor.golang_files:87)"
 	err = tpl.ExecuteTemplate(w, "result.html", d)
 	if err != nil {
 		fmt.Println("Error is:", err)

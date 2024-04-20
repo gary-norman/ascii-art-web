@@ -1,4 +1,4 @@
-package ascii_art_web
+package asciiartweb
 
 import (
 	"bufio"
