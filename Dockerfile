@@ -15,17 +15,16 @@ ADD . /go/src/myapp
 # Set working directory
 WORKDIR /go/src/myapp
 
-# Download Go modules
+# Download and install Go dependencies
 COPY go.mod go.sum ./
-#RUN go mod download
-RUN #go get myapp
+RUN go get myapp
 RUN go install
 
 # Copy the source code. Note the slash at the end, as explained in
 # https://docs.docker.com/engine/reference/builder/#copy
 COPY *.go ./
 
-# Build
+# Build the application
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build  -o /myapp
 
 # To bind to a TCP port, runtime parameters must be supplied to the docker command.
