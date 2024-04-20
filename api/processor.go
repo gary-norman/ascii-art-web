@@ -35,7 +35,7 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	artOutput := ""
 	outputResult := ""
 	//outputResult := "<pre>" + pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
-	outputResult, chosenAlign = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), chosenAlign)
+	outputResult, chosenAlign = pkg.MakeArtAll(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), chosenAlign)
 	artToText := "Your Art:"
 	// justify alignment
 	//if chosenAlign == "justify" {
@@ -46,9 +46,9 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	if chosenColor != "" {
 		if colorWord != "" {
 			colSlice := []rune(colorWord)
-			outputResult = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, false)
+			outputResult, chosenAlign = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, false), "left"
 		} else {
-			outputResult = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, true)
+			outputResult, chosenAlign = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, true), "left"
 		}
 	}
 	// reverse lookup
