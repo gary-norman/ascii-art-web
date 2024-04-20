@@ -50,78 +50,70 @@ func processor(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var inputArt, artToText, textToArt string
-	var charMap map[int][]string
+	var artInput, artOutput, outputResult string
 	//standardMap := ascii_art_web.AsciiMap(ascii_art_web.PrepareBanner("standard"))
 	//shadowMap := ascii_art_web.AsciiMap(ascii_art_web.PrepareBanner("shadow"))
 	//thinkertoyMap := ascii_art_web.AsciiMap(ascii_art_web.PrepareBanner("thinkertoy"))
 
-	inputText := r.FormValue("generate")
+	chosenInput := r.FormValue("generate")
 	chosenStyle := r.FormValue("banner")
 	chosenColor := r.FormValue("colors")
-	colorWord := r.FormValue("colour-text")
+	colorInput := r.FormValue("colour-text")
 	chosenAlign := r.FormValue("text-align")
 	defaultValue := "default"
-	yourArt := "Your art says: "
 
 	if ascii_art_web.IsFilePresent(w, r) {
 		emptyCols := ascii_art_web.RemoveValidSpaceIndex(ascii_art_web.GetEmptyCols(ascii_art_web.ArtFromFileLines(w, r)))
 		fmt.Println("emptyCols", emptyCols)
 
-		charMap = ascii_art_web.CharMap(ascii_art_web.ArtToSingleLine(ascii_art_web.ArtFromFileLines(w, r)), emptyCols)
+		charMap := ascii_art_web.CharMap(ascii_art_web.ArtToSingleLine(ascii_art_web.ArtFromFileLines(w, r)), emptyCols)
 		fmt.Println("charMap:", charMap)
 
-		inputArt = ascii_art_web.ArtFromFile(w, r)
-		fmt.Println("condition: inputArt is:		", inputArt)
-		artToText = ascii_art_web.CheckReverse(w, r)
-		yourArt += artToText
-		fmt.Println("condition: artToText is:		", artToText)
+		artInput = ascii_art_web.ArtFromFile(w, r)
+		fmt.Println("conditi n: artInput is:		", artInput)
+		artOutput = ascii_art_web.CheckReverse(w, r)
+		fmt.Println("condition: artOutput is:		", artOutput)
 	}
+	if colorInput == "" && chosenInput != "" {
 
-	fmt.Println("inputText is:		", inputText)
+		colorInput = chosenInput
+	}
+	fmt.Println("chosenInput is:		", chosenInput)
 	fmt.Println("chosenStyle is:		", chosenStyle)
 	fmt.Println("chosenColor is:		", chosenColor)
-	fmt.Println("colorWord is:		", colorWord)
-	fmt.Println("inputArt is:		", inputArt)
-	fmt.Println("artToText is:		", artToText)
+	fmt.Println("colorInput is:		", colorInput)
+	fmt.Println("artInput is:		", artInput)
+	fmt.Println("artOutput is:		", artOutput)
 	fmt.Println("chosenAlign is:		", chosenAlign)
 	fmt.Println("------------------------------------------------")
 
-	if inputArt != "" {
-		textToArt = inputArt
-		fmt.Println("file present... textToArt is now = inputArt -> textToArt:", textToArt)
+	if artInput != "" {
+		outputResult = artInput
+		fmt.Println("file present... outputResult is now = artInput -> outputResult:", outputResult)
 
 	} else {
-		textToArt = ascii_art_web.RunAscii(inputText, chosenStyle, chosenColor, colorWord, defaultValue, chosenAlign, inputArt, charMap)
-	}
-
-	if colorWord == "" && inputText != "" {
-		colorWord = inputText
-		textToArt = "<pre class=\"" + chosenColor + "\">" + textToArt + "</pre>"
-	} else {
-		textToArt = "<pre class=\"\">" + textToArt + "</pre>"
+		outputResult = ascii_art_web.RunAscii(chosenInput, chosenStyle, chosenColor, colorInput, defaultValue, chosenAlign, artInput)
 	}
 
 	fmt.Println("------------------------------------------------------------------------------------------------")
 	d := struct {
-		InputText   string //"hello"
-		ChosenStyle string //"standard"
-		ChosenColor string //"red"
-		ColorWord   string //"lo"
-		ChosenAlign string //left, right etc
-		YourArt     string //"Your Art says: "blue lagoon"
-		ArtToText   string //"blue lagoon"
-		TextToArt   string //Your art: "____||||_|_|__|_|_|__|_"
+		InputText  string
+		Style      string
+		Color      string
+		ColorWord  string
+		FileWant   string
+		InputAlign string
+		ArtToText  string
+		TextToArt  string
 	}{
-		InputText:   inputText,
-		ChosenStyle: chosenStyle,
-		ChosenColor: chosenColor,
-		ColorWord:   colorWord,
-		ChosenAlign: chosenAlign,
-		YourArt:     yourArt,
-		ArtToText:   artToText,
-		//TextToArt:  "<pre>this</pre><pre>is</pre><pre>a</pre><pre>test</pre>",
-		TextToArt: textToArt,
+		InputText:  chosenInput,
+		Style:      chosenStyle,
+		Color:      chosenColor,
+		FileWant:   defaultValue,
+		ColorWord:  colorInput,
+		InputAlign: chosenAlign,
+		ArtToText:  artOutput,
+		TextToArt:  "<pre> this</pre><pre>is</pre><pre>a</pre><pre>test</pre>",
 	}
 	tpl.ExecuteTemplate(w, "result.html", d)
 }

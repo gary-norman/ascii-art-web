@@ -4,51 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASCII Art Generator</title>
-    <link rel="stylesheet" href="../css/andy_bell-css_reset.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/andy_bell-css_reset.css">
 </head>
 <body>
 <div class="wrapper">
     <section class="frontpage">
         <main>
-            <div class="header">
-                <a href="http://localhost:8080">ASCII Art Generator</a>
-                <!--                <div class="theme-switcher-menu">-->
-                <!--                    <button type="button" class="button action has-icon theme-switcher-menu small" aria-haspopup="menu" aria-expanded="true">-->
-                <!--                        <span class="button-wrap">-->
-                <!--                            <span class="icon icon-theme-os-default "></span>Theme-->
-                <!--                        </span>-->
-                <!--                    </button>-->
-                <!--                    <ul class="submenu themes-menu  inline-submenu-lg" aria-labelledby="themes-menu-button">-->
-                <!--                        <li class=" ">-->
-                <!--                    <button type="button" class="button primary has-icon active-menu-item">-->
-                <!--                    <span class="button-wrap">-->
-                <!--                        <span class="icon icon-theme-os-default "></span>-->
-                <!--                        OS Default</span>-->
-                <!--                    </button>-->
-                <!--                        </li>-->
-                <!--                        <li class=" ">-->
-                <!--                            <button type="button" class="button primary has-icon">-->
-                <!--                                <span class="button-wrap">-->
-                <!--                                    <span class="icon icon-theme-light "></span>-->
-                <!--                                    Light</span></button>-->
-                <!--                        </li><li class=" "><button type="button" class="button primary has-icon">-->
-                <!--                        <span class="button-wrap">-->
-                <!--                            <span class="icon icon-theme-dark "></span>Dark</span>-->
-                <!--                    </button>-->
-                <!--                    </li>-->
-                <!--                    </ul>-->
-                <!--                </div>-->
-            </div>
+            <h1 >ASCII Art Generator</h1>
             <article class="frosted">
                 <div class="elements">
-                    <form action="/process" id="options" method="POST">
+<!--                    <form action="/process" method="POST">-->
                         <div class="card">
                             <div class="label">
                                 <label for="function">What would you like to do?</label>
                             </div>
                             <div class="select">
-                                <select name="banner" class="banner" id="function">
+                                <select name="banner" id="function">
                                     <option class="item" value="standard" id="standardise" selected>Convert text to ASCII art</option>
                                     <option class="item" value="color" id="colorize">Colourise the output</option>
                                     <option class="item" value="output" id="output">Export to file</option>
@@ -57,213 +29,105 @@
                                 <span class="focus"></span>
                             </div>
                         </div>
-                    </form>
-                    <form enctype="multipart/form-data" action="/process" id="mainForm"  name="mainForm" method="POST">
                         <div class="modifiers">
-                            <div id="generator">
+                            <div class="card">
+                                <div class="buttonedLabel">
+                                    <div class="labelwbtn">Choose your colour</div>
+                                    <button type="button" class="reset"></button>
+                                </div>
+                                <div class="toggle">
+                                    <label class="radio">
+                                        <input type="radio" value="red" id="red" name="colors">
+                                        <span class="checkmark red"></span>
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" value="green" id="green" name="colors">
+                                        <span class="checkmark green"></span>
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" value="blue" id="blue" name="colors">
+                                        <span class="checkmark blue"></span>
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" value="yellow" id="yellow" name="colors">
+                                        <span class="checkmark yellow"></span>
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" value="orange" id="orange" name="colors">
+                                        <span class="checkmark orange"></span>
+                                    </label>
+                                </div>
+                                <div class="select">
+                                    <label class="" for="color-txt"></label>
+                                    <input id="color-txt" name="colour-text"
+                                           placeholder="Enter specific letters to colourise (optional)">
+                                </div>
+                            </div>
+
+                        <div class="form smaller" id="upload">
+                            <div class="card">
+                                <div class="label">
+                                    <label class="" for="browse">Upload your file</label>
+                                </div>
+                                <div id="drop_zone">
+                                    <span class="dragText">drag and drop your file, or</span>
+                                    <span class="button">browse</span>
+                                    <input type="file" id="browse" name="art-input" hidden />
+                                </div>
+                                <div class="label artsays">Your art says:</div>
+                                <div class="select textarea" id="reverse-output">your\ntext</div>
+                            </div>
+                        </div>
+                        <div id="generator" class="smaller">
                                 <div class="card">
                                     <div class="label">
                                         <label for="banner">Choose your style</label>
                                     </div>
-                                    <div class="select banner">
+
+                                    <div class="select">
                                         <select name="banner" id="banner">
-                                            <option class="item" value="standard" id="standard" name="style" >Standard</option>
+                                            <option class="item" value="standard" id="standard" name="style" selected>Standard</option>
                                             <option class="item" value="shadow" id="shadow" name="style">Shadow</option>
                                             <option class="item" value="thinkertoy" id="thinkertoy" name="style">Thinkertoy</option>
-                                            <option class="item" value="colossal" id="colossal" name="style">Colossal</option>
-                                            <option class="item" value="isometric" id="isometric" name="style">Isometric</option>
                                         </select>
                                     </div>
+                                    <!--                                <div class="label">-->
+                                    <!--                                    <label class="" for="generate">Enter your text</label>-->
+
                                     <div class="toggle" id="alignment">
                                         <label class="radio" id="radioleft">
                                             <input type="radio" value="left" id="left" name="text-align" checked>
-                                            <span class="checkmark">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black"
-                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="align align-left">
-                                                    <line x1="17" y1="10" x2="3" y2="10"></line>
-                                                    <line x1="21" y1="6" x2="3" y2="6"></line>
-                                                    <line x1="21" y1="14" x2="3" y2="14"></line>
-                                                    <line x1="17" y1="18" x2="3" y2="18"></line>
-                                                </svg>
-                                            </span>
+                                            <span class="checkmark left"></span>
                                         </label>
                                         <label class="radio" id="radioright">
                                             <input type="radio" value="right" id="right" name="text-align">
-                                            <span class="checkmark iconRight">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black"
-                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="align align-right">
-                                                    <line x1="21" y1="10" x2="7" y2="10"></line>
-                                                    <line x1="21" y1="6" x2="3" y2="6"></line>
-                                                    <line x1="21" y1="14" x2="3" y2="14"></line>
-                                                    <line x1="21" y1="18" x2="7" y2="18"></line>
-                                                </svg>
-                                            </span>
+                                            <span class="checkmark right"></span>
                                         </label>
                                         <label class="radio" id="radiocenter">
                                             <input type="radio" value="center" id="center" name="text-align">
-                                            <span class="checkmark iconCenter">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black"
-                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="align align-center">
-                                                    <line x1="18" y1="10" x2="6" y2="10"></line>
-                                                    <line x1="21" y1="6" x2="3" y2="6"></line>
-                                                    <line x1="21" y1="14" x2="3" y2="14"></line>
-                                                    <line x1="18" y1="18" x2="6" y2="18"></line>
-                                                </svg>
-                                            </span>
+                                            <span class="checkmark center"></span>
                                         </label>
                                         <label class="radio" id="radiojustify">
                                             <input type="radio" value="justify" id="justify" name="text-align">
-                                            <span class="checkmark iconJustify">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black"
-                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="align align-justify">
-                                                    <line x1="21" y1="10" x2="3" y2="10"></line>
-                                                    <line x1="21" y1="6" x2="3" y2="6"></line>
-                                                    <line x1="21" y1="14" x2="3" y2="14"></line>
-                                                    <line x1="21" y1="18" x2="3" y2="18"></line>
-                                                </svg>
-                                            </span>
+                                            <span class="checkmark justify"></span>
                                         </label>
+                                        <!--                                <div class="justifyBlock" id="justifyBlock">unavailable with colour</div>-->
                                     </div>
                                     <div class="select ">
                                         <label class="" for="generate"></label>
-                                        <textarea id="generate" name="generate"
-                                                  placeholder="Enter your text" rows="2">{{.InputText}}</textarea>
+                                        <input id="generate" name="input"
+                                               placeholder="Enter your text">
                                     </div>
+                                        <input type="submit">
+
                                 </div>
-                            </div>
-                            <div id="colorPicker">
-                                <div class="card">
-                                    <div class="label">Choose your colour</div>
-                                    <div class="whiteLabel">
-                                        <span class="inWhiteLabelContent">Reset colour</span>
-                                        <button type="button" class="inWhiteLabelReset"></button>
-                                    </div>
-                                    <div class="toggle colorToggle">
-                                        <label class="radio">
-                                            <input type="radio" value="red" id="red" name="colors">
-                                            <span class="checkmark redSelect"></span>
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" value="green" id="green" name="colors">
-                                            <span class="checkmark greenSelect"></span>
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" value="blue" id="blue" name="colors">
-                                            <span class="checkmark blueSelect"></span>
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" value="yellow" id="yellow" name="colors">
-                                            <span class="checkmark yellowSelect"></span>
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" value="orange" id="orange" name="colors">
-                                            <span class="checkmark orangeSelect"></span>
-                                        </label>
-                                    </div>
-                                    <div class="select">
-                                        <label class="" for="color-txt"></label>
-                                        <input id="color-txt" name="colour-text"
-                                               placeholder="Enter specific letters  (optional)" value="">
-                                        <input type="submit" class="genascii rev" value="generate ascii" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="upload" class="upload">
-                                <div class="card">
-                                    <div class="label">
-                                        <label class="" for="browse">Upload your file</label>
-                                    </div>
-                                    <input type="submit" id="getText" class="genascii getText" value="get text">
-                                    <div id="drop_zone">
-                                        <div id="uploadedFile"></div>
-                                        <div style="display: flex">
-                                            <span class="dragText">drag and drop your file, or</span>
-                                            <span class="button">browse</span>
-                                            <input type="file" id="browse" name="file-drop" />
-                                        </div>
-                                    </div>
-                                    <input type="submit" id="getText2" class="genascii getText2" value="get text">
-                                </div>
-                            </div>
-                            <div id="rev" class="rev"></div>
-                            <div id="gopher" class="gopher">
-                                <div>
-                                    <pre>             _____    _____   _____   _____                       _____    _______
-    /\      / ____|  / ____| |_   _| |_   _|              /\     |  __ \  |__   __|
-   /  \    | (___   | |        | |     | |    ______     /  \    | |__) |    | |
-  / /\ \    \___ \  | |        | |     | |   |______|   / /\ \   |  _  /     | |
- / ____ \   ____) | | |____   _| |_   _| |_            / ____ \  | | \ \     | |
-/_/    \_\ |_____/   \_____| |_____| |_____|          /_/    \_\ |_|  \_\    |_|</pre> <!-- ascii art -->
-                                </div>
-                                <!-- Based on original artwork by reneefrench.blogspot.com/ -->
-                                <svg class="thatguy" fill="none" viewBox="0 -150 1200 1700" xmlns="http://www.w3.org/2000/svg">
-                                    <ellipse class="shadow" cx="626" cy="1460" rx="280" ry="50" fill="rgba(0 0 0 / .2)"/>
-                                    <g class="gopher-animation">
-                                        <path d="m336.84 527.66c-21.162-40.791-31.395-123.46 0-140.19 31.396-16.728 85.879 12.614 107.04 53.404 21.163 40.79 20.913 82.421-10.482 99.149s-75.396 28.423-96.559-12.367z" clip-rule="evenodd" fill="#A0C6E0" fill-rule="evenodd" stroke="#675243" stroke-width="5"/>
-                                        <path d="m360.93 498.7c-12.028-21.067-17.844-63.764 0-72.404 17.843-8.639 48.808 6.515 60.836 27.583 12.028 21.067 11.886 42.569-5.958 51.208-17.843 8.64-42.851 14.681-54.878-6.387z" clip-rule="evenodd" fill="#C2DFE7" fill-rule="evenodd"/>
-                                        <path d="m769.62 479.41c25.811-37.942 93.292-85.531 122.5-65.129 29.203 20.403 28.876 82.929 3.065 120.87s-62.303 57.059-91.506 36.656-59.865-54.456-34.054-92.398z" clip-rule="evenodd" fill="#A0C6E0" fill-rule="evenodd" stroke="#675243" stroke-width="5"/>
-                                        <path d="m810.6 477.33c14.277-20.158 51.603-45.441 67.757-34.602 16.153 10.84 15.972 44.058 1.695 64.216s-34.463 30.314-50.616 19.475c-16.153-10.84-33.114-28.932-18.836-49.089z" clip-rule="evenodd" fill="#C2DFE7" fill-rule="evenodd"/>
-                                        <g class="arms " clip-rule="evenodd" fill="#CBA992" fill-rule="evenodd" stroke="#675243" stroke-width="5">
-                                            <path class="left-arm " d="m222.75 1121.9c-22.062-13.04-26.273-75.86-9.404-140.32 16.869-64.46 48.429-106.14 70.491-93.104s26.272 75.868 9.404 140.33c-16.869 64.46-48.429 106.15-70.491 93.1z"/>
-                                            <path class="right-arm " d="m943.42 887.81c27.69 4.624 61.185 60.944 74.815 125.79 13.64 64.85 2.24 113.67-25.446 109.05-27.693-4.63-61.19-60.94-74.822-125.8-13.632-64.849-2.236-113.67 25.453-109.05z"/>
-                                        </g>
-                                        <path d="m315.62 747.82c0-124.82 134.99-226 301.5-226s301.5 101.18 301.5 226-134.99 226-301.5 226-301.5-101.18-301.5-226z" clip-rule="evenodd" fill="#91BAE0" fill-rule="evenodd" stroke="#91BAE0" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
-                                        <g clip-rule="evenodd" fill="#CBA992" fill-rule="evenodd" stroke="#675243" stroke-width="5">
-                                            <path class="right-foot " d="m758.78 1179.4c32.344-5.39 67.598 47.34 78.742 117.79 11.143 70.45-6.043 131.94-38.387 137.33-32.345 5.4-67.598-47.35-78.741-117.8-11.144-70.45 6.043-131.93 38.386-137.32z"/>
-                                            <path class="left-foot " d="m466.88 1162c32.702 1.68 56.38 60.87 52.886 132.21-3.495 71.34-32.838 127.81-65.54 126.13-32.702-1.69-56.38-60.88-52.885-132.22 3.493-71.33 32.837-127.8 65.539-126.12z"/>
-                                        </g>
-                                        <path d="m256.59 922.57c0-116.73-26.215-235.88 16.468-317.09 53.538-101.86 218.38-161.88 345.55-161.88 118.12 0 232.08 45.793 293.4 133.51 57.331 82.017 49.403 199.95 49.403 327.1 0 124.63 27.155 260.54-27.995 348.8-61.293 98.08-172.82 116.82-293.13 116.82-144.05 0-303.87-69.53-354.06-200.27-29.446-76.71-29.642-149.69-29.642-246.99z" clip-rule="evenodd" fill="#A0C6E0" fill-rule="evenodd" stroke="#675243" stroke-width="5"/>
-                                        <path d="m252.62 704.33c0-84.975 66.734-153.86 149.05-153.86 82.321 0 149.06 68.886 149.06 153.86s-66.734 153.86-149.06 153.86c-82.32 0-149.05-68.886-149.05-153.86z" clip-rule="evenodd" fill="#fff" fill-rule="evenodd" stroke="#675243" stroke-width="5"/>
-                                        <path d="m638.62 704.33c0-84.975 66.734-153.86 149.05-153.86 82.321 0 149.06 68.886 149.06 153.86s-66.734 153.86-149.06 153.86c-82.32 0-149.05-68.886-149.05-153.86z" clip-rule="evenodd" fill="#fff" fill-rule="evenodd" stroke="#675243" stroke-width="5"/>
-                                        <path d="m562.24 754.92c0.394-9.67 11.736-12.867 33.451-11.949 21.715 0.919 30.977 8.327 30.583 17.996-0.393 9.67-10.023 11.269-31.737 10.351-21.715-0.918-32.691-6.729-32.297-16.398z" clip-rule="evenodd" fill="#2A2A2A" fill-rule="evenodd" stroke="#2A2A2A" stroke-width="5"/>
-                                        <path class="mouth " d="m539.62 873.56c0-33.543 23.641-60.736 52.803-60.736s52.803 27.193 52.803 60.736c0 33.544-23.641 60.736-52.803 60.736s-52.803-27.192-52.803-60.736z" clip-rule="evenodd" fill="#2A2A2A" fill-rule="evenodd" stroke="#2A2A2A" stroke-width="8"/>
-                                        <path d="m570.23 818.6 19.098-1.023 0.242 48.577-19.098 1.022-0.242-48.576z" clip-rule="evenodd" fill="#fff" fill-rule="evenodd" opacity=".936"/>
-                                        <path d="m595 818.32 19.098-1.023 0.243 48.577-19.098 1.022-0.243-48.576z" clip-rule="evenodd" fill="#fff" fill-rule="evenodd" opacity=".936"/>
-                                        <path class="tongue " d="m564.2 897.42c0-10.508 18.496-8.782 35.176-8.782 16.679 0 25.582 4.128 25.582 14.637 0 10.508-15.298 23.418-31.978 23.418-16.679 0-28.78-18.764-28.78-29.273z" clip-rule="evenodd" fill="#CC4452" fill-rule="evenodd"/>
-                                        <path d="m544.97 796.26c2.135-18.186 25.668-27.939 54.795-24.505 30.2 3.561 50.019 16.183 47.884 34.369-1.22 10.392-6.878 24.082-18.797 24.043-8.941-0.029-22.522-12.333-34.241-14.506-9.787-1.815-26.046 8.978-33.4 6.632-13.193-4.208-17.612-14.356-16.241-26.033z" clip-rule="evenodd" fill="#CBA992" fill-rule="evenodd" stroke="#675243" stroke-width="5"/>
-                                        <path class="belly " d="m394.62 1114c0-94.86 74.646-97.78 216.28-90.89 143.83 6.99 237.91 27.49 237.91 122.35s-70.175 157.32-211.96 157.32-242.24-93.92-242.24-188.78z" clip-rule="evenodd" fill="#c2dfe7" fill-rule="evenodd"/>
-                                        <g class="eyeballs">
-                                            <g class="eyeball-L" clip-rule="evenodd" fill-rule="evenodd">
-                                                <path class="eyeball-left"
-                                                      d="m252.62 704.33c0-84.975 66.734-153.86 149.05-153.86 82.321 0 149.06 68.886 149.06 153.86s-66.734 153.86-149.06 153.86c-82.32 0-149.05-68.886-149.05-153.86z"
-                                                      fill="#fff" fill-opacity="0" stroke="#675243" stroke-opacity="0"
-                                                      stroke-width="5"/>
-                                                <path class="eyeball-left"
-                                                      d="m327.62 763.96c0-17.973 14.598-32.543 32.606-32.543s32.607 14.57 32.607 32.543-14.599 32.543-32.607 32.543-32.606-14.57-32.606-32.543z"
-                                                      fill="#262626" opacity=".936" stroke="#262626" stroke-width="30"/>
-                                                <path class="eyeball-left"
-                                                      d="m353.62 736.64c0-4.325 6.153-7.831 13.744-7.831 7.59 0 13.743 3.506 13.743 7.831 0 4.324-6.153 7.83-13.743 7.83-7.591 0-13.744-3.506-13.744-7.83z"
-                                                      fill="#fff" opacity=".936"/>
-                                            </g>
-                                            <g class="eyeball-R" clip-rule="evenodd" fill-rule="evenodd">
-                                                <path class="eyeball-right"
-                                                      d="m638.62 704.33c0-84.975 66.734-153.86 149.05-153.86 82.321 0 149.06 68.886 149.06 153.86s-66.734 153.86-149.06 153.86c-82.32 0-149.05-68.886-149.05-153.86z"
-                                                      fill="#fff" fill-opacity="0" stroke="#675243" stroke-opacity="0"
-                                                      stroke-width="5"/>
-                                                <path class="eyeball-right"
-                                                      d="m713.62 763.96c0-17.973 14.598-32.543 32.606-32.543s32.607 14.57 32.607 32.543-14.599 32.543-32.607 32.543-32.606-14.57-32.606-32.543z"
-                                                      fill="#262626" opacity=".936" stroke="#262626" stroke-width="30"/>
-                                                <path class="eyeball-right"
-                                                      d="m739.62 736.64c0-4.325 6.153-7.831 13.744-7.831 7.59 0 13.743 3.506 13.743 7.831 0 4.324-6.153 7.83-13.743 7.83-7.591 0-13.744-3.506-13.744-7.83z"
-                                                      fill="#fff" opacity=".936"/>
-                                            </g>
-                                        </g>
-                                        <g class="eyes" display="inline" stroke="#675243" stroke-width="5">
-                                            <path class="left-eye " d="m252.12 703.33c0-84.975 66.734-153.86 149.05-153.86 82.321 0 149.06 68.886 149.06 153.86s-66.734 153.86-149.06 153.86c-82.32 0-149.05-68.886-149.05-153.86z" clip-rule="evenodd" display="inline" fill="#a0c6e0" fill-rule="evenodd"/>
-                                            <path class="left-eye " d="m253.29 699.82c45.289-55.846 239.28-47.164 297.44 0" display="inline"/>
-                                            <path class="right-eye " d="m638.62 705.28c0-84.975 66.734-153.86 149.05-153.86 82.321 0 149.06 68.886 149.06 153.86s-66.734 153.86-149.06 153.86c-82.32 0-149.05-68.886-149.05-153.86z" clip-rule="evenodd" display="inline" fill="#a0c6e0" fill-rule="evenodd"/>
-                                            <path class="right-eye " d="m639.29 699.82c45.289-55.846 239.28-47.164 297.44 0" display="inline"/>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </div> <!-- gopher -->
                         </div>
-                    </form>
-                    <div class="card output" id="asciiout" style="height: 25rem">
+                    </div>
+                    <div class="card output" id="asciiout">
                         <div class="buttonedLabel">
-                            <div class="labelwbtn">{{.ArtToText}}</div>
+                            <div class="labelwbtn">Your art:</div>
                             <input type="checkbox" id="darkmode-toggle">
-                            <label class="darkToggle" for="darkmode-toggle">
+                            <label class="darkmode" for="darkmode-toggle">
                                 <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                                      viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1"
                                      stroke-linecap="round" stroke-linejoin="round">
@@ -284,37 +148,8 @@
                                 </svg>
                             </label>
                         </div>
-                        <div class="autoscroll asciiOut {{.ChosenAlign}}" id="ascii-output"></div>
-                        <form action="" class="fileOutputForm" id="fileOutputForm">
-                            <div class="fileOutput">
-                                <label for="fileOutputButton" class="fileOutputLabel" id="fileOutputLabel">Save file as:</label>
-                                <label class="radio ">
-                                    <input type="radio" value="txt" id="fileOutputText" name="fileOutputType">
-                                    <span class="checkmark fileOutputCheck">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                         stroke="var(--txt-clr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="align align-file-text">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                        <polyline points="14 2 14 8 20 8"></polyline>
-                                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                                        <polyline points="10 9 9 9 8 9"></polyline>
-                                    </svg>
-                                </span>
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" value="png" id="fileOutputPng" name="fileOutputType">
-                                    <span class="checkmark fileOutputCheck">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                         stroke="var(--txt-clr)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="align align-image">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                        <polyline points="21 15 16 10 5 21"></polyline>
-                                    </svg>
-                                </span>
-                                </label>
-                                <input type="button" class="fileOutputButton genascii" id="fileOutputButton" value="download">
-                            </div>
-                        </form>
+                        <div class="artput" id="ascii-output">your\ntext</div>
+                    </form>
                     </div>
                 </div>
             </article>
@@ -322,13 +157,5 @@
     </section>
 </div>
 <script type="text/javascript" src="../js/default.js"></script>
-<script type="text/javascript" src="../js/fittext.js"></script>
-<script>
-    // This script will run once the HTML document is fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Use the string as innerHTML for an element
-        document.getElementById('ascii-output').innerHTML = `{{.TextToArt}}`;
-    });
-</script>
 </body>
 </html>
