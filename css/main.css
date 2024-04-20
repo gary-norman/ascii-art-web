@@ -1,46 +1,93 @@
 :root {
-  --main-bg-grad: linear-gradient(155deg, rgb(14 6 42), rgb(1, 52, 37));
-  --main-bg-clr: rgb(14, 6, 42);
-  --card-bg: rgb(124, 124, 124);
-  --accent: rgb(0, 128, 92);
-  --text-clr-heading: rgb(231 237 241);
-  --text-clr-dark: rgb(94, 94, 94);
-  --text-clr-darker: rgb(48, 48, 48);
-  --bg-clr-dark: var(--text-clr-dark);
-  --text-clr-light: rgb(181, 181, 181);
-  --bg-clr-light: var(--text-clr-heading);
-  --txt-clr-hover-light: color-mix(in lab, var(--text-clr-light), rgb(255 255 255) 60%);
-  --txt-clr-hover-dark: color-mix(in lab, currentColor, rgb(0 0 0) 70%);
+    /* fonts */
+    --font-sz-title: clamp(1.8rem, 2rem + 0.65vw, 2.2rem);
+    --font-sz-main: clamp(1rem, 1.2rem + 0.65vw, 1.6rem);
+    --font-sz-cards: clamp(.8rem, 1rem + 0.65vw, 1.2rem);
+    --font-sz-ascii: clamp(.1rem, .3rem + 0.65vw, .4rem);
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --font-accent: 'Kdam Thmor Pro', sans-serif;
+    /*colours*/
+    --main-bg-grad: linear-gradient(155deg, rgb(14 6 42), rgb(1, 52, 37));
+    --main-bg-clr: rgb(14, 6, 42);
+    --card-bg: rgb(124, 124, 124);
+    --accent: rgb(0, 128, 92);
+    /* motion color racing */
+    --mcr-yellow: rgb(226, 192, 68);
+    --mcr-blue: rgb(31, 32, 65);
+    --mcr-cyan: rgb(81, 163, 163);
+    --mcr-red: rgb(159, 52, 45);
+    --mcr-grad: linear-gradient(50deg, var(--mcr-red), var(--mcr-yellow), var(--mcr-cyan), var(--mcr-blue));
+    /* select */
+    --select-border: var(--mcr-cyan);
+    --select-focus: var(--select-border);
+    --select-arrow: var(--select-border);
+    --border-clr: rgba(0,0,0,.2);
+    /* colours for colorized text */
+    --red: rgb(225 57 57);
+    --green: rgb(74 213 74);
+    --blue: rgb(53 86 193);
+    --yellow: rgb(251 237 52);
+    --orange: rgb(255 145 0);
+    /*font colours*/
+    --text-clr-heading: rgb(231 237 241);
+    --text-clr-dark: rgb(94, 94, 94);
+    --text-clr-darker: rgb(48, 48, 48);
+    --text-clr-light: rgb(181, 181, 181);
+    --txt-clr-hover-light: color-mix(in lab, var(--text-clr-light), rgb(255 255 255) 60%);
+    --txt-clr-hover-dark: color-mix(in lab, currentColor, rgb(0 0 0) 70%);
+    /*background colours*/
+    --bg-clr-dark: var(--text-clr-dark);
+    --bg-clr-select_header: rgb(0 0 0 / .4);
+    --bg-clr-light: rgb(241, 241, 241);
+    /*icons*/
     --svg-rotate-b: url(../icons/rotate-ccw.svg);
     --svg-rotate-w: url(../icons/rotate-ccw-white.svg);
     --svg-upload-b: url(../icons/upload.svg);
     --svg-upload-w: url(../icons/upload-white.svg);
-
     --svg-stroke-b: var(--text-clr-dark);
     --svg-stroke-w: var(--text-clr-light);
-
     --darkTogglePos-l: 28px;
     --darkTogglePos-r: 3px;
     --darkToggleStroke-b: var(--text-clr-darker);
     --darkToggleStroke-w: var(--text-clr-light);
-
-
+    /*borders, shadows etc*/
+    --button-rad: 20%;
+    --border-rad: 0.4rem;
+    /* box shadows */
+    --box-shadow: 0 0.25 1rem rgb(0 0 0 / .5);
+    --main-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    --card-shadow:
+            1px 0.6px 4.1px rgba(0, 0, 0, 0.018),
+            2.4px 1.5px 10px rgba(0, 0, 0, 0.027),
+            4.3px 2.7px 19px rgba(0, 0, 0, 0.034),
+            7.4px 4.6px 33.3px rgba(0, 0, 0, 0.041),
+            14px 8.7px 59px rgba(0, 0, 0, 0.05),
+            37px 23px 126px rgba(0, 0, 0, 0.07);
+    --icon-shadow: inset 0 1px 1px rgba(0 0 0 / .2), inset 0 3px 5px rgba(0 0 0 / .1), inset 0 -1px 1px rgba(225 225 225 / .3);
+    --toggle-shadow: inset 0 5px 15px rgba(0 0 0 / .4), inset 0 -1px 1px rgba(255 255 255 / .4);
+    --button-shadow: 1px 1px 1px rgba(74, 74, 74, 0.3), -1px -1px 1px 0 rgba(255 2552 255 / .18);
+    --button-hover-shadow: 4px 4px 5px -1px rgba(0,0,0,0.45);
+    --button-pressed-shadow: inset 0 3px 5px -1px rgba(0 0 0 / .3), inset 0 -1px 2px -1px rgba(200 200 200   / .6);
+    --button-pressed-shadow2: inset 0 1px 2px rgba(0 0 0 / .7), inset 0 3px 5px rgba(0 0 0 / .3), inset 0 -1px 2px rgba(225 225 225 / .5);
 /* dark mode */
-  --bg-clr: var(--bg-clr-light);
-  --txt-clr: var(--text-clr-dark);
-  --txt-clr-hover: var(--txt-clr-hover-dark);
-  --bg-clr-rev: var(--bg-clr-dark);
-  --txt-clr-rev: var(--text-clr-dark);
-  --txt-clr-hover-rev: var(--txt-clr-hover-light);
-    --svg-align: var(--svg-stroke-b);
-    --svg-rotate: var(--svg-rotate-b);
-    --svg-upload: var(--svg-upload-b);
-    --darkTogglePos-sun: var(--darkTogglePos-r);
-    --darkToggleStroke-sun: var(--darkToggleStroke-b);
-    --darkToggleStroke-sunChecked: var(--darkToggleStroke-w);
-    --darkTogglePos-moon: var(--darkTogglePos-l);
-    --darkToggleStroke-moon: var(--darkToggleStroke-w);
-    --darkToggleStroke-moonChecked: var(--darkToggleStroke-b);
+    /* light */
+        --bg-clr: var(--bg-clr-light);
+        --txt-clr: var(--text-clr-dark);
+        --txt-clr-hover: var(--txt-clr-hover-dark);
+        --bg-clr-rev: var(--bg-clr-dark);
+        --txt-clr-rev: var(--text-clr-dark);
+        --txt-clr-hover-rev: var(--txt-clr-hover-light);
+        --txt-clr-gopher: var(--text-clr-darker);
+        --svg-align: var(--svg-stroke-b);
+        --svg-rotate: var(--svg-rotate-b);
+        --svg-upload: var(--svg-upload-b);
+        --darkTogglePos-sun: var(--darkTogglePos-r);
+        --darkToggleStroke-sun: var(--darkToggleStroke-b);
+        --darkToggleStroke-sunChecked: var(--darkToggleStroke-w);
+        --darkTogglePos-moon: var(--darkTogglePos-l);
+        --darkToggleStroke-moon: var(--darkToggleStroke-w);
+        --darkToggleStroke-moonChecked: var(--darkToggleStroke-b);
     @media (prefers-color-scheme: dark) {
         --bg-clr: var(--bg-clr-dark);
         --txt-clr: var(--text-clr-light);
@@ -48,6 +95,7 @@
         --bg-clr-rev: var(--bg-clr-light);
         --txt-clr-rev: var(--text-clr-dark);
         --txt-clr-rev-hover: var(--txt-clr-hover-dark);
+        --txt-clr-gopher: var(--text-clr-heading);
         --svg-align: var(--svg-stroke-w);
         --svg-rotate: var(--svg-rotate-w);
         --svg-upload: var(--svg-upload-w);
@@ -58,47 +106,6 @@
         --darkToggleStroke-moon: var(--darkToggleStroke-b);
         --darkToggleStroke-moonChecked: var(--darkToggleStroke-w);
     }
-
-    --bg-clr-select_header: rgb(0 0 0 / .4);
-  --border-rad: 0.4rem;
-    /* box shadows */
-    --box-shadow: 0 0.25 1rem rgb(0 0 0 / .5);
-    --main-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-    --card-shadow:
-    1px 0.6px 4.1px rgba(0, 0, 0, 0.018),
-    2.4px 1.5px 10px rgba(0, 0, 0, 0.027),
-    4.3px 2.7px 19px rgba(0, 0, 0, 0.034),
-    7.4px 4.6px 33.3px rgba(0, 0, 0, 0.041),
-    14px 8.7px 59px rgba(0, 0, 0, 0.05),
-    37px 23px 126px rgba(0, 0, 0, 0.07);
-    --button-shadow: 1px 1px 1px rgba(74, 74, 74, 0.3), -1px -1px 1px 0 rgba(255 2552 255 / .18);
-    --button-hover-shadow: 4px 4px 5px -1px rgba(0,0,0,0.45);
-    --button-pressed-shadow: inset 0 3px 5px -1px rgba(0 0 0 / .3), inset 0 -1px 2px -1px rgba(200 200 200   / .6);
-  /* fonts */
-  --font-sz-title: clamp(1.8rem, 2rem + 0.65vw, 2.2rem);
-  --font-sz-main: clamp(1rem, 1.2rem + 0.65vw, 1.6rem);
-  --font-sz-cards: clamp(.8rem, 1rem + 0.65vw, 1.2rem);
-    --font-sz-ascii: clamp(.1rem, .3rem + 0.65vw, .4rem);
-  --font-primary: 'Roboto', sans-serif;
-  --font-secondary: 'Roboto', sans-serif;
-  --font-accent: 'Kdam Thmor Pro', sans-serif;
-  /* motion color racing */
-  --mcr-yellow: rgb(226, 192, 68);
-  --mcr-blue: rgb(31, 32, 65);
-  --mcr-cyan: rgb(81, 163, 163);
-  --mcr-red: rgb(159, 52, 45);
-  --mcr-grad: linear-gradient(50deg, var(--mcr-red), var(--mcr-yellow), var(--mcr-cyan), var(--mcr-blue));
-    /* select */
-    --select-border: var(--mcr-cyan);
-    --select-focus: var(--select-border);
-    --select-arrow: var(--select-border);
-    --button-rad: 20%;
-    --border-clr: rgba(0,0,0,.2);
-    /* colours for colorized text */
-    --red: rgb(225 57 57);
-    --green: rgb(74 213 74);
-    --blue: rgb(53 86 193);
-    --yellow: rgb(251 237 52);
 }
 
 html {
@@ -119,18 +126,6 @@ body {
 h1 {
     margin: 1rem 0;
 }
-
-.wrapper {
-    height: 100dvh;
-    overflow-y: scroll;
-    overscroll-behavior-y: contain;
-    scroll-snap-type: y mandatory;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
-.wrapper::-webkit-scrollbar {
-    display: none;
-}
 main {
     height: 100%;
     width: 100%;
@@ -144,7 +139,23 @@ main {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    margin: auto;
+}
+textarea {
+    color: var(--txt-clr);
+    background: var(--bg-clr);
+    outline: none;
+    border: none;
+}
+.wrapper {
+    height: 100dvh;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.wrapper::-webkit-scrollbar {
+    display: none;
 }
 .header {
     display: flex;
@@ -166,11 +177,12 @@ main {
     box-shadow: var(--main-shadow);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    padding: 1rem;
+    padding: 0;
     border-radius: var(--border-rad);
 }
 .elements {
     width: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,14 +192,6 @@ main {
     display: flex;
     justify-content: space-evenly;
 }
-
-/*.elements {*/
-/*    width: 100%;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*}*/
-
 a {
   text-decoration: none!important;
   color: var(--txt-clr)
@@ -275,9 +279,6 @@ input::file-selector-button {
     padding: 0.5rem 1rem;
     color: var(--txt-clr);
 }
-/*input[type=file] {*/
-/*    margin: 10px auto;*/
-/*}*/
 #browse {
     width: 75%;
     margin: 5px 0 0 0;
@@ -318,7 +319,7 @@ input::file-selector-button {
     width: 24px;
     height: 24px;
     background: rgba(0 0 0 / 0);
-    box-shadow: inset 0 1px 1px rgba(0 0 0 / .2), inset 0 3px 5px rgba(0 0 0 / .1), inset 0 -1px 1px rgba(225 225 225 / .3);
+    box-shadow: var(--icon-shadow);
     border: 0;
     border-radius: 25px;
     cursor: pointer;
@@ -335,13 +336,6 @@ input::file-selector-button {
     background-size: 14px 14px;
     transition: .3s ease;
 }
-/*.reset:hover:before {*/
-/*    !*top: -1px;*!*/
-/*    !*left: -1px;*!*/
-/*    background-size: 16px 16px;*/
-/*    transform: rotate(-180deg);*/
-/*    transition: .3s ease;*/
-/*}*/
 .buttonedLabel {
     display: flex;
     justify-content: space-between;
@@ -359,7 +353,6 @@ button {
     margin: .5rem 1rem;
 }
 .buttonRow input {
-    /*background: radial-gradient(ellipse farthest-side at center center, #ffffff 50%, #f1f1f1 160%);*/
     background: var(--bg-clr);
     height: 24px;
     width: 5rem;
@@ -376,7 +369,7 @@ button {
     display: block;
     background: rgba(0 0 0 / 0);
     border-radius: 200px;
-    box-shadow: inset 0 5px 15px rgba(0 0 0 / .4), inset 0 -1px 1px rgba(255 255 255 / .4);
+    box-shadow: var(--toggle-shadow);
     cursor: pointer;
     transition: .3s;
 }
@@ -389,7 +382,7 @@ button {
     left: 2px;
     background: linear-gradient(180deg, rgb(167, 214, 214), var(--mcr-cyan));
     border-radius: 23px;
-    box-shadow: 0 2px 2px rgba(0 0 0 / .2);
+    box-shadow: 0 1px 1px rgba(0 0 0 / .2);
     transition: .3s;
 }
 .darkToggle svg {
@@ -430,12 +423,12 @@ button {
 }
 .asciiOut {
     display: flex;
-    overflow: hidden;
+    overflow: auto;
     margin: 0;
     height: 100%;
     padding: 1rem;
     line-height: 1;
-    width: auto;
+    max-width: 91vw;
     font-size: clamp(.8vw, .8rem + 1vw, 1.2vw);
     color: var(--txt-clr);
     background: var(--bg-clr);
@@ -461,7 +454,25 @@ button {
 }.justify {
     justify-content: space-between;
 }
-
+.Multiline {
+    flex-direction: column;
+}
+.justifiedOutputleft {
+    display: flex;
+    justify-content: start;
+}
+.justifiedOutputright {
+    display: flex;
+    justify-content: end;
+}
+.justifiedOutputcenter {
+    display: flex;
+    justify-content: center;
+}
+.justifiedOutputjustify {
+    display: flex;
+    justify-content: space-between;
+}
 .justifyBlock {
     background: var(--bg-clr);
     color: var(--txt-clr);
@@ -480,9 +491,6 @@ button {
     height: 4.3rem;
     padding: .5rem;
 }
-/*.toggle * {*/
-/*    border: 1px dashed hotpink;*/
-/*}*/
 .modifiers {
     width: 100%;
     flex-direction: column;
@@ -491,7 +499,6 @@ button {
 .radio {
     display: block;
     position: relative;
-    flex-shrink: 0;
     width: 31px;
     cursor: pointer;
     -webkit-user-select: none;
@@ -530,10 +537,10 @@ button {
     color: var(--yellow);
 }
 .orangeSelect {
-    background: orange;
+    background: var(--orange);
 }
 .orange {
-    color: orange;
+    color: var(--orange);
 }
 .checkmark {
     position: absolute;
@@ -623,7 +630,6 @@ button {
 #upload {
     flex-direction: column;
 }
-
 /* submit button */
 #submit-reverse {
     background: #fff;
@@ -634,14 +640,13 @@ button {
 #submit-reverse:hover {
     cursor: pointer;
     box-shadow: var(--button-hover-shadow);
-
 }
 #drop_zone {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 10.3rem;
+    height: 10.5rem;
     font-size: var(--font-sz-cards);
     background: var(--bg-clr) var(--svg-upload) no-repeat center;
     border: 2px dashed var(--txt-clr);
@@ -669,7 +674,11 @@ button {
 #drop_zone input {
     cursor: pointer;
 }
+.dragText {
+    justify-self: center;
+}
 #uploadedFile {
+    display: grid;
     color: var(--txt-clr);
 }
 .uploadedFile {
@@ -685,13 +694,22 @@ button {
 }
 #color-txt {
     font-size: var(--font-sz-cards);
-    padding: .5rem 1rem;
+    padding: .6rem 1rem;
     color: var(--txt-clr);
 }
 .genascii {
     height: 2.8rem;
+    color: var(--bg-clr);
+    background: var(--bg-clr);
+    cursor: default;
 }
-.genascii:hover {
+.genasciiClickable {
+    height: 2.8rem;
+    color: var(--text-clr-heading);
+    background: var(--mcr-cyan);
+    cursor: pointer;
+}
+.genasciiClickable:hover {
     color: var(--text-clr-heading);
     background: color-mix(in lab, var(--mcr-red), var(--mcr-yellow) 15%) ;
     cursor: pointer;
@@ -711,14 +729,14 @@ button {
     position: absolute;
     bottom: -18px;
     background: var(--mcr-cyan);
-    color: var(--txt-clr);
+    color: var(--txt-clr-hover-light);
     z-index: 999;
     animation: slide-in 500ms ease;
 }
 .getText2Appear {
     display: block;
     background: var(--mcr-cyan);
-    color: var(--txt-clr);
+    color: var(--txt-clr-hover-light);
     z-index: 999;
     animation: slide-in2 500ms ease;
 }
@@ -738,6 +756,9 @@ button {
         opacity: 1;
     }
 }
+#asciiout {
+    height: 100%;
+}
 .fileOutputForm {
     width: 100%;
 }
@@ -752,13 +773,11 @@ button {
 }
 .fileOutputLabel {
     width: auto;
-    flex-shrink: 0;
     padding: .5rem 0 0 1rem;
 }
 .fileOutputButton {
-    width: 8rem;
+    width: 11rem;
     color: var(--txt-clr-hover-light);
-    /*border: 1px solid var(--txt-clr);*/
     box-shadow: var(--button-shadow);
     border-radius: 1rem;
 }
@@ -770,32 +789,23 @@ button {
         height: 100%;
         scroll-snap-align: start;
     }
-
     .frosted {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-items: center;
     }
-
     form, .form {
         width: 95%;
-        display: grid;
     }
-
     #gopher {
         display: none;
     }
-
     #generator, #colorPicker, #upload {
         animation: grow, fade-in 700ms ease;
         width: 100%;
     }
-
     .getText {
         position: relative;
     }
-
     @keyframes slide-in2 {
         0% {
             transform: translateY(-38px);
@@ -828,8 +838,6 @@ button {
     }
     .frosted {
         display: flex;
-        align-items: start;
-        justify-content: center;
     }
     form, .form {
         width: 95%;
@@ -845,7 +853,6 @@ button {
 @media only screen and (min-width: 768px) {
       .elements {
           display: grid;
-          /*grid-template-columns: 4fr 4fr 4fr;*/
           grid-template-rows: 4fr 6fr 1fr;
           gap: 2rem 0;
           grid-template-areas:
@@ -860,6 +867,7 @@ button {
       }
       .modifiers {
           width: 100%;
+          max-height: 183px;
           grid-area: mod;
           display: grid;
           height: 100%;
@@ -872,16 +880,15 @@ button {
       }
       #generator {
           grid-area: gen;
-          /*width: 100%*/
+      }
+      #genasciiMob {
+            display: none;
       }
       #colorPicker {
           grid-area: col;
-          /*width: 100%*/
       }
       #upload {
           grid-area: up;
-          /*z-index: 0;*/
-          /*width: 100%*/
       }
       .upload {
           backface-visibility: hidden;
@@ -889,7 +896,6 @@ button {
           transition: .5s ease;
       }
     .uploadFlip {
-        /*z-index: 1;*/
         transform: rotate3d(0, 1, 0, 0deg);
         transition: .5s ease;
     }
@@ -901,7 +907,7 @@ button {
       .gopher {
           position: relative;
           width: 100%;
-          height: 100%;
+          height: 85%;
           backface-visibility: hidden;
           transition: .5s ease;
           cursor: pointer;
@@ -910,14 +916,12 @@ button {
           height: 100%;
       }
       .gopherFlip {
-          /*z-index: 1;*/
           transform: rotate3d(0, 1, 0, 180deg);
           transition: .5s ease;
       }
       #gopher div {
           display: flex;
           margin: 1rem 0;
-          height: 13.5rem;
           align-items: center;
           justify-content: space-around;
           width: 100%;
@@ -925,7 +929,7 @@ button {
           border: 2px dashed var(--txt-clr);
       }
       #gopher pre {
-          color: var(--txt-clr);
+          color: var(--txt-clr-gopher);
           justify-content: center;
           font-size: var(--font-sz-ascii);
       }
@@ -933,8 +937,8 @@ button {
           height: 5rem;
           width: 5rem;
           position: absolute;
-          bottom: 4rem;
-          right: 1rem;
+          bottom: 1.6rem;
+          right: 0;
       }
     .gopher-animation,
     .left-arm,
@@ -955,7 +959,6 @@ button {
     .right-eye {
         animation-name: blink;
     }
-
     @keyframes blink {
         0%,
         6%,
@@ -978,7 +981,7 @@ button {
           background: var(--bg-clr);
           border-radius: 0;
       }
-      #do:hover, #rev:hover {
+      #do:hover, #rev:hover, #rev:has(+ .gopher:hover) {
           cursor: pointer;
           color: var(--text-clr-heading);
           background: var(--mcr-cyan);
@@ -1007,7 +1010,6 @@ button {
       }
       #asciiout {
           grid-area: art;
-          height: 100%;
       }
 }
 

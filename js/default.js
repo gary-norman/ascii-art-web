@@ -38,14 +38,17 @@ const uploadedFile = document.getElementById("uploadedFile")
 const formMain = document.forms['mainForm'];
 const textRadios = formMain.elements['text-align'];
 const colorRadios = formMain.elements['colors'];
+const generate = document.getElementById("generate")
 const getText = document.getElementById("getText");
 const getText2 = document.getElementById("getText2");
 // buttons
 const rev = document.getElementById("rev");
+const genascii = document.getElementById("genascii")
+const genasciiMob = document.getElementById("genasciiMob")
 // text areas
 const asciiOutput = document.getElementById("ascii-output");
 // misc
-
+let hasText = false
 // functions
 function hideUI() {
     // viewport size
@@ -57,6 +60,7 @@ function hideUI() {
             upload.style.display = "none"
             alignment.style.display = "flex"
             generator.style.display = "flex"
+            genasciiMob.style.display = "block"
             asciiout.style.display = "flex"
         }
         else if (value === "color") {
@@ -64,6 +68,7 @@ function hideUI() {
             upload.style.display = "none"
             alignment.style.display = "none"
             generator.style.display = "flex"
+            genasciiMob.style.display = "none"
             asciiout.style.display = "flex"
         }
         else if (value === "output") {
@@ -71,6 +76,7 @@ function hideUI() {
             upload.style.display = "none"
             alignment.style.display = "flex"
             generator.style.display = "flex"
+            genasciiMob.style.display = "block"
             asciiout.style.display = "flex"
         }
         else {
@@ -95,6 +101,7 @@ function reset() {
     textRadios.value = 'left';
     resetColors();
     hideUI();
+    hasText = false;
 }
 function resetColors() {
     for (let i = 0; i < colorRadios.length; i++ ) {
@@ -148,35 +155,30 @@ function getTextFunc() {
         getText.classList.remove("getText");
     }
 }
-// function adjustTextSize(containerId) {
-//     let fontSize = 1; // Starting font size
-//     const step = 0.1; // Decrease step
-//     asciiOutput.style.fontSize = fontSize + 'vw';
-//
-//     while (asciiOutput.scrollWidth > asciiOutput.offsetWidth) {
-//         fontSize -= step;
-//         asciiOutput.style.fontSize = fontSize + 'vw';
-//         if (fontSize <= 0) break; // Prevents infinite loop
-//     }
-// }
-
-// fitText(asciiOutput, 5)
-
-// events
-// eyeballs
-
-
+function genasciiClick() {
+    if (hasText === false) {
+        genascii.disabled = false;
+        genascii.classList.toggle("genasciiClickable");
+        hasText = true;
+    }
+}
+// ****** events ******
+// make genascii clickable and highlighted
+// generate.addEventListener("input", genasciiClick);
+// show/hide upload
 rev.addEventListener("click", toggleReverse);
 gopher.addEventListener("click", toggleReverse);
 // reset select and radios to default on page load
-// TODO standardise not functioning
 document.addEventListener("DOMContentLoaded", reset);
+// disable align buttons if colour selected
 color.addEventListener("change", justifyDisable);
+//reset colours
 colorReset.addEventListener("click", resetColors);
+// hide UI elements if page resized
 window.addEventListener("resize", hideUI);
 // hide/unhide UI elements
 operation.addEventListener("change", hideUI);
-// document.addEventListener("DOMContentLoaded", adjustTextSize);
+// set dark/light on output
 darkmode.addEventListener("click", function () {
     asciiOutput.classList.toggle("asciiOutDark");
 })
@@ -237,6 +239,8 @@ function displayFile() {
     fileReader.onload = () => {
         uploadedFile.innerHTML = `<div class="dragText">uploaded</div><div class="uploadedFile">${file.name}</div>`;
         dropArea.classList.add("dropped");
+        genascii.disabled = true;
+        genascii.classList.toggle("genasciiClickable");
         getTextFunc();
     };
     fileReader.readAsDataURL(file);
