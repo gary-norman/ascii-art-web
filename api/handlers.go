@@ -1,6 +1,7 @@
 package api
 
 import (
+	"ascii_art_web/pkg"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -28,13 +29,13 @@ func init() {
 }
 
 func HandleRequestsGary() {
-	http.HandleFunc("/", HomePageGary)
+	http.HandleFunc("/", HomePage)
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/icons/", http.StripPrefix("/icons/", http.FileServer(http.Dir("icons"))))
 	http.Handle("/ascii_styles/", http.StripPrefix("/ascii_styles/", http.FileServer(http.Dir("ascii_styles"))))
 	http.HandleFunc("/process", Processor)
-	http.HandleFunc("/download", Downloader)
+	http.HandleFunc("/download", pkg.Download)
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 
