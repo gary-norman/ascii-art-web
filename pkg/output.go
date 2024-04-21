@@ -45,12 +45,36 @@ func MakeArtAligned(origString string, y map[int][]string, ds []int, ws Winsize,
 	return art
 }
 
-func wordsToPre(words []string, y map[int][]string, wordSlice []string) string {
+// prepareInputText prepares the input text for processing (splits into [lines][words]
+func prepareInputText(origString string) ([]string, [][]string) {
+	// prepare input for processing
+	replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
+	wordSlice := strings.Split(replaceNewline, "\\n")
+	//split input into lines
+	var lines [][]string
+	for _, str := range wordSlice {
+		splitStr := strings.Split(str, "\n")
+		lines = append(lines, splitStr)
+	}
+	return wordSlice, lines
+}
+
+// alignWordsToPre processes the words on (each) line into separate <pre>s
+func alignWordsToPre(words []string, y map[int][]string, wordSlice []string, align string) string {
 	var art string
 	if len(words) > 1 {
 		var line string
 		for _, word := range words {
-			line = "<pre>"
+			switch align {
+			case "left":
+				line = "<pre style=\"margin: 0 3.2rem 0 0\">"
+			case "right":
+				line = "<pre style=\"margin: 0 0 0 3.2rem\">"
+			case "center":
+				line = "<pre style=\"margin: 0 1.6rem 0 .8rem\">"
+			default:
+				line = "<pre>"
+			}
 			//fmt.Printf("Added <pre>\n")
 			for j := 0; j < len(y[32]); j++ {
 				for _, letter := range word {
@@ -61,9 +85,7 @@ func wordsToPre(words []string, y map[int][]string, wordSlice []string) string {
 				//fmt.Printf("Added new line\n")
 			}
 			line += "</pre>"
-			//fmt.Printf("Added </pre>\n")
 			art += line
-			//fmt.Printf("%v += %v\n", art, line)
 		}
 
 	} else {
@@ -82,17 +104,54 @@ func wordsToPre(words []string, y map[int][]string, wordSlice []string) string {
 	return art
 }
 
+func colorWordsToPre(words []string, y map[int][]string, letters []rune, color string, colorAll bool) string {
+	var line string
+	var art string
+	for _, word := range words {
+		line = "<pre style=\"margin: 0 3.2rem 0 0; display:flex\">"
+		if colorAll {
+			fmt.Printf("Printing colorAll: %v\n", colorAll)
+			for _, letter := range word {
+				line = line + "<pre class=" + color + ">"
+				for j := 0; j < len(y[32]); j++ {
+					line += y[int(letter)][j] + "\n"
+				}
+				line += "</pre>"
+			}
+		} else {
+			for _, letter := range word {
+				if Contains(letters, letter) {
+					fmt.Printf("Printing coloured: %v\n", letter)
+					line += "<pre class=" + color + ">"
+					for j := 0; j < len(y[32]); j++ {
+						line += y[int(letter)][j] + "\n"
+					}
+					line += "</pre>"
+				} else {
+					fmt.Printf("Printing non-coloured\n")
+					line = line + "<pre>"
+					for j := 0; j < len(y[32]); j++ {
+						line += y[int(letter)][j] + "\n"
+					}
+					line += "</pre>"
+				}
+			}
+		}
+		line += "</pre>"
+		art += line + "\n"
+		line = ""
+	}
+	//art = strings.TrimRight(art, "\n")
+	return art
+}
+
 // MakeArtJustified Transform the input text origString to the output art, line by line, with justified content
-func MakeArtJustified(origString string, y map[int][]string, align string) (string, string) {
+func MakeArtJustified(origString string, y map[int][]string, align string, letters []rune, color string, colorAll bool) (string, string) {
+	wordSlice, lines := prepareInputText(origString)
+	fmt.Println(wordSlice)
 	var art string
 	var justification string
-	replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
-	wordSlice := strings.Split(replaceNewline, "\\n")
-	var lines [][]string
-	for _, str := range wordSlice {
-		splitStr := strings.Split(str, "\n")
-		lines = append(lines, splitStr)
-	}
+	//processor for multiple line
 	if len(lines) > 1 {
 		for _, newLine := range lines {
 			var newWords []string
@@ -100,17 +159,26 @@ func MakeArtJustified(origString string, y map[int][]string, align string) (stri
 				newWords = append(newWords, strings.Split(word, " ")...)
 			}
 			art += "<div class=\"justifiedOutput" + align + "\">"
-			art += wordsToPre(newWords, y, newLine)
+			if color != "" {
+				art += colorWordsToPre(newWords, y, letters, color, colorAll)
+			} else {
+				art += alignWordsToPre(newWords, y, newLine, align)
+			}
 			art += "</div>"
-			justification = "Multiline"
+			justification = "Multiline" //sets the class of the <pre>
 		}
+		// processor for single lines
 	} else {
 		for _, newLine := range lines {
 			var newWords []string
 			for _, word := range newLine {
 				newWords = append(newWords, strings.Split(word, " ")...)
 			}
-			art += wordsToPre(newWords, y, newLine)
+			if color != "" {
+				art += colorWordsToPre(newWords, y, letters, color, colorAll)
+			} else {
+				art += alignWordsToPre(newWords, y, newLine, align)
+			}
 			justification = align
 		}
 	}
@@ -119,58 +187,10 @@ func MakeArtJustified(origString string, y map[int][]string, align string) (stri
 
 // MakeArtColorized Transform the input text origString to the output art, line by line, colorizing specified text
 func MakeArtColorized(origString string, y map[int][]string, letters []rune, color string, colorAll bool) string {
-	//var specifiedColor string
-	//reset := "\033[0m"
-	//switch color {
-	//case "red":
-	//	specifiedColor = "\033[31m"
-	//case "#ff0000":
-	//	specifiedColor = "\033[31m"
-	//case "rgb(255, 0, 0)":
-	//	specifiedColor = "\033[31m"
-	//case "hsl(0, 100%, 50%)":
-	//	specifiedColor = "\033[31m"
-	//case "green":
-	//	specifiedColor = "\033[32m"
-	//case "#00ff00":
-	//	specifiedColor = "\033[32m"
-	//case "rgb(0, 255, 0)":
-	//	specifiedColor = "\033[32m"
-	//case "hsl(120, 100%, 50%)":
-	//	specifiedColor = "\033[32m"
-	//case "yellow":
-	//	specifiedColor = "\033[33m"
-	//case "#f0ff00":
-	//	specifiedColor = "\033[33m"
-	//case "rgb(240, 255, 0)":
-	//	specifiedColor = "\033[33m"
-	//case "hsl(64, 100%, 50%)":
-	//	specifiedColor = "\033[33m"
-	//case "blue":
-	//	specifiedColor = "\033[34m"
-	//case "#0000ff":
-	//	specifiedColor = "\033[34m"
-	//case "rgb(0, 0, 255)":
-	//	specifiedColor = "\033[34m"
-	//case "hsl(240, 100%, 50%)":
-	//	specifiedColor = "\033[34m"
-	//case "orange":
-	//	specifiedColor = "\033[38;5;208m"
-	//case "#f9690e":
-	//	specifiedColor = "\033[38;5;208m"
-	//case "rgb(249, 105, 14)":
-	//	specifiedColor = "\033[38;5;208m"
-	//case "hsl(23, 100%, 50%)":
-	//	specifiedColor = "\033[38;5;208m"
-	//default:
-	//	fmt.Print("\nAvailable colors are " + "\033[31m" + "red" + reset + ", " +
-	//		"\033[32m" + "green" + reset + "," + "\033[33m" + "yellow" + reset + ", " +
-	//		"\033[38;5;208m" + "orange" + reset + ", and " + "\033[34m" + "blue" + reset + ".\n")
-	//}
-	var art string
-	replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
-	wordSlice := strings.Split(replaceNewline, "\\n")
+	wordSlice, lines := prepareInputText(origString)
+	fmt.Println(lines)
 	var line string
+	var art string
 	for _, word := range wordSlice {
 		if colorAll {
 			for _, letter := range word {
