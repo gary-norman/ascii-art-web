@@ -45,6 +45,20 @@ func MakeArtAligned(origString string, y map[int][]string, ds []int, ws Winsize,
 	return art
 }
 
+// prepareInputText prepares the input text for processing (splits into [lines][words]
+func prepareInputText(origString string) ([]string, [][]string) {
+	// prepare input for processing
+	replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
+	wordSlice := strings.Split(replaceNewline, "\\n")
+	//split input into lines
+	var lines [][]string
+	for _, str := range wordSlice {
+		splitStr := strings.Split(str, "\n")
+		lines = append(lines, splitStr)
+	}
+	return wordSlice, lines
+}
+
 // alignWordsToPre processes the words on (each) line into separate <pre>s
 func alignWordsToPre(words []string, y map[int][]string, wordSlice []string, align string) string {
 	var art string
@@ -61,7 +75,6 @@ func alignWordsToPre(words []string, y map[int][]string, wordSlice []string, ali
 			default:
 				line = "<pre>"
 			}
-			//line = "<pre>" // *TODO need to add a <span> to the centre of <pre>s
 			//fmt.Printf("Added <pre>\n")
 			for j := 0; j < len(y[32]); j++ {
 				for _, letter := range word {
@@ -91,19 +104,51 @@ func alignWordsToPre(words []string, y map[int][]string, wordSlice []string, ali
 	return art
 }
 
-// MakeArtAll Transform the input text origString to the output art, line by line, with justified content
-func MakeArtAll(origString string, y map[int][]string, align string) (string, string) {
-	// prepare input for processing
+func colorWordsToPre(words []string, y map[int][]string, letters []rune, color string, colorAll bool) string {
+	var line string
+	var art string
+	for _, word := range words {
+		if colorAll {
+			fmt.Printf("Printing colorAll: %v\n", colorAll)
+			for _, letter := range word {
+				line = line + "<pre class=" + color + ">"
+				for j := 0; j < len(y[32]); j++ {
+					line = line + y[int(letter)][j] + "\n"
+				}
+				line = line + "</pre>"
+			}
+		} else {
+			for _, letter := range word {
+				if Contains(letters, letter) {
+					fmt.Printf("Printing coloured: %v\n", letter)
+					line = line + "<pre class=" + color + ">"
+					for j := 0; j < len(y[32]); j++ {
+						line = line + y[int(letter)][j] + "\n"
+					}
+					line = line + "</pre>"
+				} else {
+					fmt.Printf("Printing non-coloured\n")
+					line = line + "<pre>"
+					for j := 0; j < len(y[32]); j++ {
+						line = line + y[int(letter)][j] + "\n"
+					}
+					line = line + "</pre>"
+				}
+			}
+		}
+		art += line + "\n"
+		line = ""
+	}
+	//art = strings.TrimRight(art, "\n")
+	return art
+}
+
+// MakeArtJustified Transform the input text origString to the output art, line by line, with justified content
+func MakeArtJustified(origString string, y map[int][]string, align string, letters []rune, color string, colorAll bool) (string, string) {
+	wordSlice, lines := prepareInputText(origString)
+	fmt.Println(wordSlice)
 	var art string
 	var justification string
-	replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
-	wordSlice := strings.Split(replaceNewline, "\\n")
-	//split input into lines
-	var lines [][]string
-	for _, str := range wordSlice {
-		splitStr := strings.Split(str, "\n")
-		lines = append(lines, splitStr)
-	}
 	//processor for multiple line
 	if len(lines) > 1 {
 		for _, newLine := range lines {
@@ -112,7 +157,11 @@ func MakeArtAll(origString string, y map[int][]string, align string) (string, st
 				newWords = append(newWords, strings.Split(word, " ")...)
 			}
 			art += "<div class=\"justifiedOutput" + align + "\">"
-			art += alignWordsToPre(newWords, y, newLine, align)
+			if color != "" {
+				art += colorWordsToPre(newWords, y, letters, color, colorAll)
+			} else {
+				art += alignWordsToPre(newWords, y, newLine, align)
+			}
 			art += "</div>"
 			justification = "Multiline" //sets the class of the <pre>
 		}
@@ -123,7 +172,11 @@ func MakeArtAll(origString string, y map[int][]string, align string) (string, st
 			for _, word := range newLine {
 				newWords = append(newWords, strings.Split(word, " ")...)
 			}
-			art += alignWordsToPre(newWords, y, newLine, align)
+			if color != "" {
+				art += colorWordsToPre(newWords, y, letters, color, colorAll)
+			} else {
+				art += alignWordsToPre(newWords, y, newLine, align)
+			}
 			justification = align
 		}
 	}
@@ -132,10 +185,10 @@ func MakeArtAll(origString string, y map[int][]string, align string) (string, st
 
 // MakeArtColorized Transform the input text origString to the output art, line by line, colorizing specified text
 func MakeArtColorized(origString string, y map[int][]string, letters []rune, color string, colorAll bool) string {
-	//var art string
-	//replaceNewline := strings.ReplaceAll(origString, "\r\n", "\\n") // correct newline formatting
-	//wordSlice := strings.Split(replaceNewline, "\\n")
+	wordSlice, lines := prepareInputText(origString)
+	fmt.Println(lines)
 	var line string
+	var art string
 	for _, word := range wordSlice {
 		if colorAll {
 			for _, letter := range word {
@@ -233,7 +286,7 @@ func Reverse(fileName string) string {
 //
 //		ws := GetWinSize()
 //		ds := GetArtWidth(input, GetCharsWidth(PrepareBan(bannerStyle)))
-//		fmt.Println(MakeArtAll(input, GetChars(PrepareBan(bannerStyle)), ds, ws))
+//		fmt.Println(MakeArtJustified(input, GetChars(PrepareBan(bannerStyle)), ds, ws))
 //		return
 //	}
 //
