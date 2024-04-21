@@ -108,34 +108,36 @@ func colorWordsToPre(words []string, y map[int][]string, letters []rune, color s
 	var line string
 	var art string
 	for _, word := range words {
+		line = "<pre style=\"margin: 0 3.2rem 0 0; display:flex\">"
 		if colorAll {
 			fmt.Printf("Printing colorAll: %v\n", colorAll)
 			for _, letter := range word {
 				line = line + "<pre class=" + color + ">"
 				for j := 0; j < len(y[32]); j++ {
-					line = line + y[int(letter)][j] + "\n"
+					line += y[int(letter)][j] + "\n"
 				}
-				line = line + "</pre>"
+				line += "</pre>"
 			}
 		} else {
 			for _, letter := range word {
 				if Contains(letters, letter) {
 					fmt.Printf("Printing coloured: %v\n", letter)
-					line = line + "<pre class=" + color + ">"
+					line += "<pre class=" + color + ">"
 					for j := 0; j < len(y[32]); j++ {
-						line = line + y[int(letter)][j] + "\n"
+						line += y[int(letter)][j] + "\n"
 					}
-					line = line + "</pre>"
+					line += "</pre>"
 				} else {
 					fmt.Printf("Printing non-coloured\n")
 					line = line + "<pre>"
 					for j := 0; j < len(y[32]); j++ {
-						line = line + y[int(letter)][j] + "\n"
+						line += y[int(letter)][j] + "\n"
 					}
-					line = line + "</pre>"
+					line += "</pre>"
 				}
 			}
 		}
+		line += "</pre>"
 		art += line + "\n"
 		line = ""
 	}
