@@ -39,26 +39,10 @@ func Processor(w http.ResponseWriter, r *http.Request) {
 	} else {
 		colorAll = true
 	}
-
 	artOutput := ""
 	outputResult := ""
-	//outputResult := "<pre>" + pkg.MakeArt(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle))) + "</pre>"
 	outputResult, chosenAlign = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), chosenAlign, colSlice, chosenColor, colorAll)
 	artToText := "Your Art:"
-	// justify alignment
-	//if chosenAlign == "justify" {
-	//	outputResult, chosenAlign = pkg.MakeArtJustified(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), chosenAlign)
-	//
-	//}
-	//colourise art
-	//if chosenColor != "" {
-	//	if colorWord != "" {
-	//		colSlice := []rune(colorWord)
-	//		outputResult, chosenAlign = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, false), "left"
-	//	} else {
-	//		outputResult, chosenAlign = pkg.MakeArtColorized(inputText, pkg.GetChars(pkg.PrepareBan(chosenStyle)), colSlice, chosenColor, true), "left"
-	//	}
-	//}
 	// reverse lookup
 	if ascii_art_web.IsFilePresent(w, r) {
 		fmt.Println("testing - file present: ", GetFileName(w, r))
