@@ -1,4 +1,4 @@
-package ascii_art_web
+package asciiartweb
 
 func AsciiMap(lines []string) map[int][]string {
 

@@ -1,7 +1,7 @@
 package api
 
 import (
-	ascii_art_web "ascii_art_web/go"
+	asciiartweb "asciiartweb/golang_files"
 	"fmt"
 	"io"
 	"log"
@@ -18,7 +18,7 @@ func Downloader(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("Getting artwork")
-	artworkLines := ascii_art_web.ArtFromFileLines(w, r)
+	artworkLines := asciiartweb.ArtFromFileLines(w, r)
 	//process artwork text lines, add \n at the end of each and join
 	fmt.Println("Adding \\n's to artwork")
 	artworkText := strings.Join(artworkLines, "\\n")

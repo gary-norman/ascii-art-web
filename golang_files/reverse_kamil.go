@@ -1,7 +1,7 @@
-package ascii_art_web
+package asciiartweb
 
 import (
-	"ascii_art_web/pkg"
+	"asciiartweb/pkg"
 	"fmt"
 	"io"
 	"mime/multipart"

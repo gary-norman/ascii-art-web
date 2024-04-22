@@ -1,4 +1,4 @@
-package ascii_art_web
+package asciiartweb
 
 import (
 	"fmt"
@@ -39,7 +39,7 @@ func AsciiToChars(input, standard, shadow, thinkertoy map[int][]string) {
 	for i := 0; i < len(output); i++ {
 		fmt.Printf("output[i][0]: %v\n", string(rune(output[i][0])))
 	}
-	fmt.Println("reverse.go -> output is:", output)
+	fmt.Println("reverse.golang_files -> output is:", output)
 }
 
 // CompareSlices compares two slices for equality.
