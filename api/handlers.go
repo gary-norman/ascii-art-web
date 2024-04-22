@@ -1,7 +1,7 @@
 package api
 
 import (
-	"ascii_art_web/pkg"
+	"asciiartweb/pkg"
 	"fmt"
 	"html/template"
 	"net/http"

@@ -1,4 +1,4 @@
-package ascii_art_web
+package asciiartweb
 
 func PrepareBanner(style string) []string {
 	var scanned []string
