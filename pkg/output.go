@@ -65,16 +65,17 @@ func alignWordsToPre(words []string, y map[int][]string, wordSlice []string, ali
 	if len(words) > 1 {
 		var line string
 		for _, word := range words {
-			switch align {
-			case "left":
-				line = "<pre style=\"margin: 0 3.2rem 0 0\">"
-			case "right":
-				line = "<pre style=\"margin: 0 0 0 3.2rem\">"
-			case "center":
-				line = "<pre style=\"margin: 0 1.6rem 0 .8rem\">"
-			default:
-				line = "<pre>"
-			}
+			//switch align {
+			//case "left":
+			//	line = "<pre style=\"margin: 0 3.2rem 0 0\">"
+			//case "right":
+			//	line = "<pre style=\"margin: 0 0 0 3.2rem\">"
+			//case "center":
+			//	line = "<pre style=\"margin: 0 1.6rem 0 .8rem\">"
+			//default:
+			//	line = "<pre>"
+			//}
+			line = "<pre>"
 			//fmt.Printf("Added <pre>\n")
 			for j := 0; j < len(y[32]); j++ {
 				for _, letter := range word {
@@ -108,7 +109,8 @@ func colorWordsToPre(words []string, y map[int][]string, letters []rune, color s
 	var line string
 	var art string
 	for _, word := range words {
-		line = "<pre style=\"margin: 0 3.2rem 0 0; display:flex\">"
+		line = "<pre style=\"display:flex\">"
+		//line = "<pre style=\"margin: 0 3.2rem 0 0; display:flex\">"
 		if colorAll {
 			fmt.Printf("Printing colorAll: %v\n", colorAll)
 			for _, letter := range word {
@@ -165,7 +167,7 @@ func MakeArtJustified(origString string, y map[int][]string, align string, lette
 				art += alignWordsToPre(newWords, y, newLine, align)
 			}
 			art += "</div>"
-			justification = "Multiline" //sets the class of the <pre>
+			justification = "multiline" //sets the class of the <pre>
 		}
 		// processor for single lines
 	} else {

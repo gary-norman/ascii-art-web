@@ -179,6 +179,7 @@ textarea {
     backdrop-filter: blur(10px);
     padding: 0;
     border-radius: var(--border-rad);
+    justify-content: center;
 }
 .elements {
     width: 100%;
@@ -251,6 +252,14 @@ select, label, input {
     outline: none;
 }
 select, input {
+    color: var(--txt-clr);
+}
+::placeholder {
+    color: var(--txt-clr);
+    opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
     color: var(--txt-clr);
 }
 .label {
@@ -419,11 +428,10 @@ button {
 .artput {
 }
 .autoscroll {
-    overflow: auto
+    overflow: auto;
 }
 .asciiOut {
     display: flex;
-    overflow: auto;
     margin: 0;
     height: 100%;
     padding: 1rem;
@@ -435,7 +443,7 @@ button {
     transition: .3s ease;
 }
 .asciiOutDark {
-     overflow: hidden;
+    display: flex;
      margin: 0;
      height: 100%;
      padding: 1rem;
@@ -447,30 +455,53 @@ button {
  }
 .left {
     justify-content: flex-start;
+    gap: 4rem;
 }.right {
     justify-content: flex-end;
+     gap: 4rem;
 }.center {
     justify-content: center;
+      gap: 4rem;
 }.justify {
     justify-content: space-between;
+       gap: 4rem;
 }
-.Multiline {
+[class*="multiline"] {
+    width: 100%;
+    background-color: gray;
+    display: flex;
     flex-direction: column;
+    overflow: auto;
+}
+.multiline-left {
+    justify-content: start;
+}
+.multiline-right {
+    justify-content: end;
+}
+.multiline-center {
+    justify-content: center;
+}
+.multiline-justify {
+    justify-content: space-between;
+}
+
+[class*="justifiedOutput"]  {
+    /*width: fit-content;*/
+    max-width: 100%;
+    display: flex;
+    gap: 3.2rem;
 }
 .justifiedOutputleft {
-    display: flex;
     justify-content: start;
 }
 .justifiedOutputright {
-    display: flex;
     justify-content: end;
 }
 .justifiedOutputcenter {
-    display: flex;
     justify-content: center;
 }
 .justifiedOutputjustify {
-    display: flex;
     justify-content: space-between;
 }
 .justifyBlock {
