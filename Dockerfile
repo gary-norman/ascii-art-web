@@ -35,7 +35,7 @@ RUN go build  -o /ascii-art-web
 EXPOSE 8080
 
 # Run
-CMD [ "/ascii-art-web" ]
+CMD [ "/ascii-art-web", "/bin/bash" ]
 
 # Builder stage
 #FROM golang:alpine as builder

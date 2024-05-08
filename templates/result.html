@@ -288,7 +288,7 @@
                             </label>
                         </div>
                         <div class="autoscroll asciiOut {{.ChosenAlign}}" id="ascii-output"></div>
-                        <form action="http://localhost:8080/download" class="fileOutputForm" id="fileOutputForm">
+                        <form action="/download" class="fileOutputForm" id="fileOutputForm">
                             <div class="fileOutput">
                                 <label for="fileOutputButton" class="fileOutputLabel" id="fileOutputLabel"></label>
 <!--                                <label class="radio ">-->
@@ -315,7 +315,7 @@
 <!--                                    </svg>-->
 <!--                                </span>-->
 <!--                                </label>-->
-                                <input type="button" onclick="window.location.href='/download'"
+                                <input type="submit"
                                        class="fileOutputButton genasciiClickable" id="fileOutputButton"
                                        value="download art">
                             </div>
