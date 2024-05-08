@@ -1,7 +1,6 @@
 package api
 
 import (
-	"asciiartweb/pkg"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -36,7 +35,7 @@ func HandleRequestsGary() {
 	http.Handle("/fonts/", http.StripPrefix("/fonts/", http.FileServer(http.Dir("fonts"))))
 	http.Handle("/ascii_styles/", http.StripPrefix("/ascii_styles/", http.FileServer(http.Dir("ascii_styles"))))
 	http.HandleFunc("/process", Processor)
-	http.HandleFunc("/download", pkg.Download)
+	http.HandleFunc("/download", DownloadFile)
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 
